@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS booktique;
+
+CREATE DATABASE booktique;
