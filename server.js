@@ -3,12 +3,12 @@ const path = require('path');
 const sequelize = require('./config/connection');
 
 const app = express();
-const port = process.env.port || 3001;
+const PORT = process.env.port || 3001;
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-app.use(routes);
+//app.use(routes);
 
 sequelize
   .sync({ force: false })
