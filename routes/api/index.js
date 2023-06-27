@@ -3,7 +3,7 @@ const bookRoutes = require('./books-routes');
 const reviewRoutes = require('./reviews-routes');
 const usersRoutes = require('./users-routes');
 
-router.use('/book', bookRoutes);
+router.use('/books', bookRoutes);
 //router.use('/review', reviewRoutes);
 //router.use('/user', usersRoutes);
 
