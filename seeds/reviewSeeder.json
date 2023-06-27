@@ -1,0 +1,23 @@
+{
+    "reviews": [
+      {
+        "userId": 1,
+        "bookId": 1,
+        "rating": 4,
+        "comment": "Great book!"
+      },
+      {
+        "userId": 2,
+        "bookId": 1,
+        "rating": 5,
+        "comment": "Highly recommended!"
+      },
+      {
+        "userId": 2,
+        "bookId": 2,
+        "rating": 3,
+        "comment": "Decent read."
+      }
+    ]
+  }
+  
