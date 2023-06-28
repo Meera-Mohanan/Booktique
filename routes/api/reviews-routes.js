@@ -1,10 +1,10 @@
 const router = require('express').Router();
 
 // Import the models
-const Review = require('../models/Review');
-const User = require('../models/User');
-const Book = require('../models/Book');
-
+const Review = require('../../models/Review');
+const User = require('../../models/User');
+const Book = require('../../models/Book');
+//const { Book } = require('../../models/Book');
 // Get all reviews
 router.get('/reviews', async (req, res) => {
     try {

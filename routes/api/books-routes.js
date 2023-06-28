@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const axios = require('axios');
-const { Book } = require('../models');
+const { Book } = require('../../models');
 
 //list of routers--
 // Route to add a book to the books table from the Google Books API (parameter-bookid)
