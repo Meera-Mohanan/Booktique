@@ -1,27 +1,37 @@
-// Import any necessary dependencies
-const { DataTypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-// Define the Review model
-const Review = sequelize.define('Review', {
+class Review extends Model{}
+
+Review.init(
+{
   id: {
     type: DataTypes.INTEGER,
+    allowNull: false,
     primaryKey: true,
     autoIncrement: true,
   },
-  bookId: {
+  book_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
+    refrences: {
+      model: 'books',
+      key: 'id',
+    }
   },
-  userId: {
+  user_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
+    refrences: {
+      model: 'users',
+      key: 'id',
+    },
   },
-  createdAt: {
+  created_at: {
     type: DataTypes.DATE,
     defaultValue: DataTypes.NOW,
   },
-  updatedAt: {
+  updated_at: {
     type: DataTypes.DATE,
     defaultValue: DataTypes.NOW,
   },
@@ -41,11 +51,16 @@ const Review = sequelize.define('Review', {
       max: 5,
     },
   },
-});
+},
+{
+  sequelize,
+    timestamps: false,
+    freezeTableName: true,
+    underscored: true,
+    modelName: 'review',
+}
+);
 
-// Establish associations with User and Book models
-Review.belongsTo(User, { foreignKey: 'userId' });
-Review.belongsTo(Book, { foreignKey: 'bookId' });
 
 // Export the Review model
 module.exports = Review;

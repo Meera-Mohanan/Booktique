@@ -1,11 +1,14 @@
 // Import any necessary dependencies 
-const { DataTypes } = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection'); 
 
-// Define the Book model
-const Book = sequelize.define('Book', {
+class Book extends Model{}
+
+Book.init( 
+{
   id: {
     type: DataTypes.INTEGER,
+    allowNull: false,
     primaryKey: true,
     autoIncrement: true,
   },
@@ -21,14 +24,19 @@ const Book = sequelize.define('Book', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  publishedDate: {
+  published_date: {
     type: DataTypes.DATEONLY,
     allowNull: false,
   },
-}, 
-
-// Establish association with Review model
-Book.hasMany(Review, { foreignKey: 'bookId' });
+}
+{
+  sequelize,
+  timestamps: false,
+  freezeTableName: true,
+  underscored: true,
+  modelName: 'book',
+}
+); 
 
 // Export the Book model
 module.exports = Book;
