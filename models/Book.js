@@ -28,7 +28,7 @@ Book.init(
     type: DataTypes.DATEONLY,
     allowNull: false,
   },
-}
+},
 {
   sequelize,
   timestamps: false,
