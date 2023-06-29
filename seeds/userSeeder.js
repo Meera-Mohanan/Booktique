@@ -6,7 +6,10 @@ const userData = [
 ];
 
 const seedUsers = async () => {
-  await User.bulkCreate(userData);
+  // TODO: for loop -- call create() individually --- to trigger the create hook
+  await User.bulkCreate(userData,{individualHooks: true,
+    returning: true,
+});
 };
 
 
