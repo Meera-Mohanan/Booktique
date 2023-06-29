@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const axios = require('axios');
-const { Book } = require('../../models');
+const Book  = require('../../models');
 
 //list of routers--
 // Route to add a book to the books table from the Google Books API (parameter-bookid)
@@ -12,15 +12,16 @@ const { Book } = require('../../models');
 //implement later--get a bookid from google api when clicking on a book
 
 // Route to add a book to the books table from the Google Books API
-router.post('/add/:bookId', async (req, res) => {
+router.post('/:bookId', async (req, res) => {
     try {
-      const { bookId } = req.params;
+      //add the bookid in the body
+      const  bookId  = req.params;
   
       // Fetch book details from the Google Books API using the bookId
       const apiUrl = `https://www.googleapis.com/books/v1/volumes/${bookId}`;
       const response = await axios.get(apiUrl);
       const bookData = response.data;
-  
+      console.log(bookData);
       // Extract the relevant book information
       const { title, authors, categories, publishedDate, description } = bookData.volumeInfo;
   
@@ -75,7 +76,7 @@ router.get('/:bookid', async (req, res) => {
 
 
 // Route for searching books by type from api
-router.get('/search/:type', async (req, res) => {
+router.get('/apitype/:type', async (req, res) => {
     try {
         const apiKey = process.env.GOOGLE_BOOKS_API_KEY;
         const searchType = req.params.type; // Get the search type from the request URL parameter
@@ -101,7 +102,7 @@ router.get('/search/:type', async (req, res) => {
 });
 
 // Route for searching books by author or book name from api
-router.get('/search/:query', async (req, res) => {
+router.get('/apisearch/:query', async (req, res) => {
     try {
         const apiKey = process.env.GOOGLE_BOOKS_API_KEY;
         const searchQuery = req.params.query; // Get the search query from the request URL parameter
