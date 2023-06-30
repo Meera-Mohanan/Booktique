@@ -1,4 +1,6 @@
-require('dotenv').config();
+require('dotenv').config({
+  path:__dirname+'/../.env2'
+});
 
 const Sequelize = require('sequelize');
 

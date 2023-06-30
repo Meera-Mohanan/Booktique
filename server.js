@@ -1,7 +1,7 @@
 const express = require('express');
-const routes = require('./controllers');
-const sequelize = require('./config/connection');
 const path = require('path');
+const routes = require('./routes');
+const sequelize = require('./config/connection');
 
 const helpers = require('./utils/helper');
 const exphbs = require('express-handlebars');
@@ -29,7 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-app.use(routes);
+app.use(routes); 
+
 
 sequelize
   .sync({ force: false })

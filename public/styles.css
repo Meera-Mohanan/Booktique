@@ -1,0 +1,30 @@
+.logo {
+    background-color: #672846;
+    color: white;
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+    padding: 1%;
+}
+
+#navbarMain {
+    font-weight: bold;
+    font-size: 1em;
+}
+.navbar-item {
+    margin-left: 5%;
+    margin-right: 12%;
+}
+.navbar-end a{
+    margin: 9px;
+}
+#yourreviews {
+    text-align: center;
+}
+.headertext {
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+    padding: 1%;
+    color: brown;
+}
