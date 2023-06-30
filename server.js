@@ -11,13 +11,13 @@ const session = require('express-session');
 const PORT = process.env.PORT || 3001;
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const ses = {
-    secret: 'secret',
-    cookie: { maxAge: 36000 },
-    resave: false,
-    saveUninitialized: true,
-    store: new SequelizeStore({
-        db: sequelize
-    })
+  secret: 'secret',
+  cookie: { maxAge: 36000 },
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+  })
 };
 
 const app = express();
@@ -29,13 +29,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-app.use(routes); 
+app.use(routes);
 
 
 sequelize
   .sync({ force: false })
   .then(() => {
-    app.listen(PORT, () => {
+    app.listen(process.env.PORT, () => {
       console.log(`App listening on port ${PORT}!`);
     });
   })
