@@ -7,6 +7,6 @@ const usersRoutes = require('./users-routes');
 router.use('/books', bookRoutes);
 router.use('/googlebooks', apiRoutes);
 router.use('/reviews', reviewRoutes);
-//router.use('/users', usersRoutes);
+router.use('/users', usersRoutes);
 
 module.exports = router;
