@@ -24,6 +24,7 @@ Booktique is a book review app that allows users to discover and review their fa
 
 ## Installation
 
+
 ## Usage
 
 Register a new user account or log in with existing credentials.
@@ -33,14 +34,13 @@ Edit or delete your own reviews.
 Logout when you're done.
 
 ## Contributing
+
 Contributions are welcome! To contribute to Booktique, follow these steps:
-
-## Fork the repository.
-
-Create a new branch for your feature or bug fix.
-Make your changes and commit them.
-Push your changes to your fork.
-Submit a pull request.
+- Fork the repository.
+- Create a new branch for your feature or bug fix.
+- Make your changes and commit them.
+- Push your changes to your fork.
+- Submit a pull request.
 
 ## License
 
