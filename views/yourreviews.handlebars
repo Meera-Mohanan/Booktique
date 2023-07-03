@@ -1,3 +1,16 @@
-<div id="yourreviews">
-    <h1 class="headertext">Your Reviews</h4>
-</div>
+
+    
+
+{{#if reviews.length}}
+<section>
+  <h2>Your Reviews</h2>
+    {{#each reviews as |review|}}
+      {{> dashboard-postinfo review}}
+    {{/each}}
+
+</section>
+{{/if}}
+
+<button type="submit" class="btn"><a class="link" href="/newreview">+ New Review</a></button>
+
+<script src="/js/reviews.js"></script>

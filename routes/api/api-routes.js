@@ -32,7 +32,7 @@ router.get('/type', async (req, res) => {
 router.get('/searchbyname', async (req, res) => {
     try {
         const apiKey = process.env.GOOGLE_BOOKS_API_KEY;
-        const searchQuery = req.query.query; // Get the search query from the query parameters
+        const searchQuery = req.params.id; // Get the search query from the query parameters
 
         const url = 'https://www.googleapis.com/books/v1/volumes';
 

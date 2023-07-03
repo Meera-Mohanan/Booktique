@@ -11,7 +11,8 @@ router.get('/', async (req, res) => {
         const reviews = await Review.findAll({
             include: [User, Book],
         });
-        res.json(reviews);
+        // res.json(reviews);
+        res.render('yourreviews', { reviews, loggedIn: req.session.loggedIn });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Server error' });
@@ -51,6 +52,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+<<<<<<< HEAD
 router.post('/', async (req, res) => {
     try {
         const { book_id, user_id, title, body, score } = req.body;
@@ -64,6 +66,13 @@ router.post('/', async (req, res) => {
         if (existingReview) {
             return res.status(409).json({ error: 'Review already exists' });
         }
+=======
+// Create a new review
+router.post('/', async (req, res) => {
+    try {
+        const { bookId, title, body, score } = req.body;
+        const userId = req.session.user_id;
+>>>>>>> 571a5924ec58174393d7bee4f55c93cee06e1209
 
         // Create the review
         const review = await Review.create({
@@ -122,5 +131,6 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json({ error: 'Server error' });
     }
 });
+
 
 module.exports = router;
