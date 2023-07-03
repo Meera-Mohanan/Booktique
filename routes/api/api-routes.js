@@ -29,10 +29,10 @@ router.get('/type', async (req, res) => {
 });
 
 // Route for searching books by author or book name from API
-router.get('/search', async (req, res) => {
+router.get('/search/:id', async (req, res) => {
     try {
         const apiKey = process.env.GOOGLE_BOOKS_API_KEY;
-        const searchQuery = req.query.query; // Get the search query from the query parameters
+        const searchQuery = req.params.id; // Get the search query from the query parameters
 
         const url = 'https://www.googleapis.com/books/v1/volumes';
 

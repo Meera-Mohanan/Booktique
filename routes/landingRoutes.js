@@ -21,9 +21,9 @@ router.get('/signup', (req, res) => {
     res.render('signup');
 });
 
-router.get('/review', (req, res) => {
-    res.render('yourreviews', {loggedIn: true});
-})
+// router.get('/review', (req, res) => {
+//     res.render('yourreviews', {loggedIn: true});
+// })
 
 
 
@@ -45,6 +45,11 @@ router.post('/logout', (req, res) => {
     } else {
         res.status(404).end();
     }
+});
+
+
+router.get('/newreview', (req, res) => {
+    res.render('newreview');
 });
 
 module.exports = router;
