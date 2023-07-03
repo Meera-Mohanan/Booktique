@@ -1,16 +1,27 @@
-    <div class="card">
-      <h3 class="card-header">Sign Up</h3>
-      <form id="signup-form" class="card-body">
-        <label for="username-signup" class="form-label">Username</label>
-        <input id="username-signup" type="text" class="form-input" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup Form</title>
+  <link rel="stylesheet" href="/css/signup.css">
+</head>
+<body>
+  <div class="card">
+    <h3 class="card-header">Signup</h3>
+    <form id="signup-form" class="card-body">
+      <label class="form-label" for="username-signup">Username</label>
+      <input id="username-signup" type="text" autofocus="true" class="form-input" />
 
+      <label class="form-label" for="email-signup">Email</label>
+      <input id="email-signup" type="email" class="form-input" />
 
-        <label class="form-label" for="password-signup">Password</label>
-        <input  id="password-signup" type="password" class="form-input" />
+      <label class="form-label" for="password-signup">Password</label>
+      <input id="password-signup" type="password" class="form-input" />
 
-        <button type="submit" class="btn">Signup!</button>
-        <a class="login-link" href="/login">Log in</a>
-      </form>
-    </div>
-
-<script src="/js/signup.js"></script>
+      <button type="submit" class="btn">Signup!</button>
+      <p class="login-link">Already have an account? <a href="/login">Login</a></p>
+    </form>
+  </div>
+</body>
+</html>
