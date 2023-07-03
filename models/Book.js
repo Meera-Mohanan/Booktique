@@ -12,6 +12,10 @@ Book.init(
     primaryKey: true,
     autoIncrement: true,
   },
+  google_books_id: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   title: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -26,6 +30,10 @@ Book.init(
   },
   published_date: {
     type: DataTypes.DATEONLY,
+    allowNull: false,
+  },
+  description: {
+    type: DataTypes.STRING,
     allowNull: false,
   },
 },
