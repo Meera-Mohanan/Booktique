@@ -46,7 +46,7 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/profilesettings', (req, res) => {
-    res.render('profilesettings', {loggedIn: true});
+    res.render('profilesettings', {loggedIn: req.session.logged_in});
 })
 
 router.get('/bookreview', (req, res) => {
