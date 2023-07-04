@@ -1,0 +1,15 @@
+{{#if searchResults}}
+    <div id="searchResults">
+      {{#each searchResults}}
+        <div class="search-item">
+          <img src="{{this.imageLink}}" alt="{{this.title}}">
+          <h3>{{this.title}}</h3>
+          <p>{{this.author}}</p>
+        </div>
+      {{/each}}
+    </div>
+  {{else}}
+    <p>No results found.</p>
+  {{/if}}
+
+  <script src="script.js"></script>
