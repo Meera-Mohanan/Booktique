@@ -34,7 +34,23 @@ router.get('/top', async (req, res) => {
     }
 });
 
-
+// Route to fetch reviews for a specific user
+router.get('/user/:userId', async (req, res) => {
+    try {
+      const user_id = req.params.userId;
+  
+      // Fetch reviews for the specified user
+      const reviews = await Review.findAll({
+        include: [User, Book],
+        where: { user_id },
+      });
+      console.log(reviews);
+      res.json(reviews);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Server error' });
+    }
+  });
 
 // Get one review
 router.get('/:id', async (req, res) => {
