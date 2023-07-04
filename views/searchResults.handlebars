@@ -1,15 +1,22 @@
-{{#if searchResults}}
-    <div id="searchResults">
-      {{#each searchResults}}
-        <div class="search-item">
-          <img src="{{this.imageLink}}" alt="{{this.title}}">
-          <h3>{{this.title}}</h3>
-          <p>{{this.author}}</p>
-        </div>
-      {{/each}}
-    </div>
-  {{else}}
-    <p>No results found.</p>
-  {{/if}}
+<form id="searchForm">
+  <input type="text" id="searchInput" placeholder="Enter a book title or author">
+  <button type="submit">Search</button>
+</form>
 
-  <script src='../public/js/searchresults.js'></script>
+<!-- Add a container element to display the search results -->
+<div id="searchResultsContainer"></div>
+
+{{#if searchResults}}
+  <div id="searchResults">
+    {{#each searchResults}}
+      <div class="search-item">
+        <h3>{{this.title}}</h3>
+        <p>{{this.author}}</p>
+      </div>
+    {{/each}}
+  </div>
+{{else}}
+  <p>No results found.</p>
+{{/if}}
+
+<script src="../public/js/searchresults.js"></script>
