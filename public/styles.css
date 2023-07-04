@@ -3,6 +3,13 @@
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: xx-large;
 }
+#login-form,#signup-form {
+  width: 85%;
+  margin-left: 3%;
+  border: 1px dotted #672846;
+  padding: 1%;
+  margin-top: 3%;
+}
 
 #navbarMain {
   font-weight: bold;
