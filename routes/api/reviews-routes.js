@@ -5,19 +5,7 @@ const Review = require('../../models/Review');
 const User = require('../../models/User');
 const Book = require('../../models/Book');
 
-// Get all reviews
-router.get('/', async (req, res) => {
-    try {
-        const reviews = await Review.findAll({
-            include: [User, Book],
-        });
-        // res.json(reviews);
-        res.render('yourreviews', { reviews, loggedIn: req.session.loggedIn });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Server error' });
-    }
-});
+
 
 // Get top scored reviews
 router.get('/top', async (req, res) => {

@@ -1,6 +1,6 @@
-const newFormHandler = async (event) => {
+ /* const newFormHandler = async (event) => {
   event.preventDefault();
-  // Retrieve the logged-in user's ID from the session data
+ // Retrieve the logged-in user's ID from the session data
       //const userId = req.user.id;
       const userId=1;
 
@@ -17,8 +17,8 @@ const newFormHandler = async (event) => {
     } else {
       alert('Failed to create project');
     }
-  }
-};
+  } 
+};*/
 
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
@@ -37,14 +37,14 @@ const delButtonHandler = async (event) => {
   }
 };
 
-document
+/* document
   .querySelector('.new-project-form')
   .addEventListener('submit', newFormHandler);
 
 document
   .querySelector('.project-list')
   .addEventListener('click', delButtonHandler);
-
+ */
 
 
 
