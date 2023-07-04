@@ -37,7 +37,7 @@
                     Search: <input placeholder="Enter Book details:" type="text" id="searchbook">
                 </a>
 
-                 <a class="navbar-item"><button class="button" type="submit" class="btn" onclick="searchabook()">Search</button></a>
+               {{!--   <a class="navbar-item"><button class="button" type="submit" class="btn" onclick="searchabook()">Search</button></a> --}}
 
 {{!-- <a class="link" href="/googlebooks/search/harry">Search</a> --}}
                 {{!-- <div class="navbar-item has-dropdown is-hoverable">
@@ -70,10 +70,13 @@
                         <a class="link" href="/profilesettings">
                             <strong>Profile Settings</strong>
                         </a>
-                        <a class="link" href="/review">
+
+                        {{#unless dontShowReviewNavItem}}
+                        <a class="link" href="/reviews">
                             Your Reviews
                         </a>
-                        <a class="link" href="/" id="logout">Logout</a>
+                        {{/unless}}
+                        <a class="link" href="/logout" id="logout">Logout</a>
                         {{else}}
                         <a href="/signup" class="button is-primary">
                             <strong>Sign up</strong>

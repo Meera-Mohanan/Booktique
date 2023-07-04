@@ -1,12 +1,8 @@
 .logo {
-  background-color: #672846;
-  color: white;
-  font-weight: bold;
-  font-size: 2em;
-  text-align: center;
-  padding: 1%;
+  font-style: italic;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: xx-large;
 }
-
 #navbarMain {
   font-weight: bold;
   font-size: 1em;
@@ -18,13 +14,92 @@
 .navbar-end a{
   margin: 9px;
 }
-#yourreviews {
+.button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.button.is-info {
+  background-color: #B4C4C1;
+  color: #fff;
+}
+.button.is-primary {
+  background-color: #5D80B9;
+  color: #fff;
+}
+.button.is-light {
+  background-color: #F8F8F8;
+  color: #333;
+}
+/* Responsive Navbar */
+@media screen and (max-width: 768px) {
+  .navbar-burger {
+    display: block;
+    cursor: pointer;
+  }
+  .navbar-menu {
+    display: none;
+  }
+  .navbar-item {
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 400px;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-content {
   text-align: center;
 }
-.headertext {
-  font-weight: bold;
-  font-size: 2em;
-  text-align: center;
-  padding: 1%;
-  color: brown;
+.hero-content h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.hero-content p {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+/* Quotes Section */
+.quotes {
+  padding: 40px;
+  background-color: #fff;
+}
+.quotes h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.quotes ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.quotes li {
+  margin-bottom: 10px;
+}
+/* Search  */
+#search{
+  width:300px;
+  height:150px;
+  margin:auto;
+  margin-top:20px;
+  padding:15px;
+}
+button{
+  position:relative;
+  left:50px;
+}
+.aligning{
+  margin-left:700px;
+  margin-top:20px;
+}
+#searchResults p {
+  margin: 10px 0;
 }
