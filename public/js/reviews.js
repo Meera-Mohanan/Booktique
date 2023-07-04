@@ -19,65 +19,24 @@
     }
   } 
 };*/
-
 const delButtonHandler = async (event) => {
+  event.preventDefault();
+
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
 
-    const reviews = await fetch(`/api/projects/${id}`, {
+    const response = await fetch(`/api/reviews/${id}`, {
       method: 'DELETE',
     });
 
-    if (reviews.ok) {
-      //const reviews = await fetchUserReviews(userId);
-      res.render('yourreviews', { reviews });
+    if (response.ok) {
+      // Reload the page or update the UI as needed
+      location.reload(/api/reviews);
     } else {
-      alert('Failed to delete project');
+      alert('Failed to delete review');
     }
   }
 };
 
-/* document
-  .querySelector('.new-project-form')
-  .addEventListener('submit', newFormHandler);
+document.querySelector('#delete-review').addEventListener('click', delButtonHandler);
 
-document
-  .querySelector('.project-list')
-  .addEventListener('click', delButtonHandler);
- */
-
-
-
-/* async function reviewsHandler(event) {
-
-    event.preventDefault();
-
-    // const id;
-
-
-
-
-
-
-async function reviewsHandler(req, res) {
-    try {
-      // Retrieve the logged-in user's ID from the session data
-      //const userId = req.user.id;
-     const userId=1;
-      // Perform any necessary data retrieval or API requests using the user's ID
-      const reviews = await fetchUserReviews(userId);
-        
-      res.render('yourreviews', { reviews });
-    } catch (error) {
-      // Handle any errors that occur during the data retrieval or rendering
-      console.error('Error retrieving or rendering reviews:', error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  }
-
-  } 
-
-  
-
-
-  */

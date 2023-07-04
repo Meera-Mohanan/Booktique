@@ -1,4 +1,5 @@
 const { Review ,User, Book} = require('../models');
+const auth = require('../utils/auth');
 
 const router = require('express').Router();
 
@@ -6,17 +7,17 @@ const router = require('express').Router();
 router.get('/', (req,res) => {
 
     // res.json({ data: 'hi' })
-    res.render('landingpage', {loggedIn: true});
+    res.render('landingpage', {loggedIn: req.session.loggedIn});
     // res.render('landingpage', { post, loggedIn: true });
 
 });
 // Get all reviews
-router.get('/reviews', async (req, res) => {
+router.get('/reviews', auth, async (req, res) => {
     try {
-        //console.log(req.session);
+        console.log(req.session);
         let user_id = req.session.user_id;
-        if(!user_id){
-            res.render('/login');
+        if(user_id=="undefined"){
+            res.redirect('/');
         }
         const reviews_data = await Review.findAll({
             where:{user_id:user_id},
@@ -26,7 +27,7 @@ router.get('/reviews', async (req, res) => {
         const reviews = reviews_data.map((review) => review.get({ plain: true }));
         
         // res.json(reviews);
-        res.render('yourreviews', { reviews, loggedIn: req.session.loggedIn });
+        res.render('yourreviews', { reviews, loggedIn: req.session.loggedIn, dontShowReviewNavItem: true });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Server error' });
@@ -44,32 +45,23 @@ router.get('/signup', (req, res) => {
     res.render('signup');
 });
 
-// router.get('/review', (req, res) => {
-//     res.render('yourreviews', {loggedIn: true});
-// })
-
-
-
 router.get('/profilesettings', (req, res) => {
-    res.render('profilesettings', {loggedIn: true});
+    res.render('profilesettings', {loggedIn: req.session.logged_in});
 })
 
 router.get('/bookreview', (req, res) => {
     res.render('bookreview', {loggedIn: true});
 })
 
-
-
-router.post('/logout', (req, res) => {
+router.get('/logout', (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {
-            res.status(204).end();
+            res.redirect('/')
         });
     } else {
-        res.status(404).end();
+        res.redirect('/login');
     }
 });
-
 
 router.get('/newreview', (req, res) => {
     res.render('newreview');
