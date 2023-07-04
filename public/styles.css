@@ -16,28 +16,6 @@
   margin: 9px;
 }
 
-.button {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.button.is-info {
-  background-color: #b4c4c1;
-  color: #fff;
-}
-
-.button.is-primary {
-  background-color: #5d80b9;
-  color: #fff;
-}
-
-.button.is-light {
-  background-color: #f8f8f8;
-  color: #333;
-}
-
 /* Responsive Navbar */
 @media screen and (max-width: 768px) {
   .navbar-burger {
@@ -101,24 +79,18 @@
   margin-bottom: 10px;
 }
 
-/* Search  */
-#search{
-  width:300px;
-  height:150px;
-  margin:auto;
-  margin-top:20px;
-  padding:15px;
-}
-button{
-  position:relative;
-  left:50px;
-}
-.aligning{
-  margin-left:700px;
-  margin-top:20px;
+/* Search */
+/* Search */
+.search-input {
+  position: relative;
+  width: 100%;
 }
 
-#searchResults p {
-  margin: 10px 0;
+.search-input input {
+  padding-right: 30px; /* Adjust the padding to create space for the icon */
+}
+
+.search-input::placeholder {
+  filter: grayscale(100%);
 }
 
