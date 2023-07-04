@@ -39,4 +39,3 @@ const delButtonHandler = async (event) => {
 };
 
 document.querySelector('#delete-review').addEventListener('click', delButtonHandler);
-
