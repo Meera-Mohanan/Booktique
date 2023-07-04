@@ -35,6 +35,7 @@
 
 /* Hero Section */
 .hero {
+  background-image: url(public/assets/book-composition-with-open-book.jpg);
   position: relative;
   height: 400px;
   background-color: #333;
