@@ -5,8 +5,7 @@ const router = require('express').Router();
 
 router.get('/', (req,res) => {
 
-    // res.json({ data: 'hi' })
-    res.render('landingpage', {loggedIn: true});
+    res.render('landingpage', {loggedIn: req.session.logged_in});
     // res.render('landingpage', { post, loggedIn: true });
 
 });
@@ -26,7 +25,7 @@ router.get('/reviews', async (req, res) => {
         const reviews = reviews_data.map((review) => review.get({ plain: true }));
         
         // res.json(reviews);
-        res.render('yourreviews', { reviews, loggedIn: req.session.loggedIn });
+        res.render('yourreviews', { reviews, loggedIn: req.session.logged_in });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Server error' });
@@ -51,7 +50,7 @@ router.get('/signup', (req, res) => {
 
 
 router.get('/profilesettings', (req, res) => {
-    res.render('profilesettings', {loggedIn: true});
+    res.render('profilesettings', {loggedIn: req.session.logged_in});
 })
 
 router.get('/bookreview', (req, res) => {
