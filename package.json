@@ -13,17 +13,16 @@
         "axios": "^1.4.0",
         "bcrypt": "^5.0.0",
         "bulma": "^0.9.4",
-        "connect-session-sequelize": "^7.0.4",
-        "dotenv": "^8.6.0",
-        "express": "^4.18.2",
+        "connect-session-sequelize": "^6.1.1",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
         "express-handlebars": "^7.0.7",
         "express-session": "^1.17.3",
-        "json-file-writer": "^0.1.1",
         "mysql2": "^2.1.0",
         "sequelize": "^6.32.1"
     },
     "devDependencies": {
-        "jest": "^23.6.0",
+        "jest": "^25.0.0",
         "nodemon": "^1.14.9"
     }
 }
