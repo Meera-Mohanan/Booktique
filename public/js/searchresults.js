@@ -1,8 +1,9 @@
 // Add an event listener to the search form
 document.getElementById('searchForm').addEventListener('submit', function (event) {
-  event.preventDefault();
-  
-  const searchQuery = document.getElementById('searchbook').value.trim();
+  event.preventDefault(); // Prevent form submission
+
+  // Get the search query from the input field
+  const searchQuery = document.getElementById('searchInput').value.trim();
 
   if (!searchQuery) {
     alert('Please enter a search query');
@@ -35,8 +36,8 @@ function displaySearchResults(results) {
 
   if (results.length > 0) {
     results.forEach((item) => {
-      const { title, authors } = item.volumeInfo;
-      const bookElement = createBookElement(title, authors);
+      const { title, author } = item.volumeInfo;
+      const bookElement = createBookElement(title, author);
       searchResultsContainer.appendChild(bookElement);
     });
   } else {
@@ -45,18 +46,18 @@ function displaySearchResults(results) {
 }
 
 // Function to create a book element
-function createBookElement(title, authors) {
+function createBookElement(title, author) {
   const bookElement = document.createElement('div');
   bookElement.classList.add('search-item');
 
   const titleElement = document.createElement('h3');
   titleElement.textContent = title;
 
-  const authorsElement = document.createElement('p');
-  authorsElement.textContent = authors ? authors.join(', ') : 'Unknown Author';
+  const authorElement = document.createElement('p');
+  authorElement.textContent = author ? author : 'Unknown Author';
 
   bookElement.appendChild(titleElement);
-  bookElement.appendChild(authorsElement);
+  bookElement.appendChild(authorElement);
 
   return bookElement;
 }
