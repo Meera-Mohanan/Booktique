@@ -1,30 +1,341 @@
+/* Global Styles */
 .logo {
-    background-color: #672846;
-    color: white;
-    font-weight: bold;
-    font-size: 2em;
-    text-align: center;
-    padding: 1%;
+  font-style: italic;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size:xx-large;
 }
 
-#navbarMain {
-    font-weight: bold;
-    font-size: 1em;
+.logo-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+/* Navbar */
+.navbar {
+  background-color: #f8f8f8;
+  padding: 20px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-burger {
+  display: none;
+}
+
+.navbar-menu {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.navbar-start,
+.navbar-end {
+  display: flex;
+  align-items: center;
+}
+
 .navbar-item {
-    margin-left: 5%;
-    margin-right: 12%;
+  margin-right: 20px;
 }
-.navbar-end a{
-    margin: 9px;
+
+.input {
+  width: 250px;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
-#yourreviews {
-    text-align: center;
+
+.button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
-.headertext {
-    font-weight: bold;
-    font-size: 2em;
-    text-align: center;
-    padding: 1%;
-    color: brown;
+
+.button.is-info {
+  background-color: #00d1b2;
+  color: #fff;
+}
+
+.button.is-primary {
+  background-color: #3273dc;
+  color: #fff;
+}
+
+.button.is-light {
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+/* Responsive Navbar */
+@media screen and (max-width: 768px) {
+  .navbar-burger {
+    display: block;
+    cursor: pointer;
+  }
+
+  .navbar-menu {
+    display: none;
+  }
+
+  .navbar-item {
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+
+.input {
+  width: 250px;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button.is-info {
+  background-color: #00d1b2;
+  color: #fff;
+}
+
+.button.is-primary {
+  background-color: #3273dc;
+  color: #fff;
+}
+
+.button.is-light {
+  background-color: #f8f8f8;
+  color: #333;
+}
+
+/* Responsive Navbar */
+
+@media screen and (max-width: 768px) {
+  .navbar-burger {
+    display: block;
+    cursor: pointer;
+  }
+
+  .navbar-menu {
+    display: none;
+  }
+
+  .navbar-item {
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 400px;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.hero-content p {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+/* Quotes Section */
+.quotes {
+  padding: 40px;
+  background-color: #fff;
+}
+
+.quotes h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.quotes ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quotes li {
+  margin-bottom: 10px;
+}
+
+/* Latest Releases Section */
+.latest-releases {
+  padding: 40px;
+  background-color: #f3f3f3;
+}
+
+.latest-releases h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.latest-releases ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.latest-releases li {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.book-cover {
+  width: 120px;
+  height: 180px;
+  margin-right: 20px;
+}
+
+.book-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.book-details h3 {
+  font-size: 18px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.book-details p {
+  margin: 0;
+  margin-bottom: 5px;
+}
+
+/* Login Page */
+.container {
+  max-width: 400px;
+  margin: 40px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.login-box {
+  text-align: center;
+}
+
+.login-box h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.login-box .form-group {
+  margin-bottom: 15px;
+}
+
+.login-box label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.login-box input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-box .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #ff5555;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-box .signup-text {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.login-box .signup-text a {
+  color: #ff5555;
+  text-decoration: none;
+}
+
+.login-box .signup-text a:hover {
+  text-decoration: underline;
+}
+
+/* Signup Page */
+.card {
+  width: 400px;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.btn {
+  background-color: #00635a;
+  color: #fff;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  background-color: #00524a;
 }

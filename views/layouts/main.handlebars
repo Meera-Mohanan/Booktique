@@ -1,100 +1,103 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <title>Landing Page - Booktique </title>
-    <link rel="stylesheet" href="styles.css">
-
-    <script src="js/main.js"></script>
-
-
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Landing Page - Booktique</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-
-    <div class="logo">
-        BOOKTIQUE
+ <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <div class="logo-section">
+        <a class="navbar-item" href="/home">
+          <span class="logo">BOOKTIQUE</span>
+        </a>
+      </div>
     </div>
-
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-
-        <div id="navbarMain" class="navbar-menu">
-
-            <div class="navbar-start">
-                <a class="navbar-item" href="/">
-                    Home
-                </a>
-
-                <a class="navbar-item" href="/bookreview">
-                    Book Review
-                </a>
-
-                <a class="navbar-item">
-                    Search: <input placeholder="Enter Book details:" type="text" id="searchbook">
-                </a>
-
-                 <a class="navbar-item"><button class="button" type="submit" class="btn" onclick="searchabook()">Search</button></a>
-
-{{!-- <a class="link" href="/googlebooks/search/harry">Search</a> --}}
-                {{!-- <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        More
-                    </a>
-
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                            About
-                        </a>
-                        <a class="navbar-item">
-                            Jobs
-                        </a>
-                        <a class="navbar-item">
-                            Contact
-                        </a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item">
-                            Report an issue
-                        </a>
-                    </div>
-                </div> --}}
-            </div>
-
-            <div class="navbar-end">
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMain">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+    <div id="navbarMain" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/home">
+          Home
+        </a>
+        <a class="navbar-item" href="/bookreview">
+          Book Review
+        </a>
+      </div>
+      <div class="navbar-end">
                 <div class="navbar-item">
-                    <div class="buttons">
-                        {{#if loggedIn}}
-                        <a class="link" href="/profilesettings">
-                            <strong>Profile Settings</strong>
-                        </a>
-                        <a class="link" href="/review">
-                            Your Reviews
-                        </a>
-                        <a class="link" href="/" id="logout">Logout</a>
-                        {{else}}
-                        <a href="/signup" class="button is-primary">
-                            <strong>Sign up</strong>
-                        </a>
-                        <a class="button is-light" href="/login">Login</a>
-
-                        {{/if}}
-
-                    </div>
-                </div>
+          <div class="field has-addons">
+            <div class="control">
+              <input class="input" type="text" placeholder="Search book details">
             </div>
+            <div class="control">
+              <a class="button is-primary">
+                Search
+              </a>
+            </div>
+          </div>
         </div>
-    </nav>
+        <div class="navbar-item">
+          <div class="buttons">
+            <a href="/login" class="button is-primary">
+              Login
+            </a>
+            <a href="/signup" class="button is-primary">
+              Sign up
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
 
+  <div class="hero">
+    <div class="hero-content">
+      <h1>Welcome to Booktique</h1>
+      <p>Explore the world of books and dive into the magic of reading.</p>
+      <a href="/signup" class="button">Sign Up</a>
+    </div>
+  </div>
 
+  <section class="quotes">
+    <h2>Famous Quotes about Book Reading</h2>
+    <ul>
+      <li>"A reader lives a thousand lives before he dies." - George R.R. Martin</li>
+      <li>"Books are a uniquely portable magic." - Stephen King</li>
+      <li>"Reading gives us someplace to go when we have to stay where we are." - Mason Cooley</li>
+      <li>"The more that you read, the more things you will know. The more that you learn, the more places you'll go." - Dr. Seuss</li>
+      <li>"Reading is essential for those who seek to rise above the ordinary." - Jim Rohn</li>
+    </ul>
+  </section>
 
-    <main>
-        {{{ body }}}
-    </main>
+  <section class="latest-releases">
+    <h2>Top 5 Latest Releases</h2>
+    <ul>
+      {{#each books}}
+      <li>
+        <div class="book-cover">
+          <img src="{{this.image}}" alt="Book Cover">
+        </div>
+        <div class="book-details">
+          <h3>{{this.title}}</h3>
+          <p>Author: {{this.author}}</p>
+          <p>Genre: {{this.genre}}</p>
+          <p>Release Date: {{this.releaseDate}}</p>
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+  </section>
 
-
+  <script src="script.js"></script>
 </body>
 
 </html>
