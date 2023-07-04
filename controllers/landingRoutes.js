@@ -22,7 +22,7 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/yourreviews', (req, res) => {
-    res.render('yourreviews', {loggedIn: true});
+    res.render('yourreviews', {loggedIn: true,reviews});
 })
 
 router.get('/profilesettings', (req, res) => {
