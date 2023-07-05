@@ -1,17 +1,38 @@
 
-<div id="searchResultsContainer"></div>
-
-{{#if searchResults}}
-  <div id="searchResults">
-    {{#each searchResults}}
-      <div class="search-item">
-        <h3>{{this.title}}</h3>
-        <p>{{this.author}}</p>
+{{#if search && option}}
+  <h1>Search results for {{search}} in Book {{option}} ({{books.length}})</h1>
+  {{#each books}}
+    <hr>
+    <div class="row">
+      <br>
+      <div class="col-md-2 col-sm-3 text-center">
+        <a class="story-title" href="/Books/{{this._id}}"><img alt="{{this.title}}" src="{{this.image_url}}" style="width:100px;height:100px" class="img-circle"></a>
       </div>
-    {{/each}}
-  </div>
+      <div class="col-md-10 col-sm-9">
+        <h3>{{this.title}}</h3>
+        <div class="row">
+          <div class="col-xs-9">
+            <h4><span class="label label-default">{{this.author}}</span></h4>
+            <br>
+            <h4><span class="label label-default">Genre: {{this.genre}}</span></h4>
+            <br>
+            <h4><span class="label label-default">Added By {{this.user}}</span></h4>
+          </div>
+          <div class="col-xs-3"></div>
+        </div>
+      </div>
+    </div>
+    <hr>
+  {{/each}}
 {{else}}
   <p>No results found.</p>
 {{/if}}
+<br>
+<br>
+<hr>
+<hr>
+<!-- search result -->
 
-<script src="js/searchresults.js"></script>
+<!-- search result end -->
+<script src="/routes/api/search.js"></script>
+<script src="/public/js/searchresults.js"></script>

@@ -14,12 +14,17 @@ document.getElementById('searchForm').addEventListener('submit', function (event
 });
 
 // Function to perform the search
+// API key for Google Books API
+const apiKey = 'AIzaSyDAyeDqH5UigJe1-nVRvV-GLRm0MurjIgs';
+
+// Function to perform the search
 async function performSearch(query) {
   try {
-    const response = await fetch(`/searchbyname?id=${query}`);
+    const url = `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${apiKey}`;
+    const response = await fetch(url);
     if (response.ok) {
       const searchResults = await response.json();
-      displaySearchResults(searchResults);
+      displaySearchResults(searchResults.items);
     } else {
       throw new Error('Request failed');
     }
@@ -43,21 +48,4 @@ function displaySearchResults(results) {
   } else {
     searchResultsContainer.innerHTML = '<p>No results found.</p>';
   }
-}
-
-// Function to create a book element
-function createBookElement(title, author) {
-  const bookElement = document.createElement('div');
-  bookElement.classList.add('search-item');
-
-  const titleElement = document.createElement('h3');
-  titleElement.textContent = title;
-
-  const authorElement = document.createElement('p');
-  authorElement.textContent = author ? author : 'Unknown Author';
-
-  bookElement.appendChild(titleElement);
-  bookElement.appendChild(authorElement);
-
-  return bookElement;
 }

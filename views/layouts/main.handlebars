@@ -6,14 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <title>Landing Page - Booktique </title>
     <link rel="stylesheet" href="styles.css">
-
-    <script src="js/main.js"></script>
-
-
-
-
 </head>
 
 <body>
@@ -37,6 +30,7 @@
 
                 <a class="navbar-item">
                     Search: <input placeholder="Enter Book details:" type="text" id="searchbook">
+                    <button id="searchButton">Search</button>
                 </a>
             </div>
 
@@ -74,11 +68,11 @@
         {{{ body }}}
     </main>
 
-     {{#if loggedIn}}
-     <script src="js/logout.js"></script>  
-     {{/if}}
+    {{#if loggedIn}}
+    <script src="js/logout.js"></script>
+    {{/if}}
 
-
+    <script src="js/main.js"></script>
 </body>
 
 </html>
