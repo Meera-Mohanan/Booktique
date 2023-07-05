@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const landingRoutes = require('./landingRoutes.js');
+const landingRoutes = require('./landingroutes');
 // const dashboardRoutes = require('./dashboardRoutes.js'); 
 
 
