@@ -1,38 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
 
-{{#if search && option}}
-  <h1>Search results for {{search}} in Book {{option}} ({{books.length}})</h1>
-  {{#each books}}
-    <hr>
-    <div class="row">
-      <br>
-      <div class="col-md-2 col-sm-3 text-center">
-        <a class="story-title" href="/Books/{{this._id}}"><img alt="{{this.title}}" src="{{this.image_url}}" style="width:100px;height:100px" class="img-circle"></a>
-      </div>
-      <div class="col-md-10 col-sm-9">
-        <h3>{{this.title}}</h3>
-        <div class="row">
-          <div class="col-xs-9">
-            <h4><span class="label label-default">{{this.author}}</span></h4>
-            <br>
-            <h4><span class="label label-default">Genre: {{this.genre}}</span></h4>
-            <br>
-            <h4><span class="label label-default">Added By {{this.user}}</span></h4>
-          </div>
-          <div class="col-xs-3"></div>
-        </div>
-      </div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="logo">
+        BOOKTIQUE
     </div>
-    <hr>
-  {{/each}}
-{{else}}
-  <p>No results found.</p>
-{{/if}}
-<br>
-<br>
-<hr>
-<hr>
-<!-- search result -->
 
-<!-- search result end -->
-<script src="/routes/api/search.js"></script>
-<script src="/public/js/searchresults.js"></script>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <!-- Navbar content -->
+    </nav>
+
+    <main>
+        <!-- Search results container -->
+        <div id="searchResultsContainer"></div>
+    </main>
+
+    <script src="/public/js/searchresults.js"></script>
+
+</body>
+
+</html>
