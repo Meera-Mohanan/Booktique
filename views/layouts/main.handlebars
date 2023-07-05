@@ -36,14 +36,33 @@
                 </a>
 
                 <a class="navbar-item">
-              <form id="searchForm">
-    <input type="text" id="searchInput" placeholder="Enter a book title or author">
-  <button type="submit">Search</button>
-</form>
-
-<!-- Container for search results -->
-<div id="searchResultsContainer"></div>
+                    Search: <input placeholder="Enter Book details:" type="text" id="searchbook">
                 </a>
+
+                 <a class="navbar-item"><button class="button" type="submit" class="btn" onclick="searchabook()">Search</button></a>
+
+{{!-- <a class="link" href="/googlebooks/search/harry">Search</a> --}}
+                {{!-- <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        More
+                    </a>
+
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item">
+                            About
+                        </a>
+                        <a class="navbar-item">
+                            Jobs
+                        </a>
+                        <a class="navbar-item">
+                            Contact
+                        </a>
+                        <hr class="navbar-divider">
+                        <a class="navbar-item">
+                            Report an issue
+                        </a>
+                    </div>
+                </div> --}}
             </div>
 
             <div class="navbar-end">
@@ -53,13 +72,10 @@
                         <a class="link" href="/profilesettings">
                             <strong>Profile Settings</strong>
                         </a>
-
-                        {{#unless dontShowReviewNavItem}}
-                        <a class="link" href="/reviews">
+                        <a class="link" href="/review">
                             Your Reviews
                         </a>
-                        {{/unless}}
-                        <a class="link" href="/logout" id="logout">Logout</a>
+                        <a class="link" href="/" id="logout">Logout</a>
                         {{else}}
                         <a href="/signup" class="button is-primary">
                             <strong>Sign up</strong>
