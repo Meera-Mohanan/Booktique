@@ -46,7 +46,7 @@ router.get('/signup', (req, res) => {
 });
 
 router.get('/profilesettings', (req, res) => {
-    res.render('profilesettings', {loggedIn: true});
+    res.render('profilesettings', {loggedIn: req.session.logged_in});
 })
 
 router.get('/bookreview', (req, res) => {
@@ -56,7 +56,7 @@ router.get('/bookreview', (req, res) => {
 router.get('/logout', (req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {
-            res.redirect('/login')
+            res.redirect('/')
         });
     } else {
         res.redirect('/login');
