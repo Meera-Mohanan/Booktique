@@ -35,3 +35,20 @@
   padding: 1%;
   color: brown;
 }
+.book {
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.book h2 {
+  margin-top: 0;
+}
+
+.book p {
+  margin: 0;
+}
+
+.book .reviews {
+  margin-top: 10px;
+}
