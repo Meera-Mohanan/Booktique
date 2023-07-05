@@ -46,7 +46,7 @@ document.getElementById('searchForm').addEventListener('submit', function (event
 async function performSearch(query) {
   try {
     console.log('Performing search:', query); // Add console.log statement
-    const response = await fetch('https://www.googleapis.com/books/v1/volumes');
+    const response = await fetch('https://www.googleapis.com/books/v1/volumes?q=${query}');
     if (response.ok) {
       const searchResults = await response.json();
       displaySearchResults(searchResults);

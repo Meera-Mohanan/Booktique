@@ -8,8 +8,7 @@
   <title>Main Page - Booktique</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudfare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </head>
 
 <body>
@@ -29,7 +28,7 @@
                 </a>
                 <a class="navbar-item" href="/search-results">
                     <form id="searchForm" action="/searchbyname" method="GET">
-                        Search: <input placeholder="Enter Book details:" type="text" id="searchbook">
+                       <input placeholder="Enter Book details:" type="text" id="searchbook">
                         <button id="searchButton">Search</button>
                     </form>
                 </a>
@@ -68,7 +67,7 @@
     {{#if loggedIn}}
     <script src="js/logout.js"></script>
     {{/if}}
-
+    <script src="searchresults.js"></script>
 </body>
 
 </html>
