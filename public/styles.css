@@ -6,7 +6,7 @@
   text-align: center;
   padding: 1%;
 }
-#login-form,#signup-form {
+#login-form,#signup-form,#new-review-form {
   width: 85%;
   margin-left: 3%;
   border: 1px dotted #672846;
@@ -34,4 +34,7 @@
   text-align: center;
   padding: 1%;
   color: brown;
+}
+#submitaddreview {
+  margin-top: 1%;
 }

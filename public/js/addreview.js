@@ -1,10 +1,11 @@
 async function newReviewHandler(event) {
   event.preventDefault();
 
-  const bookId = document.querySelector('input[name="bookId"]').value;
-  const title = document.querySelector('input[name="title"]').value;
-  const body = document.querySelector('input[name="body"]').value;
-  const score = document.querySelector('input[name="score"]').value;
+  // const bookId = document.querySelector('input[name="bookId"]').value;
+  // const title = document.querySelector('input[name="title"]').value;
+  // const body = document.querySelector('input[name="body"]').value;
+  
+  const score = document.getElementById('reviewscore').value;
 
   const response = await fetch(`/review`, {
     method: 'POST',
