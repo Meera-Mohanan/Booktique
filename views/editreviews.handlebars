@@ -1,0 +1,28 @@
+{{!-- Check if review exists --}}
+{{#if review}}
+<section>
+  <h2>Edit Review</h2>
+  <div class="card">
+    <div class="card-content">
+      <div class="media">
+        <div class="media-content">
+          <p class="title is-4">{{review.book.title}}</p>
+          <p class="subtitle is-6">{{review.book.author}}</p>
+        </div>
+      </div>
+
+      <textarea id="review-text" name="reviewText">{{review.body}}</textarea>
+      
+      
+      <div class="card">
+        <footer class="card-footer">
+          <a href="/reviews/edit/{{review.id}}?reviewText={{encodeURI review.body}}" class="card-footer-item" id="edit-review">Save</a>
+
+        </footer>
+      </div>
+    </div>
+  </div>
+</section>
+{{else}}
+<p>No reviews found.</p>  
+{{/if}}
