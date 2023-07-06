@@ -23,20 +23,58 @@
     </div>
 
     <nav class="navbar" role="navigation" aria-label="main navigation">
-
         <div id="navbarMain" class="navbar-menu">
 
             <div class="navbar-start">
-                <a class="navbar-item" href="/">
-                    Home
-                </a>
+                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item" href="/bookreview">Book Review</a>
+                <nav class="navbar" role="navigation" aria-label="dropdown navigation">
+                    <div class="navbar-item has-dropdown is-hoverable">
+                       <a class="navbar-link">
+                            Browse
+                        </a>
 
-                <a class="navbar-item" href="/bookreview">
-                    Book Review
-                </a>
-
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item" href="/searchtype/:{{fiction}}" >
+                                Fiction
+                            </a>
+                            <a class="navbar-item" href="/searchtype/:{{thriller}}" >
+                                Thriller
+                            </a>
+                            <a class="navbar-item" href="/searchtype/:{{romance}}" >
+                                Romance
+                            </a>
+                            <a class="navbar-item" href="/searchtype/:{{fantasy}}" >
+                                Fantasy
+                            </a>
+                            <a class="navbar-item" href="/searchtype/:{{science fiction}}" >
+                                Biography 
+                            </a>
+                            <a class="navbar-item" href="/searchtype/:{{horror}}" >
+                                Horror
+                            </a>
+                            <a class="navbar-item" href="/searchtype/:{{drama}}" >
+                                Drama
+                            </a>
+                            <a class="navbar-item" href="/searchtype/:{{comedy}}" >
+                                Comedy
+                            </a>
+                            <a class="navbar-item" href="/searchtype/:{{philosophy}}" >
+                                Philosophy
+                            </a>
+                            <a class="navbar-item" href="/searchtype/:{{travel}}" >
+                                Travel
+                            </a>
+                            
+                            <hr class="navbar-divider">
+                            <div class="navbar-item" href="/searchtype/:{{more}}" >
+                                More
+                            </div>
+                        </div>
+                    </div>
+                </nav>
                 <a class="navbar-item">
-                    Search: <input placeholder="Enter Book details:" type="text" id="searchbook">
+                    <input class="input" type="text" placeholder="Search for Book/Author" id="searchbook">
                 </a>
             </div>
 
@@ -69,26 +107,26 @@
     </nav>
 
 
-<article class="message" id="loginmsg" style="display: none;">
-  <div class="message-header">
-    <p>Logged in Succesfully!</p>
-  </div>
-</article>
+    <article class="message" id="loginmsg" style="display: none;">
+        <div class="message-header">
+            <p>Logged in Succesfully!</p>
+        </div>
+    </article>
 
 
-<article class="message" id="logoutmsg" style="display: none;">
-  <div class="message-header">
-    <p>Logged Out Succesfully!</p>
-  </div>
-</article>
+    <article class="message" id="logoutmsg" style="display: none;">
+        <div class="message-header">
+            <p>Logged Out Succesfully!</p>
+        </div>
+    </article>
 
     <main>
         {{{ body }}}
     </main>
 
-     {{#if loggedIn}}
-     <script src="js/logout.js"></script>  
-     {{/if}}
+    {{#if loggedIn}}
+    <script src="js/logout.js"></script>
+    {{/if}}
 
 
 </body>

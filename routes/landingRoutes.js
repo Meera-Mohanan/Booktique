@@ -1,3 +1,4 @@
+const axios = require('axios');
 const { Review ,User, Book} = require('../models');
 const { update } = require('../models/Book');
 const auth = require('../utils/auth');
@@ -12,6 +13,43 @@ console.log(req.session)
     // res.render('landingpage', { post, loggedIn: true });
 
 });
+
+//1. type search 
+router.get('/searchtype/:genre', async (req, res) => {
+    try {
+        const apiKey = process.env.GOOGLE_BOOKS_API_KEY;
+        const searchType = req.params.genre; // Get the search type from the query parameters
+
+        const url = 'https://www.googleapis.com/books/v1/volumes';
+
+        const params = {
+            q: `categories:${searchType}`, 
+            key: apiKey
+        };
+
+        const response = await axios.get(url, { params });
+//render books along with reviews from database.
+const books_data = response.data.items; 
+        //console.log(books)
+        let user_id = req.session.user_id;
+        if(user_id=="undefined"){
+            res.redirect('/');
+        }
+        const reviews_data = await Review.findAll({
+            where:{user_id:user_id},
+            include: [User, Book],
+            
+        });
+        const reviews = reviews_data.map((review) => review.get({ plain: true }));
+        const books=books_data.map((book) => book.get({ plain: true }));
+        res.render('searchbytype', { books,reviews});
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+  
+
 
 // 1.Will render the your profile settings page.
 router.get('/profilesettings', auth, async (req, res) => {
