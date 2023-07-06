@@ -32,7 +32,7 @@ router.get('/user/:userId', async (req, res) => {
         include: [User, Book],
         where: { user_id },
       });
-      console.log(reviews);
+      //console.log(reviews);
       res.json(reviews);
     } catch (error) {
       console.error(error);
