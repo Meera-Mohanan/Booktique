@@ -2,7 +2,7 @@ const Book = require('../../models/Book');
 const axios = require('axios');
 const router = require('express').Router();
 
-router.get('/booksearch', async (req, res) => {
+router.get('/search-form', async (req, res) => {
   try {
     const apiKey = 'AIzaSyDAyeDqH5UigJe1-nVRvV-GLRm0MurjIgs';
     const searchQuery = req.query.searchbook; // Get the search query from the query parameters
@@ -25,13 +25,31 @@ router.get('/booksearch', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-router.get('/bookList', async (req, res) => {
+router.get('/search-results', async (req, res) => {
   try {
     const searchQuery = req.query.searchbook; // Get the search query from the query parameters
 
     const searchResults = await searchBooks(searchQuery); // Call the searchBooks function to fetch the search results
 
     res.render('search-results', { searchResults }); // Render the search-results view template and pass the searchResults data
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+// Route to search for a book by bookid in the database
+router.get('/id', async (req, res) => {
+  try {
+    const bookId = req.query.bookId;
+
+    const book = await Book.findOne({ where: { google_books_id: bookId } });
+
+    if (!book) {
+      return res.status(404).json({ error: 'Book not found' });
+    }
+
+    res.json(book);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });

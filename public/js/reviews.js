@@ -1,4 +1,4 @@
- 
+
 const delButtonHandler = async (event) => {
   event.preventDefault();
 
@@ -10,12 +10,14 @@ const delButtonHandler = async (event) => {
     });
 
     if (response.ok) {
-      // Reload the page or update the UI as needed
+      // update the UI as review is deleted
       location.reload('/reviews');
     } else {
       alert('Failed to delete review');
     }
   }
 };
+
+
 
 document.querySelector('#delete-review').addEventListener('click', delButtonHandler);

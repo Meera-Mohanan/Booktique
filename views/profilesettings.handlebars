@@ -1,3 +1,29 @@
-<div id="profileSettings">
-    <h1 class="headertext">Profile Settings</h4>
-</div>
+
+
+{{#if user}}
+<section>
+  <h2>Profile Settings</h2>
+    <div class="card">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-4">Pen Name: {{user.name}}</p>
+            <p class="subtitle is-6">Email: {{user.email}}</p>
+            {{!-- <p class="subtitle is-6">Password: {{user.password}}</p>  --}}
+          </div>
+        </div>
+        <div class="card">
+          <footer class="card-footer">
+            <a href="/useredit" class="card-footer-item" id="edit-user">Update my details</a>
+            <a href="/reviews" class="card-footer-item" id="edit-user">View my reviews</a>
+          </footer>
+        </div>
+      </div>
+    </div>
+  
+</section>
+{{else}}
+<p>User Details Not Found.</p>
+{{/if}}
+
+

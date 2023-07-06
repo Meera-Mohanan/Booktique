@@ -2,72 +2,83 @@
 <html lang="en">
 
 <head>
- <meta charset="utf-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-  <title>Main Page - Booktique</title>
+  <title>Booktique</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/handlebars/dist/handlebars.min.js"></script>
 </head>
 
 <body>
-    <div class="cover-image"></div>
-    <div class="logo">
-        BOOKTIQUE
+  <!-- Navigation Bar -->
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        Booktique
+      </a>
+
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMain">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
     </div>
 
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div id="navbarMain" class="navbar-menu">
-            <div class="navbar-start">
-                <a class="navbar-item" href="/">
-                    Home
-                </a>
-                <a class="navbar-item" href="/bookreview">
-                    Book Review
-                </a>
-                <a class="navbar-item" href="/search-results">
-                    <form id="searchForm" action="/searchbyname" method="GET">
-                       <input placeholder="Enter Book details:" type="text" id="searchbook">
-                        <button id="searchButton">Search</button>
-                    </form>
-                </a>
-            </div>
-
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <div class="buttons">
-                        {{#if loggedIn}}
-                        <a class="link" href="/profilesettings">
-                            <strong>Profile Settings</strong>
-                        </a>
-                        {{#unless dontShowReviewNavItem}}
-                        <a class="link" href="/reviews">
-                            Your Reviews
-                        </a>
-                        {{/unless}}
-                        <a class="link" href="/logout" id="logout">Logout</a>
-                        {{else}}
-                        <a href="/signup" class="button is-primary">
-                            <strong>Sign up</strong>
-                        </a>
-                        <a class="button is-light" href="/login">Login</a>
-                        {{/if}}
-                    </div>
-                </div>
-            </div>
+    <div id="navbarMain" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/">
+          Home
+        </a>
+        <a class="navbar-item" href="/bookreviews">
+          Book Reviews
+        </a>
+      </div>
+      
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            {{#if loggedIn}}
+            <a class="button is-light" href="/profilesettings">
+              Profile Settings
+            </a>
+            <a class="button is-light" href="/logout">Logout</a>
+            {{else}}
+            <a class="button is-link is-light" href="/signup">Signup</a>
+            <a class="button is-light" href="/login">Login</a>
+            {{/if}}
+          </div>
         </div>
-    </nav>
+      </div>
 
-    <main>
-        <div id="searchResultsContainer"></div>
-        {{{ body }}}
-    </main>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <form id="search-form" class="field has-addons">
+            <div class="control">
+              <input id="search-input" class="input" type="text" placeholder="Search Books or Authors">
+            </div>
+            <div class="control">
+              <button type="submit" class="button is-primary">Search</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </nav>
 
-    {{#if loggedIn}}
-    <script src="js/logout.js"></script>
+  <main>
+    <!-- Display the landing page when on the home route -->
+    {{#if isHome}}
+      {{> landing}}
+    {{else}}
+      {{{ body }}}
     {{/if}}
-    <script src="searchresults.js"></script>
+  </main>
+
+  {{#if loggedIn}}
+  <script src="js/logout.js"></script>
+  {{/if}}
+  <script src="/public/js/searchresults.js"></script>
 </body>
 
 </html>
