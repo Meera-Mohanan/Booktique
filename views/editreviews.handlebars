@@ -1,7 +1,10 @@
 {{!-- Check if review exists --}}
+ <form id="edit-review-form">
 {{#if review}}
 <section>
   <h2>Edit Review</h2>
+ 
+  <input type="hidden" name="reviewId" value="{{review.id}}">
   <div class="card">
     <div class="card-content">
       <div class="media">
@@ -10,19 +13,20 @@
           <p class="subtitle is-6">{{review.book.author}}</p>
         </div>
       </div>
-
-      <textarea id="review-text" name="reviewText">{{review.body}}</textarea>
-      
-      
+  <textarea id="title" name="reviewTitle">{{review.title}}</textarea>
+      <textarea id="body" name="reviewBody">{{review.body}}</textarea>
+      <textarea id="score" name="reviewScore">{{review.score}}</textarea>
       <div class="card">
         <footer class="card-footer">
-          <a href="/reviews/edit/{{review.id}}?reviewText={{encodeURI review.body}}" class="card-footer-item" id="edit-review">Save</a>
-
+           <button type="submit" class="card-footer-item">Save Review</button>
         </footer>
       </div>
     </div>
   </div>
+  
 </section>
 {{else}}
 <p>No reviews found.</p>  
 {{/if}}
+</form>
+<script src="/js/editreview.js"></script>

@@ -50,35 +50,29 @@ router.get('/reviewsedit/:id',auth, async (req, res) => {
     }
   });
 
-  router.put('/reviews/edit/:id', async (req, res) => {
+  router.put('/edit/:id', async (req, res) => {
     try {
       const reviewId = req.params.id;
-      const reviewText = req.query.reviewText;
+      const { title, body, score } = req.body;
   
-      // Retrieve the review from the database
+      // Retrieve the existing review from the database
       const review = await Review.findByPk(reviewId);
-
       if (!review) {
         return res.status(404).json({ error: 'Review not found' });
       }
-  console.log(reviewText);
-  console.log(review);
-      // Update the review text
-      review.body = reviewText;
+  
+      review.title = title || review.title;
+      review.body = body || review.body;
+      review.score = score || review.score;
       await review.save();
   
-      //res.json({ message: 'Review updated successfully' });
-      res.render('editreviews', {review,loggedIn: req.session.logged_In});
-
+      res.json(review);
     } catch (error) {
       console.error(error);
       res.status(500).json({ error: 'Server error' });
     }
   });
   
-  
-
-
 
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
