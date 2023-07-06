@@ -2,7 +2,7 @@ const Book = require('../../models/Book');
 const axios = require('axios');
 const router = require('express').Router();
 
-router.get('/searchbyname', async (req, res) => {
+router.get('/booksearch', async (req, res) => {
   try {
     const apiKey = 'AIzaSyDAyeDqH5UigJe1-nVRvV-GLRm0MurjIgs';
     const searchQuery = req.query.searchbook; // Get the search query from the query parameters
@@ -25,9 +25,17 @@ router.get('/searchbyname', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-router.get('/search-results', async (req, res) => {
-  res.render('search-results');
-});
+router.get('/bookList', async (req, res) => {
+  try {
+    const searchQuery = req.query.searchbook; // Get the search query from the query parameters
 
+    const searchResults = await searchBooks(searchQuery); // Call the searchBooks function to fetch the search results
+
+    res.render('search-results', { searchResults }); // Render the search-results view template and pass the searchResults data
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 
 module.exports = router;

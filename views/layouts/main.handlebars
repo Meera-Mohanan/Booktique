@@ -2,76 +2,72 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
+ <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
   <title>Main Page - Booktique</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 </head>
 
 <body>
-  <div class="cover-image"></div>
-  <div class="logo">
-    BOOKTIQUE
-  </div>
-
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div id="navbarMain" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item" href="/">
-          Home
-        </a>
-        <a class="navbar-item" href="/bookreview">
-          Book Review
-        </a>
-        <div class="navbar-item">
-          <form id="searchForm" action="/searchbyname" method="GET">
-            <div class="field has-addons">
-              <div class="control">
-                <input class="input" type="text" id="searchbook" placeholder="Enter Book details">
-              </div>
-              <div class="control">
-                <button class="button is-primary" id="searchButton">Search</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            {{#if loggedIn}}
-            <a class="link" href="/profilesettings">
-              <strong>Profile Settings</strong>
-            </a>
-            {{#unless dontShowReviewNavItem}}
-            <a class="link" href="/reviews">
-              Your Reviews
-            </a>
-            {{/unless}}
-            <a class="link" href="/logout" id="logout">Logout</a>
-            {{else}}
-            <a href="/signup" class="button is-primary">
-              <strong>Sign up</strong>
-            </a>
-            <a class="button is-light" href="/login">Login</a>
-            {{/if}}
-          </div>
-        </div>
-      </div>
+    <div class="cover-image"></div>
+    <div class="logo">
+        BOOKTIQUE
     </div>
-  </nav>
 
-  <main>
-    <div id="searchResultsContainer"></div>
-    {{{ body }}}
-  </main>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div id="navbarMain" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/">
+                    Home
+                </a>
+                <a class="navbar-item" href="/bookreview">
+                    Book Review
+                </a>
+                <a class="navbar-item" href="/search-results">
+                    <form id="searchForm" action="/searchbyname" method="GET">
+                       <input placeholder="Enter Book details:" type="text" id="searchbook">
+                        <button id="searchButton">Search</button>
+                    </form>
+                </a>
+            </div>
 
-  {{#if loggedIn}}
-  <script src="js/logout.js"></script>
-  {{/if}}
-  <script src="searchresults.js"></script>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        {{#if loggedIn}}
+                        <a class="link" href="/profilesettings">
+                            <strong>Profile Settings</strong>
+                        </a>
+                        {{#unless dontShowReviewNavItem}}
+                        <a class="link" href="/reviews">
+                            Your Reviews
+                        </a>
+                        {{/unless}}
+                        <a class="link" href="/logout" id="logout">Logout</a>
+                        {{else}}
+                        <a href="/signup" class="button is-primary">
+                            <strong>Sign up</strong>
+                        </a>
+                        <a class="button is-light" href="/login">Login</a>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div id="searchResultsContainer"></div>
+        {{{ body }}}
+    </main>
+
+    {{#if loggedIn}}
+    <script src="js/logout.js"></script>
+    {{/if}}
+    <script src="searchresults.js"></script>
 </body>
 
 </html>

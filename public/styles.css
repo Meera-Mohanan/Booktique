@@ -1,18 +1,15 @@
 
-
-/* styles.css */
-
 /* Logo */
 .logo {
   font-size: 2rem;
   font-weight: bold;
-  color: #007bff; /* Replace with the desired logo color */
+  color: #007bff; 
   padding: 1rem;
 }
 
 /* Navbar */
 .navbar {
-  background-color: #f8f9fa; /* Replace with the desired navbar background color */
+  background-color: #f8f9fa; 
 }
 
 .navbar-item {
@@ -20,15 +17,15 @@
 }
 
 .navbar-item a {
-  color: #333; /* Replace with the desired navbar item color */
+  color: #333; 
 }
 
 .navbar-item a:hover {
-  color: #007bff; /* Replace with the desired hover color */
+  color: #007bff; 
 }
 
 .navbar-burger {
-  color: #333; /* Replace with the desired burger icon color */
+  color: #333; 
 }
 
 /* Search Form */
@@ -38,13 +35,13 @@
 }
 
 #searchbook {
-  width: 300px; /* Adjust the width as needed */
+  width: 300px;
   margin-right: 1rem;
 }
 
 #searchButton {
-  background-color: #007bff; /* Replace with the desired search button color */
-  color: #fff; /* Replace with the desired search button text color */
+  background-color: #007bff;
+  color: #fff; 
   padding: 0.5rem 1rem;
 }
 
@@ -54,11 +51,9 @@
 }
 
 /* Cover Image */
-.cover-image {
-  background-image: url('path_to_your_cover_image.jpg'); /* Replace with the path to your cover image */
-  background-size: cover;
+background-size: cover;
   background-position: center;
-  height: 300px; /* Adjust the height as needed */
+  height: 300px; 
 }
 
 
@@ -66,10 +61,10 @@
 
 /* Hero */
 .hero {
-  background-image: url('path_to_your_hero_image.jpg'); /* Replace with the path to your hero image */
+  background-image: url('path_to_your_hero_image.jpg'); 
   background-size: cover;
   background-position: center;
-  height: 400px; /* Adjust the height as needed */
+  height: 400px; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,14 +72,14 @@
 
 .hero-content {
   text-align: center;
-  color: #fff; /* Replace with the desired text color */
+  color: #fff; 
   font-size: 2rem;
   padding: 1rem;
 }
 
 /* Quotes */
 .quotes {
-  background-color: #f8f9fa; /* Replace with the desired background color */
+  background-color: #f8f9fa; 
   padding: 2rem;
 }
 
