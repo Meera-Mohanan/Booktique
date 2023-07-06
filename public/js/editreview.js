@@ -1,4 +1,4 @@
-// editreview.js
+// edit a review
 document.querySelector('#edit-review-form').addEventListener('submit', async (event) => {
   event.preventDefault();
  
@@ -6,7 +6,7 @@ document.querySelector('#edit-review-form').addEventListener('submit', async (ev
   const title = document.querySelector('#title').value;
   const body = document.querySelector('#body').value;
   const score = document.querySelector('#score').value;
-  console.log(reviewid);
+  
 try{
   const response = await fetch(`/edit/${reviewid}`, {
     method: 'PUT',

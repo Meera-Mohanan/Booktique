@@ -1,4 +1,5 @@
 const { Review ,User, Book} = require('../models');
+const { update } = require('../models/Book');
 const auth = require('../utils/auth');
 
 const router = require('express').Router();
@@ -11,7 +12,73 @@ router.get('/', (req,res) => {
     // res.render('landingpage', { post, loggedIn: true });
 
 });
-// Get all reviews
+
+// 1.Will render the your profile settings page.
+router.get('/profilesettings', auth, async (req, res) => {
+    try {
+        let user_id = req.session.user_id;
+        if (user_id === undefined) {
+            return res.redirect('/');
+        }
+        const user_data = await User.findAll({
+            where: { id: user_id },
+        });
+        let user = user_data.map((u) => u.get({ plain: true }));
+        user=user[0];
+        res.render('profilesetting', { user, loggedIn: req.session.loggedIn, dontShowReviewNavItem: true });
+    } catch (error) {
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
+//2.rendering the page to edit the profile.
+router.get('/useredit',auth, async (req, res) => {
+    try {
+        let user_id = req.session.user_id;
+        if (user_id === undefined) {
+            return res.redirect('/');
+        }
+        const user_data = await User.findAll({
+            where: { id: user_id },
+        });
+        let user = user_data.map((u) => u.get({ plain: true }));
+        user=user[0];
+        res.render('editprofilesettings', { user, loggedIn: req.session.loggedIn, dontShowReviewNavItem: true });
+    } catch (error) {
+        res.status(500).json({ error: 'Server error' });
+    }
+  });
+
+ //3.updating user details and directing to profilesetting page.
+ router.put('/edit', async (req, res) => {
+    try {
+        let user_id = req.session.user_id;
+        if (user_id === undefined) {
+            return res.redirect('/');
+        }
+        
+      const { name, email, password } = req.body;
+  
+      // Retrieve the existing review from the database
+      let user = await User.findByPk(user_id);
+      if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+      //console.log(password)
+      user.name = name || user.name;
+      user.email = email || user.email;
+      user.password = password || user.password;
+      await user.save();
+      
+      res.json(user);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Server error' });
+    }
+  });
+   
+
+// 1.Will render the your reviews page.
 router.get('/reviews', auth, async (req, res) => {
     try {
         //console.log(req.session);
@@ -34,6 +101,7 @@ router.get('/reviews', auth, async (req, res) => {
     }
 });
 
+//2.rendering the page to edit the selected review.
 router.get('/reviewsedit/:id',auth, async (req, res) => {
     try {
         const review_data = await Review.findByPk(req.params.id, {
@@ -50,6 +118,7 @@ router.get('/reviewsedit/:id',auth, async (req, res) => {
     }
   });
 
+  //3.updating review and directing to yourreviews page.
   router.put('/edit/:id', async (req, res) => {
     try {
       const reviewId = req.params.id;
