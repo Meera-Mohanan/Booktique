@@ -1,98 +1,124 @@
 
+
+/* styles.css */
+
+/* Logo */
 .logo {
-  font-style: italic;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: xx-large;
-}
-
-#navbarMain {
+  font-size: 2rem;
   font-weight: bold;
-  font-size: 1em;
+  color: #007bff; /* Replace with the desired logo color */
+  padding: 1rem;
 }
+
+/* Navbar */
+.navbar {
+  background-color: #f8f9fa; /* Replace with the desired navbar background color */
+}
+
 .navbar-item {
-  margin-left: 5%;
-  margin-right: 12%;
-}
-.navbar-end a{
-  margin: 9px;
+  margin-right: 1rem;
 }
 
-/* Responsive Navbar */
-@media screen and (max-width: 768px) {
-  .navbar-burger {
-    display: block;
-    cursor: pointer;
-  }
-
-  .navbar-menu {
-    display: none;
-  }
-
-  .navbar-item {
-    display: block;
-    margin-bottom: 10px;
-  }
+.navbar-item a {
+  color: #333; /* Replace with the desired navbar item color */
 }
 
-/* Hero Section */
-.hero {
-  background-image: url(https://img.freepik.com/free-photo/book-composition-with-open-book_23-2147690555.jpg?w=1800&t=st=1688578094~exp=1688578694~hmac=56ca9d67c787780b290496d1d84f955452d9d131c5883d49c4fb3c0c1781d4e5);
-    background-size: cover;
-    position: relative;
-  height: 400px;
-  background-color: #333;
-  color: #fff;
+.navbar-item a:hover {
+  color: #007bff; /* Replace with the desired hover color */
+}
+
+.navbar-burger {
+  color: #333; /* Replace with the desired burger icon color */
+}
+
+/* Search Form */
+#searchForm {
   display: flex;
-  direction: inherit;
+  align-items: center;
+}
 
+#searchbook {
+  width: 300px; /* Adjust the width as needed */
+  margin-right: 1rem;
+}
+
+#searchButton {
+  background-color: #007bff; /* Replace with the desired search button color */
+  color: #fff; /* Replace with the desired search button text color */
+  padding: 0.5rem 1rem;
+}
+
+/* Search Results */
+#searchResultsContainer {
+  margin-top: 2rem;
+}
+
+/* Cover Image */
+.cover-image {
+  background-image: url('path_to_your_cover_image.jpg'); /* Replace with the path to your cover image */
+  background-size: cover;
+  background-position: center;
+  height: 300px; /* Adjust the height as needed */
+}
+
+
+/* styles.css */
+
+/* Hero */
+.hero {
+  background-image: url('path_to_your_hero_image.jpg'); /* Replace with the path to your hero image */
+  background-size: cover;
+  background-position: center;
+  height: 400px; /* Adjust the height as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .hero-content {
   text-align: center;
+  color: #fff; /* Replace with the desired text color */
+  font-size: 2rem;
+  padding: 1rem;
 }
 
-.hero-content h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-
-.hero-content p {
-  font-size: 30px;
-  margin-bottom: 20px;
-}
-
-/* Quotes Section */
+/* Quotes */
 .quotes {
-  padding: 40px;
-  background-color: #fff;
+  background-color: #f8f9fa; /* Replace with the desired background color */
+  padding: 2rem;
 }
 
 .quotes h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .quotes ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
   margin: 0;
 }
 
 .quotes li {
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 
-/* Search */
-/* Search */
-.search-input {
-  position: relative;
-  width: 100%;
+.quotes li::before {
+  content: open-quote;
+  font-size: 2rem;
+  margin-right: 0.5rem;
+  vertical-align: middle;
 }
 
-.search-input input {
-  padding-right: 30px; /* Adjust the padding to create space for the icon */
+.quotes li::after {
+  content: close-quote;
+  font-size: 2rem;
+  margin-left: 0.5rem;
+  vertical-align: middle;
 }
 
-.search-input::placeholder {
-  filter: grayscale(100%);
+/* Main Content */
+.main-content {
+  margin: 2rem;
 }
+
