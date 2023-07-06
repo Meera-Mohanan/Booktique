@@ -6,9 +6,9 @@ const router = require('express').Router();
 
 
 router.get('/', (req,res) => {
-
+console.log(req.session)
     // res.json({ data: 'hi' })
-    res.render('landingpage', {loggedIn: req.session.loggedIn});
+    res.render('landingpage', {loggedIn: req.session.logged_in});
     // res.render('landingpage', { post, loggedIn: true });
 
 });
@@ -25,7 +25,7 @@ router.get('/profilesettings', auth, async (req, res) => {
         });
         let user = user_data.map((u) => u.get({ plain: true }));
         user=user[0];
-        res.render('profilesetting', { user, loggedIn: req.session.loggedIn, dontShowReviewNavItem: true });
+        res.render('profilesetting', { user, loggedIn: req.session.logged_in, dontShowReviewNavItem: true });
     } catch (error) {
         res.status(500).json({ error: 'Server error' });
     }
@@ -43,7 +43,7 @@ router.get('/useredit',auth, async (req, res) => {
         });
         let user = user_data.map((u) => u.get({ plain: true }));
         user=user[0];
-        res.render('editprofilesettings', { user, loggedIn: req.session.loggedIn, dontShowReviewNavItem: true });
+        res.render('editprofilesettings', { user, loggedIn: req.session.logged_in, dontShowReviewNavItem: true });
     } catch (error) {
         res.status(500).json({ error: 'Server error' });
     }
@@ -94,7 +94,7 @@ router.get('/reviews', auth, async (req, res) => {
         const reviews = reviews_data.map((review) => review.get({ plain: true }));
         
         // res.json(reviews);
-        res.render('yourreviews', { reviews, loggedIn: req.session.loggedIn, dontShowReviewNavItem: true });
+        res.render('yourreviews', { reviews, loggedIn: req.session.logged_in, dontShowReviewNavItem: true });
     } catch (error) {
         
         res.status(500).json({ error: 'Server error' });
@@ -111,7 +111,7 @@ router.get('/reviewsedit/:id',auth, async (req, res) => {
         if (!review) {
             return res.status(404).json({ error: 'Review not found' });
         }
-        res.render('editreviews', {review,loggedIn: req.session.logged_In});
+        res.render('editreviews', {review,loggedIn: req.session.logged_in});
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Server error' });
@@ -144,7 +144,7 @@ router.get('/reviewsedit/:id',auth, async (req, res) => {
   
 
 router.get('/login', (req, res) => {
-    if (req.session.loggedIn) {
+    if (req.session.logged_in) {
         res.redirect('/');
         return;
     }
@@ -160,11 +160,11 @@ router.get('/profilesettings', (req, res) => {
 })
 
 router.get('/bookreview', (req, res) => {
-    res.render('bookreview', {loggedIn: true});
+    res.render('bookreview', {loggedIn: req.session.logged_in});
 })
 
 router.get('/logout', (req, res) => {
-    if (req.session.loggedIn) {
+    if (req.session.logged_in) {
         req.session.destroy(() => {
             res.redirect('/')
         });

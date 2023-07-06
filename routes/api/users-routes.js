@@ -17,7 +17,7 @@ router.post('/register', async (req, res) => {
      req.session.save(() => {
       
       req.session.user_id = userData.id;
-      req.session.loggedIn = true;
+      req.session.logged_in = true;
       res.status(200).json(userData);
     });
     
@@ -25,7 +25,6 @@ router.post('/register', async (req, res) => {
     res.status(400).json({ error: err.message });
   }
 });
-
 
 router.post('/login', async (req, res) => {
   try {
@@ -49,16 +48,20 @@ router.post('/login', async (req, res) => {
     userData=userData.dataValues;
     req.session.save(() => {
       req.session.user_id = userData.id;
-      req.session.logged_In = true;
+      req.session.logged_in = true;
+
+     /*  // TODO: fix
       document.getElementById('loginmsg').style.display = 'block';
       setTimeout(()=>{
         document.getElementById('loginmsg').style.display = 'none';
       },2000)
-      
+       */
+      console.log('doneeee')
       res.json({ user: userData, message: 'You are now logged in!' });
     });
 
   } catch (err) {
+    console.log(err)
     res.status(400).json(err);
   }
 });
@@ -66,10 +69,10 @@ router.post('/login', async (req, res) => {
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
-      document.getElementById('logoutmsg').style.display = 'block';
+     /*  document.getElementById('logoutmsg').style.display = 'block';
       setTimeout(()=>{
         document.getElementById('logoutmsg').style.display = 'none';
-      },2000)
+      },2000) */
       res.json({ message: 'You are logged out successfully!' });
       //res.redirect('/');
     });
