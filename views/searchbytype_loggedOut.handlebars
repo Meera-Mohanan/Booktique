@@ -1,0 +1,26 @@
+{{#if books_data.length}}
+{{#each books_data as |book|}}
+<section>
+  <div class="card">
+    <div class="card-content">
+      <div class="media">
+        <div class="media-content">
+          <p class="title is-4">{{book.volumeInfo.title}}</p>
+          <p>Publisher: {{book.volumeInfo.publisher}}</p>
+          <p>Published Date: {{book.volumeInfo.publishedDate}}</p>
+          <p>Description: {{book.volumeInfo.description}}</p>
+          {{!-- <a href="/createreview/{{book.id}}" class="button is-primary">Add Review</a> add url from vijay --}}
+          {{!-- <a href="/viewreview/{{book.id}}" class="button is-primary">View Reviews</a> --}}
+          {{!-- display reviews end here--}}
+          <a href="/login" class="button is-primary">Login to view and add reviews</a>
+        </div>
+      </div>
+    </div>
+  </div>
+{{/each}}
+
+{{else}}
+<p>No book found.</p>
+<a href="/login" class="button is-primary">Login to view and add reviews</a>
+</section>
+{{/if}}
