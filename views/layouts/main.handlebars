@@ -8,12 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <title>Landing Page - Booktique </title>
     <link rel="stylesheet" href="styles.css">
-
     <script src="js/main.js"></script>
-
-
-
-
 </head>
 
 <body>
@@ -30,46 +25,41 @@
                 <a class="navbar-item" href="/bookreview">Book Review</a>
                 <nav class="navbar" role="navigation" aria-label="dropdown navigation">
                     <div class="navbar-item has-dropdown is-hoverable">
-                       <a class="navbar-link">
+                        <a class="navbar-link">
                             Browse
                         </a>
 
                         <div class="navbar-dropdown">
-                            <a class="navbar-item" href="/searchtype/:{{fiction}}" >
+                            <a class="navbar-item" href="/searchtype?type=fiction">
                                 Fiction
                             </a>
-                            <a class="navbar-item" href="/searchtype/:{{thriller}}" >
+                            <a class="navbar-item" href="/searchtype?type=thriller">
                                 Thriller
                             </a>
-                            <a class="navbar-item" href="/searchtype/:{{romance}}" >
+                            <a class="navbar-item" href="/searchtype?type=romance">
                                 Romance
                             </a>
-                            <a class="navbar-item" href="/searchtype/:{{fantasy}}" >
+                            <a class="navbar-item" href="/searchtype?type=fantasy">
                                 Fantasy
                             </a>
-                            <a class="navbar-item" href="/searchtype/:{{science fiction}}" >
-                                Biography 
+                            <a class="navbar-item" href="/searchtype?type=Biography">
+                                Biography
                             </a>
-                            <a class="navbar-item" href="/searchtype/:{{horror}}" >
+                            <a class="navbar-item" href="/searchtype?type=horror">
                                 Horror
                             </a>
-                            <a class="navbar-item" href="/searchtype/:{{drama}}" >
+                            <a class="navbar-item" href="/searchtype?type=drama">
                                 Drama
                             </a>
-                            <a class="navbar-item" href="/searchtype/:{{comedy}}" >
+                            <a class="navbar-item" href="/searchtype?type=comedy">
                                 Comedy
                             </a>
-                            <a class="navbar-item" href="/searchtype/:{{philosophy}}" >
+                            <a class="navbar-item" href="/searchtype?type=philosophy">
                                 Philosophy
                             </a>
-                            <a class="navbar-item" href="/searchtype/:{{travel}}" >
+                            <a class="navbar-item" href="/searchtype?type=travel">
                                 Travel
                             </a>
-                            
-                            <hr class="navbar-divider">
-                            <div class="navbar-item" href="/searchtype/:{{more}}" >
-                                More
-                            </div>
                         </div>
                     </div>
                 </nav>

@@ -1,47 +1,83 @@
-{{!-- {{#each books}}
-<div class="book">
-    <h2>{{volumeInfo.title}}</h2>
-    
-    <p>Publisher: {{volumeInfo.publisher}}</p>
-    <p>Published Date: {{volumeInfo.publishedDate}}</p>
-    <p>Description: {{volumeInfo.description}}</p>
-</div>
-{{/each}} --}}
-
-
-{{#if books.length}}
-<section>
-  <h2>Search Book by Type</h2>
-  {{#each books as |book|}}
-    <div class="card">
-      <div class="card-content">
-        <div class="media">
-          <div class="media-content">
-             <p class="title is-4">{{this.volumeInfo.title}}</p> 
-             {{!-- <p class="title is-4">{{review.book.title}}</p>
-            <p class="subtitle is-6">{{review.book.author}}</p>
-          </div>
-        </div>
-        <div class="content">
-          {{review.title}}
-          {{review.body}}
-          <br>
-          <time datetime>Created on {{review.created_at}}</time>
-        </div> --}}
-        <div class="card">
-          <footer class="card-footer">
-            <a href="/reviewsedit/{{review.id}}" class="card-footer-item" id="edit-review">Edit</a>
-            
-          </footer>
-        </div>
+{{#each books_data as |book|}}
+<div class="card">
+  <div class="card-content">
+    <div class="media">
+      <div class="media-content">
+        <p class="title is-4">{{book.volumeInfo.title}}</p>
+        <p>Publisher: {{book.volumeInfo.publisher}}</p>
+        <p>Published Date: {{book.volumeInfo.publishedDate}}</p>
+        <p>Description: {{book.volumeInfo.description}}</p>
+        {{!-- {{#with (lookup reviews 'bookId' book.id)}}
+        {{#if @first}}
+        {{#if @first.body}}
+        <p>Review: {{@first.body}}</p>
+        {{/if}}
+        {{#if @first.score}}
+        <p>Score: {{@first.score}}</p>
+        {{/if}}
+        <p>Writtenby: {{@first.user.name}}</p>
+        {{/if}}
+        {{/with}} --}}
       </div>
     </div>
+  </div>
+</div>
+{{/each}}
+
+
+
+
+
+{{!-- {{#each books}}
+<div class="book">
+  <h2>{{volumeInfo.title}}</h2>
+
+  <p>Publisher: {{volumeInfo.publisher}}</p>
+  <p>Published Date: {{volumeInfo.publishedDate}}</p>
+  <p>Description: {{volumeInfo.description}}</p>
+</div>
+{{/each}}
+
+
+{{#if books_data.length}}
+<section>
+  <h2>Search Book by Type</h2>
+  {{#each books_data as |book|}}
+  <div class="card">
+    <div class="card-content">
+      <div class="media">
+        <div class="media-content">
+          <p class="title is-4">{{book.volumeInfo.title}}</p>
+          <p>Publisher: {{volumeInfo.publisher}}</p>
+          <p>Published Date: {{volumeInfo.publishedDate}}</p>
+          <p>Description: {{volumeInfo.description}}</p>
+          {{#each review[0].book.google_books_id as |rid|}}
+          {{#if book.id == rid}}
+          <p>Review: {{}}</p>
+          {{/if}}
+          {{/each}}
+          {{!-- <p class="title is-4">{{review.book.title}}</p>
+          <p class="subtitle is-6">{{review.book.author}}</p>
+        </div>
+      </div>
+      <div class="content">
+        {{review.title}}
+        {{review.body}}
+        <br>
+        <time datetime>Created on {{review.created_at}}</time>
+      </div> --}}
+      {{!-- <div class="card">
+        <footer class="card-footer">
+          <a href="/reviewsedit/{{review.id}}" class="card-footer-item" id="edit-review">Edit</a>
+
+        </footer>
+      </div>
+    </div>
+  </div>
   {{/each}}
 </section>
 {{else}}
-<p>No reviews found.</p>
+<p>No books found.</p>
 {{/if}}
-<script src="/js/reviews.js"></script>
-
-
- 
+{{!--
+<script src="/js/reviews.js"></script> --}}
