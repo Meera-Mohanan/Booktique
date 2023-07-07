@@ -21,3 +21,6 @@ const delButtonHandler = async (event) => {
 
 
 document.querySelector('#delete-review').addEventListener('click', delButtonHandler);
+
+
+document.querySelector('#delete-review').addEventListener('click', delButtonHandler);
