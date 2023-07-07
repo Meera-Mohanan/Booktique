@@ -36,8 +36,7 @@
                 </div>
                 <div class="card">
                   <footer class="card-footer">
-                    {{!-- <a href="/createreview/{{book.id}}" class="button is-primary">Add Review</a> add url from
-                    vijay --}}
+                    <a href="/findbook/{{book.id}}" class="button is-primary">Add Review</a> 
                   </footer>
                 </div>
               {{/each}}
@@ -45,8 +44,7 @@
             </section>
           {{else}}
             <p>No reviews found.</p>
-            {{!-- <a href="/createreview/{{book.id}}" class="button is-primary">Add Review</a> add url from
-                    vijay --}}
+           <a href="/findbook/{{book.id}}" class="button is-primary">Add Review</a>
           {{/if}}  
         </div>
       </div>
