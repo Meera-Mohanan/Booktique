@@ -324,8 +324,8 @@ router.post('/savereview', async (req, res) => {
             // Limit the number of words in the description
             let limitedDescription = description;
             const words = description.split(' ');
-            if (words.length > 100) {
-                limitedDescription = description.substring(0, 100);
+            if (words.length > 50) {
+                limitedDescription = description.substring(0, 50);
             }
             // Create a new book instance in the database
             const newBook = await Book.create({
@@ -345,8 +345,8 @@ router.post('/savereview', async (req, res) => {
         });
         // If the review already exists, send a response indicating it exists
         if (existingReview) {
-            res.render('viewonereview', { review, loggedIn: req.session.logged_in });
-
+            
+            //render viewonereview
         }
         // Create the review
         const review = await Review.create({
@@ -356,7 +356,8 @@ router.post('/savereview', async (req, res) => {
             body,
             score,
         });
-        res.status(201).json(review);
+        //render viewonereview
+
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Server error' });
