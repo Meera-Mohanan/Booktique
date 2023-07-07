@@ -1,7 +1,7 @@
 
 async function newReviewHandler(event) {
     event.preventDefault();
-    const book_id = document.querySelector('input[name="bookid"]').value;
+    const google_book_id = document.querySelector('input[name="bookid"]').value;
 
     const title = document.querySelector('textarea[name="title"]').value;
     const body = document.querySelector('textarea[name="review"]').value;
@@ -10,7 +10,7 @@ async function newReviewHandler(event) {
     const response = await fetch(`/savereview`, {
         method: 'POST',
         body: JSON.stringify({
-            book_id,
+            google_book_id,
             title,
             body,
             score,
