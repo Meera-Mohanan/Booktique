@@ -14,6 +14,40 @@ router.get('/', (req, res) => {
 
 });
 
+//1. get the 12 top pics
+router.get('/toppicks', async (req, res) => {
+  try {
+    const apiKey = process.env.GOOGLE_BOOKS_API_KEY;
+    const url = 'https://www.googleapis.com/books/v1/volumes';
+    const params = {
+      q: 'top picks',
+      orderBy: 'relevance',
+      maxResults: 12,
+      key: apiKey
+    };
+
+    const response = await axios.get(url, { params });
+    const books_data = response.data.items;
+    const reviews_data = await Review.findAll({
+        include: [User, Book],
+    });
+    const reviews = reviews_data.map((review) => review.get({ plain: true }));
+
+    
+    if(req.session.logged_in){
+        res.render('searchbytypeloggedIn', { books_data,reviews, loggedIn: req.session.logged_in });
+
+    }
+    else{
+        res.render('searchbytypeloggedOut', { books_data,reviews, loggedIn: req.session.logged_in });
+
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 //1. type search for dropdown
 router.get('/searchtype', async (req, res) => {
     try {
@@ -32,11 +66,11 @@ router.get('/searchtype', async (req, res) => {
         });
         const reviews = reviews_data.map((review) => review.get({ plain: true }));
         if(req.session.logged_in){
-            res.render('searchbytype_loggedIn', { books_data,reviews, loggedIn: req.session.logged_in });
+            res.render('searchbytypeloggedIn', { books_data,reviews, loggedIn: req.session.logged_in });
 
         }
         else{
-            res.render('searchbytype_loggedOut', { books_data,reviews, loggedIn: req.session.logged_in });
+            res.render('searchbytypeloggedOut', { books_data,reviews, loggedIn: req.session.logged_in });
 
         }
 
@@ -63,11 +97,11 @@ router.get('/searchbyname', async (req, res) => {
         });
         const reviews = reviews_data.map((review) => review.get({ plain: true }));
         if(req.session.logged_in){
-            res.render('searchbytype_loggedIn', { books_data,reviews, loggedIn: req.session.logged_in });
+            res.render('searchbytypeloggedIn', { books_data,reviews, loggedIn: req.session.logged_in });
 
         }
         else{
-            res.render('searchbytype_loggedOut', { books_data,reviews, loggedIn: req.session.logged_in });
+            res.render('searchbytypeloggedOut', { books_data,reviews, loggedIn: req.session.logged_in });
 
         }
             } catch (error) {
