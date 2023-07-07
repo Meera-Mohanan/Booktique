@@ -26,7 +26,9 @@ document.querySelector('#edit-profile-form').addEventListener('submit', async (e
       });
     
       if (response.ok) {
-        document.location.replace('/profilesettings');
+       // document.location.replace('/profilesettings');
+        window.location.href = '/profilesettings';
+
       } else {
         alert('Failed to update user');
       }

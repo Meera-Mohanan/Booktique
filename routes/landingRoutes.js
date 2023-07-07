@@ -7,14 +7,14 @@ const router = require('express').Router();
 
 
 router.get('/', (req, res) => {
-    console.log(req.session)
+    //console.log(req.session)
     // res.json({ data: 'hi' })
     res.render('landingpage', { loggedIn: req.session.logged_in });
     // res.render('landingpage', { post, loggedIn: true });
 
 });
 
-//1. type search 
+//1. type search for dropdown
 router.get('/searchtype', async (req, res) => {
     try {
         const apiKey = process.env.GOOGLE_BOOKS_API_KEY;
@@ -34,7 +34,7 @@ router.get('/searchtype', async (req, res) => {
         //const books = books_data.map((book) => book.get({ plain: true }));
         //render books along with reviews from database.
         //console.log(books_data);
-        console.log(reviews);
+        //console.log(reviews);
         res.render('searchbytype', { books_data, reviews });
 
     } catch (error) {
@@ -43,10 +43,19 @@ router.get('/searchtype', async (req, res) => {
     }
 });
 
-//1. more type search 
-router.get('/moretypes', async (req, res) => {
+//1. route for searchbar
+router.get('/searchbyname', async (req, res) => {
     try {
-        res.render('searchmoretypes');
+        const apiKey = process.env.GOOGLE_BOOKS_API_KEY;
+        const searchQuery = req.query.inputtext;
+        const url = 'https://www.googleapis.com/books/v1/volumes';
+        const params = {
+            q: `inauthor:${searchQuery}+OR+intitle:${searchQuery}`, // Search by author or book name
+            key: apiKey
+        };
+        const response = await axios.get(url, { params });
+        const books_data = response.data.items;
+        res.render('searchbytype', { books_data});
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });
