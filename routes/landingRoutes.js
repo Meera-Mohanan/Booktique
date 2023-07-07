@@ -14,6 +14,40 @@ router.get('/', (req, res) => {
 
 });
 
+//1. get the 12 top pics
+router.get('/toppicks', async (req, res) => {
+  try {
+    const apiKey = process.env.GOOGLE_BOOKS_API_KEY;
+    const url = 'https://www.googleapis.com/books/v1/volumes';
+    const params = {
+      q: 'top picks',
+      orderBy: 'relevance',
+      maxResults: 12,
+      key: apiKey
+    };
+
+    const response = await axios.get(url, { params });
+    const books_data = response.data.items;
+    const reviews_data = await Review.findAll({
+        include: [User, Book],
+    });
+    const reviews = reviews_data.map((review) => review.get({ plain: true }));
+
+    
+    if(req.session.logged_in){
+        res.render('searchbytypeloggedIn', { books_data,reviews, loggedIn: req.session.logged_in });
+
+    }
+    else{
+        res.render('searchbytypeloggedOut', { books_data,reviews, loggedIn: req.session.logged_in });
+
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 //1. type search for dropdown
 router.get('/searchtype', async (req, res) => {
     try {
@@ -31,11 +65,14 @@ router.get('/searchtype', async (req, res) => {
             include: [User, Book],
         });
         const reviews = reviews_data.map((review) => review.get({ plain: true }));
-        //const books = books_data.map((book) => book.get({ plain: true }));
-        //render books along with reviews from database.
-        //console.log(books_data);
-        //console.log(reviews);
-        res.render('searchbytype', { books_data, reviews });
+        if(req.session.logged_in){
+            res.render('searchbytypeloggedIn', { books_data,reviews, loggedIn: req.session.logged_in });
+
+        }
+        else{
+            res.render('searchbytypeloggedOut', { books_data,reviews, loggedIn: req.session.logged_in });
+
+        }
 
     } catch (error) {
         console.error(error);
@@ -55,8 +92,19 @@ router.get('/searchbyname', async (req, res) => {
         };
         const response = await axios.get(url, { params });
         const books_data = response.data.items;
-        res.render('searchbytype', { books_data});
-    } catch (error) {
+        const reviews_data = await Review.findAll({
+            include: [User, Book],
+        });
+        const reviews = reviews_data.map((review) => review.get({ plain: true }));
+        if(req.session.logged_in){
+            res.render('searchbytypeloggedIn', { books_data,reviews, loggedIn: req.session.logged_in });
+
+        }
+        else{
+            res.render('searchbytypeloggedOut', { books_data,reviews, loggedIn: req.session.logged_in });
+
+        }
+            } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
@@ -186,6 +234,23 @@ router.put('/edit/:id', async (req, res) => {
         await review.save();
 
         res.json(review);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+
+//4.view a review after clicking view review in searchbytype hb
+router.get('/viewreview/:id', auth, async (req, res) => {
+    try {
+        const review_data = await Review.findByPk(req.params.id, {
+            include: [User, Book],
+        });
+        const review = review_data.get({ plain: true });
+        if (!review) {
+            return res.status(404).json({ error: 'Review not found' });
+        }
+        res.render('viewonereview', { review, loggedIn: req.session.logged_in });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Server error' });
