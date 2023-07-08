@@ -1,4 +1,4 @@
-.body {
+body {
   background-color: #f0decd;
   display: flex;
   flex-direction: column;
@@ -28,8 +28,8 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 2%;
-  background-color: #f0decd;
-  color: #7c7575;
+  background-color: #a19d99;
+  color: #f0decd;
 }
 
 h1 {
@@ -42,7 +42,7 @@ h2 {
 }
 
 .navbar {
-  background-color: #f0decd;
+  background-color: #301a06 rgba(0, 0, 0, 1);
   padding: 10px;
 }
 
@@ -140,6 +140,7 @@ footer {
 }
 
 .fullscreen-container {
+  
   position: relative;
   height: 100vh;
 }
@@ -155,7 +156,7 @@ footer {
 
 .bg-secondary {
   background-color: #f1f1f1;
-  color: #333;
+  color: #f0decd;;
 }
 
 .py-5 {
