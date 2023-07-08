@@ -1,181 +1,99 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 20px;
-}
-
 body {
-  background: #fff;
-  color: #00171f;
-  font-family: Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: #00a8e8;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1%;
+  background-color: #13293d;
+  color: #fff;
 }
 
+h1 {
+  font-size: 200%;
+}
+
+h2 {
+  margin: 2% 0;
+  font-size: 250%;
+}
+
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  min-width: 300px;
+}
+
+nav a {
+  color: #b9C6ae;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+main {
+  display: flex;
+  flex: 1 1 0;
+  max-width: 1200px;
+  margin: 2% auto;
+}
+
+section {
+  flex: 1 1 0;
+  padding-right: 5%;
+}
 
 article {
-  margin: 20px auto;
-  padding: 20px;
-  border: 3px solid rgba(221, 228, 231, 0);
-  outline: 3px solid rgba(151, 133, 136, 0.068);
-  overflow: auto;
+  border-bottom: 1px solid #d8a47f;
 }
 
-
-#header {
-  margin: 0 auto 50px auto;
-  width: 100%;
-  padding: 30px;
-  color: #ffffff;
-  background: #003459;
-  border-bottom: 3px solid #00a8e8;
-  text-align: center;
- 
+article p {
+  margin: 2% 0;
+  font-size: 110%;
 }
 
-#article {
-  max-width: 80%;
-  margin: 0 auto;
-}
-
-.art-title {
-  text-decoration: underline #003459;
-  margin-bottom: 15px;
-}
-
-.quotes {
-  height: 200px;
-  width: 400px;
-  float: left;
-  margin-right: 20px;
-  border: 2px white;
-}
-
-
-/* .logo {
-  font-style: italic;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size: xx-large;
-}
-#login-form,#signup-form,#new-review-form {
-  width: 85%;
-  margin-left: 3%;
-  border: 1px dotted #672846;
-  padding: 1%;
-  margin-top: 3%;
-}
-
-#navbarMain {
-  font-weight: bold;
-  font-size: 1em;
-}
-.navbar-item {
+article ul {
   margin-left: 5%;
-  margin-right: 12%;
+  font-size: 110%;
+  list-style: circle;
 }
-.navbar-end a{
-  margin: 9px;
+
+aside {
+  width: 25%;
 }
-.button {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+
+aside h2 {
+  font-size: 150%;
 }
-.button.is-info {
-  background-color: #B4C4C1;
-  color: #fff;
+
+input, button {
+  width: 100%;
+  margin: 2% 0;
+  padding: 1%;
 }
-.button.is-primary {
-  background-color: #5D80B9;
-  color: #fff;
-}
-.button.is-light {
-  background-color: #F8F8F8;
-  color: #333;
-}
-/* Responsive Navbar */
-@media screen and (max-width: 768px) {
-  .navbar-burger {
-    display: block;
-    cursor: pointer;
-  }
-  .navbar-menu {
-    display: none;
-  }
-  .navbar-item {
-    display: block;
-    margin-bottom: 10px;
-  }
-}
-/* Hero Section */
-.hero {
-  position: relative;
-  height: 400px;
-  background-color: #333;
-  color: #fff;
+
+footer {
   display: flex;
-  align-items: center;
   justify-content: center;
+  padding: 2%;
+  background-color: #13293d;
+  color: #fff;
 }
-.hero-content {
-  text-align: center;
+
+@media screen and (max-width: 768px) {
+  header, main {
+    flex-direction: column;
+  }
+
+  section {
+    padding-right: 0;
+  }
+
+  aside {
+    width: 100%;
+    text-align: center;
+  }
 }
-.hero-content h1 {
-  font-size: 36px;
-  margin-bottom: 20px;
-}
-.hero-content p {
-  font-size: 30px;
-  margin-bottom: 20px;
-}
-/* Quotes Section */
-.quotes {
-  padding: 40px;
-  background-color: #fff;
-}
-.quotes h2 {
-  font-size: 24px;
-  margin-bottom: 20px;
-}
-.quotes ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-.quotes li {
-  margin-bottom: 10px;
-}
-/* Search  */
-#search{
-  width:300px;
-  height:150px;
-  margin:auto;
-  margin-top:20px;
-  padding:15px;
-}
-button{
-  position:relative;
-  left:50px;
-}
-.aligning{
-  margin-left:700px;
-  margin-top:20px;
-}
-#searchResults p {
-  margin: 10px 0;
-}
-#submitaddreview {
-  margin-top: 1%;
-}
-#submitaddreview {
-  margin-top: 1%;
-} */
