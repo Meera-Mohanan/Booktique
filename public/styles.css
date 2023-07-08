@@ -8,6 +8,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
+  font-family:Georgia, 'Times New Roman', Times, serif;
 }
 
 /* body::before {
@@ -25,7 +26,7 @@ body {
 } */
 
 header {
-  font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
+  font-family:Georgia, 'Times New Roman', Times, serif;
   justify-content: space-between;
   align-items: center;
   padding: 2%;
@@ -34,15 +35,18 @@ header {
 }
 
 h1 {
+  font-family:Georgia, 'Times New Roman', Times, serif;
   font-size: 200%;
 }
 
 h2 {
+  font-family:Georgia, 'Times New Roman', Times, serif;
   margin: 2% 0;
   font-size: 250%;
 }
 
 .navbar {
+  font-family:Georgia, 'Times New Roman', Times, serif;
   background-color: #f0decd;
   padding: 10px;
 }
@@ -79,6 +83,7 @@ h2 {
 }
 
 main {
+  font-family:Georgia, 'Times New Roman', Times, serif;
   display: flex;
   padding-right: 5%;
   flex: none;
@@ -86,6 +91,7 @@ main {
   margin: 2% auto;
 }
 .card {
+  font-family:Georgia, 'Times New Roman', Times, serif;
   display:flex;
   background-color: #f0decd;
   height: 100%;
@@ -99,6 +105,7 @@ main {
 }
 
 section {
+  font-family:Georgia, 'Times New Roman', Times, serif;
   flex-wrap: wrap;
   gap: 40px; /* Adjust the value as needed */
 } 
@@ -137,6 +144,7 @@ button {
 }
 
 footer {
+  font-family:Georgia, 'Times New Roman', Times, serif;
   display: flex;
   justify-content: center;
   padding: 2%;
@@ -159,6 +167,7 @@ footer {
 }
 
 .bg-secondary {
+  font-family:Georgia, 'Times New Roman', Times, serif;
   display:flexbox;
   align-items: center;
   background-color: #f0decd rgb(240, 227, 227);
@@ -171,6 +180,7 @@ footer {
 }
 
 .container {
+  font-family:Georgia, 'Times New Roman', Times, serif;
   max-width: 960px;
   margin: 0 auto;
   padding: 0 15px;
