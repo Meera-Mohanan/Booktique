@@ -1,4 +1,5 @@
 body {
+  background-image: url("https://images.unsplash.com/photo-1558901357-ca41e027e43a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2139&q=80");
   background-color: #f0decd;
   display: flex;
   flex-direction: column;
@@ -28,8 +29,8 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 2%;
-  background-color: #a19d99;
-  color: #f0decd;
+  background-color: #f0decd;
+  color: #111111;
 }
 
 h1 {
@@ -42,12 +43,12 @@ h2 {
 }
 
 .navbar {
-  background-color: #301a06 rgba(0, 0, 0, 1);
+  background-color: #f0decd;
   padding: 10px;
 }
 
 .navbar a {
-  color: #7c7575;
+  color: #111111;
   padding: 5px;
 }
 
@@ -69,7 +70,6 @@ h2 {
   left: 0;
   display: none;
 }
-
 .navbar .navbar-dropdown a {
   padding: 5px 10px;
 }
@@ -80,18 +80,31 @@ h2 {
 
 main {
   display: flex;
-  flex: 1 1 0;
+  padding-right: 5%;
+  flex: none;
   max-width: 1200px;
   margin: 2% auto;
 }
+.card {
+  display:flex;
+  background-color: #f0decd;
+  height: 100%;
+} 
 
-section {
-  flex: 1 1 0;
-  padding-right: 5%;
+.columns is-multiline {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 20px;
+  width: 100%;
 }
 
+section {
+  flex-wrap: wrap;
+  gap: 40px; /* Adjust the value as needed */
+} 
+
 article {
-  border-bottom: 1px solid #7c7575;
+  border-bottom: 1px solid #111111;
 }
 
 article p {
@@ -103,7 +116,7 @@ article ul {
   margin-left: 5%;
   font-size: 110%;
   list-style: circle;
-  color: #7c7575;
+  color: #111111;
 }
 
 aside {
@@ -119,17 +132,8 @@ button {
   width: 100%;
   margin: 2% 0;
   padding: 1%;
-  background-color: black;
+  background-color: #f0decd;
   color: white;
-}
-
-button.black-button {
-  background-color: black;
-  color: white;
-}
-
-button.black-button:hover {
-  background-color: #333;
 }
 
 footer {
@@ -155,8 +159,10 @@ footer {
 }
 
 .bg-secondary {
-  background-color: #f1f1f1;
-  color: #f0decd;;
+  display:flexbox;
+  align-items: center;
+  background-color: #f0decd rgb(240, 227, 227);
+  color: #111111;
 }
 
 .py-5 {
@@ -183,5 +189,23 @@ footer {
   aside {
     width: 100%;
     text-align: center;
+  }
+}
+#login-form {
+  background-color: #f0decd;
+  padding: 20px;
+  margin: 10px;
+  border: 1px solid #ccc;
+}
+#signup-form {
+  background-color: #f0decd;
+  padding: 20px;
+  margin: 10px;
+  border: 1px solid #ccc;
+}
+
+@media screen and (max-width: 768px) {
+  .form-container {
+    max-width: 100%;
   }
 }
