@@ -3,57 +3,42 @@
 <section>
   <div class="card">
     <div class="card-content">
+      <!-- Book information -->
       <div class="media">
         <div class="media-content">
           <p class="title is-4">{{book.volumeInfo.title}}</p>
           <p>Publisher: {{book.volumeInfo.publisher}}</p>
           <p>Published Date: {{book.volumeInfo.publishedDate}}</p>
           <p>Description: {{book.volumeInfo.description}}</p>
-          {{!-- <a href="/createreview/{{book.id}}" class="button is-primary">Add Review</a> add url from vijay --}}
-          {{!-- <a href="/viewreview/{{book.id}}" class="button is-primary">View Reviews</a> --}}
-            {{#if reviews.length}}
-              <section>
-              <h2>Your Reviews</h2>
-              {{#each reviews as |review|}}
-                <div class="card">
-                  <div class="card-content">
-                    <div class="media">
-                      {{!-- <div class="media-left">
-                        <figure class="image is-48x48">
-                        <img src="{{this.image}}" alt="Book Image">
-                      </figure>
-                       </div> --}}
-                      <div class="media-content">
-                        {{!-- <p class="title is-4">{{this.title}}</p> --}}
-                        <p class="title is-4">{{review.title}}</p>
-                        <p class="subtitle is-6">{{review.user.name}}</p>
-                      </div>
-                    </div>
-                  <div class="content">
-                  {{review.body}}
-                  <br>
-                  <time datetime>Created on {{review.created_at}}</time>
-                </div>
-                <div class="card">
-                  <footer class="card-footer">
-                    {{!-- <a href="/createreview/{{book.id}}" class="button is-primary">Add Review</a> add url from
-                    vijay --}}
-                  </footer>
-                </div>
-              {{/each}}
-            
-            </section>
+
+          {{!-- Display reviews --}}
+          {{#if bookReviews.length}}
+          <ul>
+            {{#each bookReviews}}
+            {{!--  {{#if (eq google_book_id book.id)}} --}}
+             {{#if (eq google_book_id book.id)}}
+            <li>
+              <p>Review Title: {{reviewTitle}}</p>
+              <p>Review Body: {{reviewBody}}</p>
+              <p>Review Score: {{reviewScore}}</p>
+              <p>Reviewer: {{userName}}</p>
+            </li>
+            {{/if}}
+            {{/each}}
+          </ul>
           {{else}}
-            <p>No reviews found.</p>
-            {{!-- <a href="/createreview/{{book.id}}" class="button is-primary">Add Review</a> add url from
-                    vijay --}}
-          {{/if}}  
-        </div>
+          <p>No reviews available for this book.</p>
+          {{/if}}
+
+          {{!-- Add Review button --}}
+          <a href="/findbook/{{book.id}}" class="button is-primary">Add Review</a>
+         {{!--  <a href="/createreview/{{book.id}}" class="button is-primary">Add Review</a>
+ --}}        </div>
       </div>
     </div>
   </div>
-  {{/each}}
 </section>
+{{/each}}
 {{else}}
 <p>No books found.</p>
 {{/if}}
