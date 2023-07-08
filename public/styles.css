@@ -9,7 +9,7 @@
   position: relative;
 }
 
-body::before {
+/* body::before {
   content: "";
   position: absolute;
   top: 0;
@@ -21,7 +21,7 @@ body::before {
   background-repeat: no-repeat;
   opacity: 0.5;
   z-index: -1;
-}
+} */
 
 header {
   font-family: "Lato", "Helvetica Neue", "Helvetica", sans-serif;
@@ -51,9 +51,11 @@ h2 {
   padding: 5px;
 }
 
-.navbar-item:hover {
-  background-color: transparent;
-}
+.navbar-item:hover,
+    .navbar-dropdown a.navbar-item:hover {
+        color: black;
+    }
+
 
 .navbar .navbar-item {
   margin-right: 10px;
