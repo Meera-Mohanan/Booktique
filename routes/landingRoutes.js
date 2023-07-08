@@ -20,36 +20,132 @@ router.get('/', (req, res) => {
 //1. get the 12 top pics
 router.get('/toppicks', async (req, res) => {
     try {
-        const apiKey = process.env.GOOGLE_BOOKS_API_KEY;
-        const url = 'https://www.googleapis.com/books/v1/volumes';
-        const params = {
-            q: 'top picks',
-            orderBy: 'relevance',
-            maxResults: 12,
-            key: apiKey
-        };
-
-        const response = await axios.get(url, { params });
-        const books_data = response.data.items;
-        const reviews_data = await Review.findAll({
-            include: [User, Book],
-        });
-        const reviews = reviews_data.map((review) => review.get({ plain: true }));
-
-
-        if (req.session.logged_in) {
-            res.render('searchbytypeloggedIn', { books_data, reviews, loggedIn: req.session.logged_in });
-
+      const apiKey = process.env.GOOGLE_BOOKS_API_KEY;
+      const url = 'https://www.googleapis.com/books/v1/volumes';
+      const params = {
+        q: 'top picks',
+        orderBy: 'relevance',
+        maxResults: 12,
+        key: apiKey
+      };
+  
+      const response = await axios.get(url, { params });
+      const books_data = response.data.items;
+  
+      const books = [];
+  
+      for (const bookData of books_data) {
+        const google_books_id = bookData.id;
+  
+        const book = await Book.findOne({ where: { google_books_id } });
+  
+        if (book) {
+          const reviews = await Review.findAll({ where: { book_id: book.id }, include: [User] });
+          book.reviews = reviews;
         }
-        else {
-            res.render('searchbytypeloggedOut', { books_data, reviews, loggedIn: req.session.logged_in });
-
+  
+        books.push(book);
+      }
+  
+      const bookReviews = [];
+  
+      if (books) {
+        for (const book of books) {
+          if (book && book.reviews) {
+            for (const review of book.reviews) {
+              if (review.User) {
+                const reviewData = {
+                  google_book_id: book.id,
+                  reviewTitle: review.title,
+                  reviewBody: review.body,
+                  reviewScore: review.score,
+                  userName: review.User.name
+                };
+  
+                bookReviews.push(reviewData);
+              }
+            }
+          }
         }
+      }
+
+  
+  console.log(bookReviews);
+      if (req.session.logged_in) {
+        console.log('heeeeey')
+        console.log(bookReviews);
+        res.render('searchbytypeloggedIn', { books_data, bookReviews, loggedIn: req.session.logged_in });
+      } else {
+        res.render('searchbytypeloggedOut', { books_data, loggedIn: req.session.logged_in });
+      }
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Internal Server Error' });
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
     }
-});
+  });
+  
+  
+  
+/* router.get('/toppicks', async (req, res) => {
+    try {
+      const apiKey = process.env.GOOGLE_BOOKS_API_KEY;
+      const url = 'https://www.googleapis.com/books/v1/volumes';
+      const params = {
+        q: 'top picks',
+        orderBy: 'relevance',
+        maxResults: 12,
+        key: apiKey
+      };
+  
+      const response = await axios.get(url, { params });
+      const books_data = response.data.items;
+      
+      const books = []; // Create an empty array to store books with reviews
+  
+      for (const bookData of books_data) {
+        const google_books_id = bookData.id;
+  
+        // Check if the book exists in the Book table based on google_book_id
+        const book = await Book.findOne({ where: { google_books_id } });
+  
+        if (book) {
+          // Find the reviews associated with the book based on book_id
+          const reviews = await Review.findAll({ where: { book_id: book.id }, include: [User] });
+          book.reviews = reviews; // Add the reviews to the book object
+        }
+  
+        books.push(book); // Add the book to the books array
+      }
+      //console.log(books);
+      //console.log(books.reviews);
+      books_stored = books.filter((b) => b !== null).map((b) => (b ? b.get({ plain: true }) : null)); // Map and skip null values
+if(books_stored){
+    
+    //console.log(books_stored);
+    //console.log(books_stored.);
+    if (req.session.logged_in) {
+      res.render('searchbytypeloggedIn', { books_data, books_stored, loggedIn: req.session.logged_in });
+    } else {
+      res.render('searchbytypeloggedOut', { books_data, books_stored, loggedIn: req.session.logged_in });
+    }
+}else{
+    
+      if (req.session.logged_in) {
+        res.render('searchbytypeloggedIn', { books_data, loggedIn: req.session.logged_in });
+      } else {
+        res.render('searchbytypeloggedOut', { books_data, loggedIn: req.session.logged_in });
+      }
+
+}
+
+  
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  }); */
+  
+  
 
 //1. type search for dropdown
 router.get('/searchtype', async (req, res) => {
