@@ -12,20 +12,33 @@
    {{!--  <script src="js/main.js"></script> --}}
 </head>
 
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Booktique</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
+</head>
+
 <body>
+  <!-- Header -->
+  <header>
+    <h1>Booktique</h1>
+    <p>Explore the world of books and dive into the magic of reading.</p>
+  </header>
 
-    <div class="logo">
-        BOOKTIQUE
-    </div>
+  <!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div id="navbarMain" class="navbar-menu">
+      <div class="navbar-start">
+      <a class="navbar-item" href="/">Home</a>
+    <a class="navbar-item" href="/toppicks">Top Picks</a>
+    {{!-- <a class="navbar-item" href="#">Browse</a> --}}
 
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div id="navbarMain" class="navbar-menu">
-
-            <div class="navbar-start">
-                <a class="navbar-item" href="/">Home</a>
-                <a class="navbar-item" href="/toppicks">Top Picks</a>
-                <nav class="navbar" role="navigation" aria-label="dropdown navigation">
-                    <div class="navbar-item has-dropdown is-hoverable">
+     <div class="navbar-item has-dropdown is-hoverable">
                         <a class="navbar-link">
                             Browse
                         </a>
@@ -62,9 +75,10 @@
                                 Travel
                             </a>
                         </div>
+                        </div>
                     </div>
-                </nav>
 
+                      <div class="navbar-end">
                 <a class="navbar-item search-item">
                     <div class="field has-addons">
                         <div class="control has-icons-left is-expanded">
@@ -76,9 +90,6 @@
                     </div>
                 </a>
             </div>
-
-            <div class="navbar-end">
-                <div class="navbar-item">
                     <div class="buttons">
                         {{#if loggedIn}}
                         <a class="link" href="/profilesettings">
@@ -103,9 +114,7 @@
                 </div>
             </div>
         </div>
-    </nav>
-
-
+  </nav>
     <article class="message" id="loginmsg" style="display: none;">
         <div class="message-header">
             <p>Logged in Succesfully!</p>
