@@ -384,9 +384,11 @@ router.post('/savereview', async (req, res) => {
         // If the review already exists, send a response indicating it exists
         if (existingReview) {
 
+
             //render viewonereview
             //document.location.replace('/reviews');
             res.render('/reviews', { loggedIn: req.session.logged_in });
+
         }
         // Create the review
         const review = await Review.create({
@@ -399,6 +401,9 @@ router.post('/savereview', async (req, res) => {
         //render viewonereview
         res.render('/viewreview/:${book_id}', { loggedIn: req.session.logged_in });
        
+
+        res.render('/viewreview/:${book_id}', { loggedIn: req.session.logged_in });
+
 
     } catch (error) {
         console.error(error);

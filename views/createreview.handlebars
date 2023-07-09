@@ -1,10 +1,17 @@
 {{!-- Check if review exists --}}
+
 <div class="fullscreen-container">
+
+
 <form id="add-review-form">
    
     <section>
         {{#if book}}
+
         <p class="title is-4"><h1>Add Review</h1></p>
+
+        <h2>Add Review</h2>
+
         <p class="title is-4">{{book.volumeInfo.title}}</p>
         <p>Publisher: {{book.volumeInfo.publisher}}</p>
         <p>Published Date: {{book.volumeInfo.publishedDate}}</p>
@@ -37,7 +44,11 @@
                 </div>
 
             </div>
+
         </div>
+
+
+
         </div>
         {{else}}
         <p>Book details not found.</p>
