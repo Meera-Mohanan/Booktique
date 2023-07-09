@@ -10,142 +10,79 @@ const router = require('express').Router();
 
 
 router.get('/', (req, res) => {
-    //console.log(req.session)
-    // res.json({ data: 'hi' })
     res.render('landingpage', { loggedIn: req.session.logged_in });
-    // res.render('landingpage', { post, loggedIn: true });
-
 });
 
-//1. get the 12 top pics
+//top 12 picks display
 router.get('/toppicks', async (req, res) => {
     try {
-      const apiKey = process.env.GOOGLE_BOOKS_API_KEY;
-      const url = 'https://www.googleapis.com/books/v1/volumes';
-      const params = {
-        q: 'top picks',
-        orderBy: 'relevance',
-        maxResults: 12,
-        key: apiKey
-      };
-  
-      const response = await axios.get(url, { params });
-      const books_data = response.data.items;
-  
-      const books = [];
-  
-      for (const bookData of books_data) {
-        const google_books_id = bookData.id;
-  
-        const book = await Book.findOne({ where: { google_books_id } });
-  
-        if (book) {
-          const reviews = await Review.findAll({ where: { book_id: book.id }, include: [User] });
-          book.reviews = reviews;
-        }
-  
-        books.push(book);
-      }
-  
-      const bookReviews = [];
-  
-      if (books) {
-        for (const book of books) {
-          if (book && book.reviews) {
-            for (const review of book.reviews) {
-              if (review.User) {
-                const reviewData = {
-                  google_book_id: book.id,
-                  reviewTitle: review.title,
-                  reviewBody: review.body,
-                  reviewScore: review.score,
-                  userName: review.User.name
-                };
-  
-                bookReviews.push(reviewData);
-              }
+        const apiKey = process.env.GOOGLE_BOOKS_API_KEY;
+        const url = 'https://www.googleapis.com/books/v1/volumes';
+        const params = {
+            q: 'top picks',
+            orderBy: 'relevance',
+            maxResults: 12,
+            key: apiKey
+        };
+
+        const response = await axios.get(url, { params });
+        const books_data = response.data.items;
+
+        const books = []; // Create an empty array to store books with reviews
+        //books.reviews=[];
+        for (const bookData of books_data) {
+            const google_books_id = bookData.id;
+
+            const book = await Book.findOne({ where: { google_books_id }, include: [Review] });
+
+            if (book) {
+                const reviews = await Review.findAll({ where: { book_id: book.id }, include: [User, Book] });
+                book.reviews = reviews;
+                books.push(book);
             }
-          }
         }
-      }
 
-  
-  console.log(bookReviews);
-      if (req.session.logged_in) {
-        console.log('heeeeey')
-        console.log(bookReviews);
-        res.render('searchbytypeloggedIn', { books_data, bookReviews, loggedIn: req.session.logged_in });
-      } else {
-        res.render('searchbytypeloggedOut', { books_data, loggedIn: req.session.logged_in });
-      }
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
-    }
-  });
-  
-  
-  
-/* router.get('/toppicks', async (req, res) => {
-    try {
-      const apiKey = process.env.GOOGLE_BOOKS_API_KEY;
-      const url = 'https://www.googleapis.com/books/v1/volumes';
-      const params = {
-        q: 'top picks',
-        orderBy: 'relevance',
-        maxResults: 12,
-        key: apiKey
-      };
-  
-      const response = await axios.get(url, { params });
-      const books_data = response.data.items;
-      
-      const books = []; // Create an empty array to store books with reviews
-  
-      for (const bookData of books_data) {
-        const google_books_id = bookData.id;
-  
-        // Check if the book exists in the Book table based on google_book_id
-        const book = await Book.findOne({ where: { google_books_id } });
-  
-        if (book) {
-          // Find the reviews associated with the book based on book_id
-          const reviews = await Review.findAll({ where: { book_id: book.id }, include: [User] });
-          book.reviews = reviews; // Add the reviews to the book object
+        const books_revised = books.map((b) => b.get({ plain: true }));
+
+
+        const array_revised = [];
+
+
+
+
+        for (let b of books_revised) {
+            
+            if (b.reviews) {
+                for (let r of b.reviews) {
+                    const review_array = {};
+                    review_array.google_book_id = b.google_books_id;
+                    review_array.title = r.title;
+                    review_array.body = r.body;
+                    review_array.score = r.score;
+
+                    array_revised.push(review_array);
+                }
+            }
         }
-  
-        books.push(book); // Add the book to the books array
-      }
-      //console.log(books);
-      //console.log(books.reviews);
-      books_stored = books.filter((b) => b !== null).map((b) => (b ? b.get({ plain: true }) : null)); // Map and skip null values
-if(books_stored){
-    
-    //console.log(books_stored);
-    //console.log(books_stored.);
-    if (req.session.logged_in) {
-      res.render('searchbytypeloggedIn', { books_data, books_stored, loggedIn: req.session.logged_in });
-    } else {
-      res.render('searchbytypeloggedOut', { books_data, books_stored, loggedIn: req.session.logged_in });
-    }
-}else{
-    
-      if (req.session.logged_in) {
-        res.render('searchbytypeloggedIn', { books_data, loggedIn: req.session.logged_in });
-      } else {
-        res.render('searchbytypeloggedOut', { books_data, loggedIn: req.session.logged_in });
-      }
+        console.log("print array");
+        //console.log(array_revised);
+        for (let a of array_revised) {
+            console.log("a",a);
+        }
 
-}
+        if (req.session.logged_in) {
+            res.render('searchbytypeloggedIn', { books_data, array_revised});
+        } else {
+            res.render('searchbytypeloggedOut', { books_data, array_revised });
+        }
 
-  
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Internal Server Error' });
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
-  }); */
-  
-  
+});
+
+
 
 //1. type search for dropdown
 router.get('/searchtype', async (req, res) => {
@@ -164,6 +101,8 @@ router.get('/searchtype', async (req, res) => {
             include: [User, Book],
         });
         const reviews = reviews_data.map((review) => review.get({ plain: true }));
+
+
         if (req.session.logged_in) {
             res.render('searchbytypeloggedIn', { books_data, reviews, loggedIn: req.session.logged_in });
 
@@ -340,21 +279,30 @@ router.put('/edit/:id', async (req, res) => {
 });
 
 //4.view a review after clicking view review in searchbytype hb
-router.get('/viewreview/:id', auth, async (req, res) => {
-    try {
-        const review_data = await Review.findByPk(req.params.id, {
-            include: [User, Book],
+
+router.get('/viewreview/:book_id', auth, async (req, res) => {
+    try{
+        const bookId = req.params.book_id;
+        // Check if a record with the same google_books_id exists
+        
+          const existingBook = await Book.findOne({
+            where: { google_books_id: bookId },
         });
-        const review = review_data.get({ plain: true });
-        if (!review) {
-            return res.status(404).json({ error: 'Review not found' });
-        }
-        res.render('viewonereview', { review, loggedIn: req.session.logged_in });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'Server error' });
+        const reviews_data = await Review.findAll({
+            where: { book_id  : existingBook.id ,
+        },
+        });
+        //console.log(reviews);
+        const reviews = reviews_data.map((review) => review.get({ plain: true }));
+        res.render('viewonereview', { reviews, loggedIn: req.session.logged_in });
     }
-});
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    
+}});
+    
+
 
 /// Route for searching a book by book ID from API
 router.get('/findbook/:id', async (req, res) => {
@@ -401,7 +349,8 @@ router.post('/savereview', async (req, res) => {
         const { google_book_id, title, body, score } = req.body;
         // Check if the book exists
         const existingBook = await Book.findOne({
-            where: { google_books_id :google_book_id},
+
+            where: { google_books_id: google_book_id },
         });
         let book_id;
         // If the book exists, retrieve the id
@@ -441,8 +390,12 @@ router.post('/savereview', async (req, res) => {
         });
         // If the review already exists, send a response indicating it exists
         if (existingReview) {
-            
+
+
             //render viewonereview
+            //document.location.replace('/reviews');
+            res.render('/reviews', { loggedIn: req.session.logged_in });
+
         }
         // Create the review
         const review = await Review.create({
@@ -453,6 +406,9 @@ router.post('/savereview', async (req, res) => {
             score,
         });
         //render viewonereview
+
+        res.render('/viewreview/:${book_id}', { loggedIn: req.session.logged_in });
+
 
     } catch (error) {
         console.error(error);

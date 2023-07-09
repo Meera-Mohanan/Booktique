@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" type="text/css" href="/public/CSS/styles.css" />
    {{!--  <script src="js/main.js"></script> --}}
- 
+
 </head>
 
 <body>
@@ -27,12 +27,18 @@
 
     </a>
     </div>
-    <div id="navbarMain" class="navbar-menu">
-        <div class="navbar-start">
-            <a class="navbar-item" href="/"> Home </a>
-            <a class="navbar-item" href="/toppicks">Top Picks</a>
-            <div class="navbar-item has-dropdown is-hoverable">
-             <a class="navbar-link"> Browse</a>
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div id="navbarMain" class="navbar-menu">
+
+            <div class="navbar-start">
+                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item" href="/toppicks">Top Picks</a>
+                <nav class="navbar" role="navigation" aria-label="dropdown navigation">
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                            Browse
+                        </a>
 
                         <div class="navbar-dropdown">
                             <a class="navbar-item" href="/searchtype?type=fiction">

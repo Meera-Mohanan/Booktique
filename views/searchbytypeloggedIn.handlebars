@@ -1,40 +1,45 @@
 {{#if books_data.length}}
-<div class="columns is-multiline">
-  {{#each books_data as |book|}}
-  <div class="column is-one-third">
-    <section class="card">
-      <div class="card-content">
-        <!-- Book information -->
-        <div class="media">
-          <div class="media-content">
+
+=======
+{{#each books_data as |book|}}
+<section>
+  <div class="card">
+    <div class="card-content">
+      <!-- Book information -->
+      <div class="media">
+        <div class="media-content">
+
           <p class="title is-4">{{book.volumeInfo.title}}</p>
           <p>Publisher: {{book.volumeInfo.publisher}}</p>
           <p>Published Date: {{book.volumeInfo.publishedDate}}</p>
           <p>Description: {{book.volumeInfo.description}}</p>
+          <p>google_book_id{{book.id}}</p>
 
-          {{!-- Display reviews --}}
-          {{#if bookReviews.length}}
-          <ul>
-            {{#each bookReviews}}
-            {{!--  {{#if (eq google_book_id book.id)}} --}}
-             {{#if (eq google_book_id book.id)}}
-            <li>
-              <p>Review Title: {{reviewTitle}}</p>
-              <p>Review Body: {{reviewBody}}</p>
-              <p>Review Score: {{reviewScore}}</p>
-              <p>Reviewer: {{userName}}</p>
-            </li>
-            {{/if}}
-            {{/each}}
-          </ul>
+          {{!-- {{!-- Display reviews --}}
+          {{#if array_revised.length}}
+              {{#each array_revised as |a|}}
+                  {{#if (eq a.google_book_id book.id)}}
+                  
+                    <p>{{a.title}}</p>
+                    <p>{{a.body}}</p>
+                    <p>{{a.score}}</p>
+                  {{else}}
+                    <p>Nnope.</p>
+                  {{/if}}
+              {{/each}}
           {{else}}
-          <p>No reviews available for this book.</p>
+          <p>No books found.</p>
           {{/if}}
-
+          {{!-- {{else}}
+                  <p>No reviews available for this book.</p>
+                {{/if}} --}}
+ 
           {{!-- Add Review button --}}
           <a href="/findbook/{{book.id}}" class="button is-primary">Add Review</a>
-         {{!--  <a href="/createreview/{{book.id}}" class="button is-primary">Add Review</a>
- --}}        </div>
+          <a href="/viewreview/{{book.id}}" class="button is-primary">View Reviews</a>
+          {{!-- <a href="/createreview/{{book.id}}" class="button is-primary">Add Review</a>
+          --}}
+        </div>
       </div>
     </div>
   </div>
