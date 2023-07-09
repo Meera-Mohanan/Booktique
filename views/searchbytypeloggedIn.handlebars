@@ -1,49 +1,4 @@
 {{#if books_data.length}}
-<div class="columns is-multiline">
-  {{#each books_data as |book|}}
-  <div class="column is-one-third">
-    <section class="card">
-      <div class="card-content">
-        <!-- Book information -->
-        <div class="media">
-          <div class="media-content">
-          <p class="title is-4">{{book.volumeInfo.title}}</p>
-          <p>Publisher: {{book.volumeInfo.publisher}}</p>
-          <p>Published Date: {{book.volumeInfo.publishedDate}}</p>
-          <p>Description: {{book.volumeInfo.description}}</p>
-
-          {{!-- Display reviews --}}
-          {{#if bookReviews.length}}
-          <ul>
-            {{#each bookReviews}}
-            {{!--  {{#if (eq google_book_id book.id)}} --}}
-             {{#if (eq google_book_id book.id)}}
-            <li>
-              <p>Review Title: {{reviewTitle}}</p>
-              <p>Review Body: {{reviewBody}}</p>
-              <p>Review Score: {{reviewScore}}</p>
-              <p>Reviewer: {{userName}}</p>
-            </li>
-            {{/if}}
-            {{/each}}
-          </ul>
-          {{else}}
-          <p>No reviews available for this book.</p>
-          {{/if}}
-
-          {{!-- Add Review button --}}
-          <a href="/findbook/{{book.id}}" class="button is-primary">Add Review</a>
-         {{!--  <a href="/createreview/{{book.id}}" class="button is-primary">Add Review</a>
- --}}        </div>
-      </div>
-    </div>
-  </div>
-</section>
-{{/each}}
-{{else}}
-<p>No books found.</p>
-{{/if}}
-{{#if books_data.length}}
 {{#each books_data as |book|}}
 <section>
   <div class="card">
