@@ -196,7 +196,7 @@ router.put('/edit',auth, async (req, res) => {
             return res.redirect('/');
         }
 
-        const { name, email, password } = req.body;
+        const { name, email} = req.body;
 
         // Retrieve the existing review from the database
         let user = await User.findByPk(user_id);
@@ -206,7 +206,7 @@ router.put('/edit',auth, async (req, res) => {
         //console.log(password)
         user.name = name || user.name;
         user.email = email || user.email;
-        user.password = password || user.password;
+        user.password = user.password;
         await user.save();
 
         res.json(user);

@@ -12,9 +12,9 @@ document.querySelector('#edit-profile-form').addEventListener('submit', async (e
       email,
     };
   
-    // if (password.trim() !== '') {
-    //   requestBody.password = password;
-    // }
+    /* if (password.trim() !== '') {
+      requestBody.password = password;
+    // }*/
     
     try {
       const response = await fetch(`/edit`, {
