@@ -31,7 +31,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 2%;
-  color: #111111;
+  
 }
 .header-container {
   background-color: rgba(243, 183, 134, 0.836);
@@ -40,7 +40,11 @@ header {
 }
 
 .header-content {
-      color: rgba(0, 0, 0, 1);
+  color: #d889489c;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
 }
 
 h1 {
@@ -59,11 +63,11 @@ h2 {
   background-color: rgba(209, 161, 122, 0.836);
  }
 
-.navbar a {
-  color: #111111;
-  padding: 5px;
+ .navbar a {
+  color: #d889489c;
+  text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;
+  font-size: 16px; /* Adjust the value as needed */
 }
-
 .navbar-item:hover,
     .navbar-dropdown a.navbar-item:hover {
         color: black;
@@ -98,14 +102,13 @@ main {
   max-width: 1200px;
   margin: 2% auto;
 }
-.card {
+.card{
   font-family:Georgia, 'Times New Roman', Times, serif;
   display:flex;
-  background-color: rgba(209, 161, 122, 0.836);
+  background-color: rgba(243, 183, 134, 0.836);
   color:#111111;
   height: 100%;
-} 
-
+}
 .columns is-multiline {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -177,7 +180,7 @@ footer {
 
 .bg-secondary {
   color: #d889489c;
-text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   font-family: Georgia, 'Times New Roman', Times, serif;
   display: flex;
   align-items: center;
