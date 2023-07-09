@@ -13,14 +13,14 @@ router.post('/register', async (req, res) => {
 
     // Create the user
     let userData = await User.create({ name, password, email });
-    userData=userData.dataValues;
-     req.session.save(() => {
-      
+    userData = userData.dataValues;
+    req.session.save(() => {
+
       req.session.user_id = userData.id;
       req.session.logged_in = true;
       res.status(200).json(userData);
     });
-    
+
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
@@ -45,17 +45,19 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
-    userData=userData.dataValues;
+    userData = userData.dataValues;
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-     /*  // TODO: fix
-      document.getElementById('loginmsg').style.display = 'block';
-      setTimeout(()=>{
-        document.getElementById('loginmsg').style.display = 'none';
-      },2000)
-       */
+      /*  // TODO: fix
+       document.getElementById('loginmsg').style.display = 'block';
+       setTimeout(()=>{
+         document.getElementById('loginmsg').style.display = 'none';
+       },2000)
+        */
+      console.log("INSIDE LOGIN");
+      console.log(req.session)
       console.log('doneeee')
       res.json({ user: userData, message: 'You are now logged in!' });
     });
@@ -69,10 +71,10 @@ router.post('/login', async (req, res) => {
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
-     /*  document.getElementById('logoutmsg').style.display = 'block';
-      setTimeout(()=>{
-        document.getElementById('logoutmsg').style.display = 'none';
-      },2000) */
+      /*  document.getElementById('logoutmsg').style.display = 'block';
+       setTimeout(()=>{
+         document.getElementById('logoutmsg').style.display = 'none';
+       },2000) */
       res.json({ message: 'You are logged out successfully!' });
       //res.redirect('/');
     });
@@ -96,11 +98,11 @@ router.put('/update', async (req, res) => {
 
     // Update the user details
     user.name = name ? name : user.name,
-    user.password= password ? password : user.password,
-    user.email= email ? email : user.email,
+      user.password = password ? password : user.password,
+      user.email = email ? email : user.email,
 
-    // Save the updated user
-    await user.save();
+      // Save the updated user
+      await user.save();
 
     res.status(200).json({ message: 'User details updated successfully' });
   } catch (err) {

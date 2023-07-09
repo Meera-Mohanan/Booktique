@@ -1,4 +1,5 @@
 {{!-- Check if review exists --}}
+<div class="fullscreen-container">
 <form id="add-review-form">
    
     <section>
@@ -13,11 +14,11 @@
         <div class="card">
             <div class="card-content">
 
-                <label for="name" class="form-label">Review title</label>
-                <textarea id="title" name="title"></textarea><br>
+                <label for="name" class="form-label">Enter Book Name or Author Name</label>
+                <textarea class="textarea" placeholder="Start typing here..."></textarea><br>
 
-                <label for="name" class="form-label">Add your review</label>
-                <textarea id="review" name="review"></textarea><br>
+                <label for="name" class="form-label">Add Review</label>
+                <textarea class="textarea" placeholder="Start typing here..."></textarea><br>
 
                 <label for="name" class="form-label">Select a score:</label>
                 <select id="score" name="score" class="form-select">
@@ -35,6 +36,7 @@
                     </footer>
                 </div>
 
+
             </div>
 
         </div>
@@ -46,4 +48,5 @@
     </section>
     
 </form>
+</div>
 <script src="/js/createreview.js"></script>

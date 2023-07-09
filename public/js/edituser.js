@@ -4,7 +4,9 @@ document.querySelector('#edit-profile-form').addEventListener('submit', async (e
     const userid = document.querySelector('input[name="userId"]').value;
     const name = document.querySelector('#name').value;
     const email = document.querySelector('#email').value;
-    //const password = document.querySelector('#password').value;
+
+    // const password = document.querySelector('#password').value;
+
     
     // Check if the password field is empty
     const requestBody = {
@@ -12,9 +14,12 @@ document.querySelector('#edit-profile-form').addEventListener('submit', async (e
       email,
     };
   
-   /*  if (password.trim() !== '') {
+
+    /* if (password.trim() !== '') {
       requestBody.password = password;
-    } */
+    // }*/
+
+
     
     try {
       const response = await fetch(`/edit`, {
