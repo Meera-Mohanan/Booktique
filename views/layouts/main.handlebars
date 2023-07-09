@@ -9,26 +9,34 @@
     <title>Landing Page - Booktique </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="/public/CSS/styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
    {{!--  <script src="js/main.js"></script> --}}
+ 
 </head>
 
 <body>
-
-    <div class="logo">
-        BOOKTIQUE
-    </div>
-
-    <nav class="navbar" role="navigation" aria-label="main navigation">
-        <div id="navbarMain" class="navbar-menu">
-
-            <div class="navbar-start">
-                <a class="navbar-item" href="/">Home</a>
-                <a class="navbar-item" href="/toppicks">Top Picks</a>
-                <nav class="navbar" role="navigation" aria-label="dropdown navigation">
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link">
-                            Browse
-                        </a>
+    
+<div class="header-container">
+  <div class="header-content">
+    <p class="title is-1">Booktique</p>
+    <p class="subtitle is-3">Explore the world of books and dive into the magic of reading.</p>
+  </div>
+</div>
+   {{!-- <header>
+    <h1>Booktique</h1>
+    <p>Explore the world of books and dive into the magic of reading.</p>
+  </header> --}}
+<!-- Navbar -->
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    {{!-- <div class="navbar-brand"> </div> --}}
+    <div id="navbarMain" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item" href="/"> Home </a>
+            <a class="navbar-item" href="/toppicks">Top Picks</a>
+            <div class="navbar-item has-dropdown is-hoverable">
+             <a class="navbar-link"> Browse</a>
 
                         <div class="navbar-dropdown">
                             <a class="navbar-item" href="/searchtype?type=fiction">
@@ -62,10 +70,11 @@
                                 Travel
                             </a>
                         </div>
+                        </div>
                     </div>
-                </nav>
 
-                <a class="navbar-item search-item">
+                      <div class="navbar-end">
+                <div class="navbar-item search-item">
                     <div class="field has-addons">
                         <div class="control has-icons-left is-expanded">
                             <input class="input" type="text" placeholder="Search Book/Author" id="searchbook">
@@ -76,9 +85,6 @@
                     </div>
                 </a>
             </div>
-
-            <div class="navbar-end">
-                <div class="navbar-item">
                     <div class="buttons">
                         {{#if loggedIn}}
                         <a class="link" href="/profilesettings">
@@ -92,7 +98,7 @@
                         {{/unless}}
                         <a class="link" href="/logout" id="logout">Logout</a>
                         {{else}}
-                        <a href="/signup" class="button is-primary">
+                        <a href="/signup" class="button is-light">
                             <strong>Sign up</strong>
                         </a>
                         <a class="button is-light" href="/login">Login</a>
@@ -103,9 +109,13 @@
                 </div>
             </div>
         </div>
-    </nav>
-
-
+        {{!-- <div class="buttons">
+  <button onclick="goBackToHome()">
+    <i class="fas fa-arrow-left"></i>
+  </button> --}}
+</div>
+       
+  </nav>
     <article class="message" id="loginmsg" style="display: none;">
         <div class="message-header">
             <p>Logged in Succesfully!</p>
@@ -120,7 +130,9 @@
     </article>
 
     <main>
+           <div class="gallery">
         {{{ body }}}
+        </div>
     </main>
 
     {{#if loggedIn}}

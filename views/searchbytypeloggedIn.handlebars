@@ -1,10 +1,12 @@
 {{#if books_data.length}}
+{{!-- <div class="columns is-multiline">  --}}
 {{#each books_data as |book|}}
-<section>
-  <div class="card">
-    <div class="card-content">
-      <!-- Book information -->
-      <div class="media">
+  {{!-- <div class="column is-one-third"> --}}
+  <section class="card">
+  <i class="fas fa-book"></i>
+  <div class="card-content">
+    <!-- Book information -->
+        <div class="media">
         <div class="media-content">
           <p class="title is-4">{{book.volumeInfo.title}}</p>
           <p>Publisher: {{book.volumeInfo.publisher}}</p>
