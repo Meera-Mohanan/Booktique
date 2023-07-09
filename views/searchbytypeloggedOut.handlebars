@@ -2,6 +2,7 @@
 {{#each books_data as |book|}}
 <section>
   <div class="card">
+    <i class="fas fa-book"></i>
     <div class="card-content">
       <div class="media">
         <div class="media-content">
@@ -12,15 +13,15 @@
           {{!-- <a href="/createreview/{{book.id}}" class="button is-primary">Add Review</a> add url from vijay --}}
           {{!-- <a href="/viewreview/{{book.id}}" class="button is-primary">View Reviews</a> --}}
           {{!-- display reviews end here--}}
-          <a href="/login" class="button is-primary">Login to view and add reviews</a>
+          <a href="/login" class="button is-light">Login to view and add reviews</a>
         </div>
       </div>
     </div>
   </div>
-{{/each}}
+  {{/each}}
 
-{{else}}
-<p>No book found.</p>
-<a href="/login" class="button is-primary">Login to view and add reviews</a>
+  {{else}}
+  <p>No book found.</p>
+  <a href="/login" class="button is-light">Login to view and add reviews</a>
 </section>
 {{/if}}
