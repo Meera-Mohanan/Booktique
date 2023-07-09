@@ -1,5 +1,0 @@
-DB_NAME='booktique'
-DB_USER='root'
-DB_PASSWORD='abcd'
-GOOGLE_BOOKS_API_KEY=AIzaSyAGbpcKp9feGQV-TyjIHQTUDvLNvflpyaQ
-# JAWSDB_URL=mysql://kqbstasb65hvc70o:ebz1u3wcly2jg4wa@wcwimj6zu5aaddlj.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/p0bbmntjnrsyium5
