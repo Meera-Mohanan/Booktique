@@ -9,6 +9,40 @@ body {
   background-repeat: no-repeat;
   position: relative;
   font-family:Georgia, 'Times New Roman', Times, serif;
+body {
+  background-image: url("https://images.unsplash.com/photo-1558901357-ca41e027e43a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2139&q=80");
+  background-color: #f0decd;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.3;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+/* body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+  z-index: -1;
+} */
+
+header {
+  background-image: url("C:\Users\meera\Desktop\Assignments\Booktique\Booktique\public\Images\booktique.png");
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2%;
+  color: #111111;
 }
 
 /* body::before {
@@ -33,11 +67,27 @@ header {
   padding: 2%;
   background-color: #f0decd;
   color: #111111;
+.header-container {
+  background-color: rgba(243, 183, 134, 0.836);
+      text-align: center;
+      padding: 10px;
 }
 
 h1 {
   font-family:Georgia, 'Times New Roman', Times, serif;
   font-size: 200%;
+.header-content {
+      color: rgba(0, 0, 0, 1);
+}
+
+h2 {
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  margin: 2% 0;
+  font-size: 250%;
+
+h1 {
+  font-family:Georgia, 'Times New Roman', Times, serif;
+   font-size: 200%;
 }
 
 h2 {
@@ -48,9 +98,8 @@ h2 {
 
 .navbar {
   font-family:Georgia, 'Times New Roman', Times, serif;
-  background-color: #f0decd;
-  padding: 10px;
-}
+  background-color: rgba(209, 161, 122, 0.836);
+ }
 
 .navbar a {
   color: #111111;
@@ -94,8 +143,8 @@ main {
 .card {
   font-family:Georgia, 'Times New Roman', Times, serif;
   display:flex;
-  background-color: #f0decd;
-  color:#111111
+  background-color: rgba(209, 161, 122, 0.836);
+  color:#111111;
   height: 100%;
 } 
 
@@ -107,8 +156,8 @@ main {
 }
 
 section {
+  padding: 5px;
   font-family:Georgia, 'Times New Roman', Times, serif;
-  flex-wrap: wrap;
   gap: 40px; /* Adjust the value as needed */
 } 
 
@@ -169,6 +218,8 @@ footer {
 }
 
 .bg-secondary {
+  color: #d889489c;
+text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
   font-family: Georgia, 'Times New Roman', Times, serif;
   display: flex;
   align-items: center;

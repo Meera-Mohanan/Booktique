@@ -1,16 +1,18 @@
 {{#if books_data.length}}
+{{!-- <div class="columns is-multiline">  --}}
 {{#each books_data as |book|}}
-<section>
-  <div class="card">
-    <div class="card-content">
-      <!-- Book information -->
-      <div class="media">
+  {{!-- <div class="column is-one-third"> --}}
+  <section class="card">
+  <i class="fas fa-book"></i>
+  <div class="card-content">
+    <!-- Book information -->
+        <div class="media">
         <div class="media-content">
           <p class="title is-4">{{book.volumeInfo.title}}</p>
           <p>Publisher: {{book.volumeInfo.publisher}}</p>
           <p>Published Date: {{book.volumeInfo.publishedDate}}</p>
           <p>Description: {{book.volumeInfo.description}}</p>
-          <p>google_book_id{{book.id}}</p>
+          
 
           {{!-- {{!-- Display reviews --}}
           {{#if array_revised.length}}
@@ -43,5 +45,5 @@
 </section>
 {{/each}}
 {{else}}
-<p>No books found.</p>
+{{!-- <p>No books found.</p> --}}
 {{/if}}
