@@ -189,7 +189,7 @@ router.put('/edit', async (req, res) => {
             return res.redirect('/');
         }
 
-        const { name, email, password } = req.body;
+        const { name, email} = req.body;
 
         // Retrieve the existing review from the database
         let user = await User.findByPk(user_id);
@@ -199,7 +199,7 @@ router.put('/edit', async (req, res) => {
         //console.log(password)
         user.name = name || user.name;
         user.email = email || user.email;
-        user.password = password || user.password;
+        user.password = user.password;
         await user.save();
 
         res.json(user);
@@ -280,23 +280,23 @@ router.get('/viewreview/:book_id', auth, async (req, res) => {
         const bookId = req.params.book_id;
         // Check if a record with the same google_books_id exists
         
-          const existingBook = await Book.findOne({
+          const book_data = await Book.findOne({
             where: { google_books_id: bookId },
         });
  
     let reviews_data = []; // Declare and assign an empty array initially
 
-    if (existingBook) {
+    if (book_data) {
       reviews_data = await Review.findAll({
         where: {
-          book_id: existingBook.dataValues.id,
+          book_id: book_data.dataValues.id,
         },
       });
+     
     }
-       
         const reviews = reviews_data.map((review) => review.get({ plain: true }));
-        console.log(reviews);
-        res.render('viewonereview', { reviews, loggedIn: req.session.logged_in });
+        console.log(book_data);
+        res.render('viewonereview', { book:book_data,reviews, loggedIn: req.session.logged_in });
     }
     catch (error) {
         console.error(error);
