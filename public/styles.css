@@ -34,7 +34,7 @@ header {
   
 }
 .header-container {
-  background-color: rgba(243, 183, 134, 0.836);
+  background-color: rgba(167, 160, 156, 0.671);
       text-align: center;
       padding: 10px;
 }
@@ -105,8 +105,8 @@ main {
 .card{
   font-family:Georgia, 'Times New Roman', Times, serif;
   display:flex;
-  background-color: rgba(243, 183, 134, 0.836);
-  color:#111111;
+  background-color: rgba(167, 160, 156, 0.671);
+  color:#1b0303;
   height: 100%;
 }
 .columns is-multiline {
