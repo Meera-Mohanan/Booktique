@@ -61,11 +61,11 @@ router.get('/toppicks', async (req, res) => {
                 }
             }
         }
-        //console.log("print array");
+        console.log("print array");
         //console.log(array_revised);
-        /* for (let a of array_revised) {
+        for (let a of array_revised) {
             console.log("a",a);
-        } */
+        }
 
         if (req.session.logged_in) {
             res.render('searchbytypeloggedIn', { books_data, array_revised});
@@ -283,19 +283,12 @@ router.get('/viewreview/:book_id', auth, async (req, res) => {
           const existingBook = await Book.findOne({
             where: { google_books_id: bookId },
         });
- 
-    let reviews_data = []; // Declare and assign an empty array initially
-
-    if (existingBook) {
-      reviews_data = await Review.findAll({
-        where: {
-          book_id: existingBook.dataValues.id,
+        const reviews_data = await Review.findAll({
+            where: { book_id  : existingBook.id ,
         },
-      });
-    }
-       
+        });
+        //console.log(reviews);
         const reviews = reviews_data.map((review) => review.get({ plain: true }));
-        console.log(reviews);
         res.render('viewonereview', { reviews, loggedIn: req.session.logged_in });
     }
     catch (error) {
@@ -391,9 +384,11 @@ router.post('/savereview', async (req, res) => {
         // If the review already exists, send a response indicating it exists
         if (existingReview) {
 
+
             //render viewonereview
             //document.location.replace('/reviews');
             res.render('/reviews', { loggedIn: req.session.logged_in });
+
         }
         // Create the review
         const review = await Review.create({
@@ -406,6 +401,9 @@ router.post('/savereview', async (req, res) => {
         //render viewonereview
         res.render('/viewreview/:${book_id}', { loggedIn: req.session.logged_in });
        
+
+        res.render('/viewreview/:${book_id}', { loggedIn: req.session.logged_in });
+
 
     } catch (error) {
         console.error(error);

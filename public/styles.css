@@ -26,6 +26,7 @@ body {
 } */
 
 header {
+  background-image: url("C:\Users\meera\Desktop\Assignments\Booktique\Booktique\public\Images\booktique.png");
   font-family:Georgia, 'Times New Roman', Times, serif;
   justify-content: space-between;
   align-items: center;
@@ -94,6 +95,7 @@ main {
   font-family:Georgia, 'Times New Roman', Times, serif;
   display:flex;
   background-color: #f0decd;
+  color:#111111
   height: 100%;
 } 
 
@@ -167,13 +169,17 @@ footer {
 }
 
 .bg-secondary {
-  font-family:Georgia, 'Times New Roman', Times, serif;
-  display:flexbox;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  display: flex;
   align-items: center;
-  background-color: #f0decd rgb(240, 227, 227);
-  color: #111111;
+  justify-content: center;
+  height: 100vh;
 }
-
+.centered-text {
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+}
 .py-5 {
   padding-top: 3rem;
   padding-bottom: 3rem;
