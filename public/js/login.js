@@ -17,10 +17,12 @@ async function loginFormHandler(event) {
       if (response.ok) {
         document.location.replace('/');
       } else {
-        alert(response.statusText);
+      
+        const data=await response.json();
+        //console.log(data);
+        document.getElementById("loginmessage").textContent =data.message;
       }
     }
-  }
-  
+}
 
 document.querySelector('#login-form').addEventListener('submit', loginFormHandler);
