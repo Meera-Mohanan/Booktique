@@ -10,8 +10,12 @@ router.get('/', (req, res) => {
     res.render('landingpage', { loggedIn: req.session.logged_in });
 });
 
+// auth -- middleware 
+// ( checks if the user is logged in or not)
+// if user is logged in , dont ask for login and logout button on the navbar and proceed with the code inside the callback function
+
 //top 12 picks display
-router.get('/toppicks', async (req, res) => {
+router.get('/toppicks', auth, async (req, res) => {
     try {
         const apiKey = process.env.GOOGLE_BOOKS_API_KEY;
         const url = 'https://www.googleapis.com/books/v1/volumes';
@@ -48,7 +52,7 @@ router.get('/toppicks', async (req, res) => {
 
 
         for (let b of books_revised) {
-            
+
             if (b.reviews) {
                 for (let r of b.reviews) {
                     const review_array = {};
@@ -68,9 +72,9 @@ router.get('/toppicks', async (req, res) => {
         } */
 
         if (req.session.logged_in) {
-            res.render('searchbytypeloggedIn', { books_data, array_revised});
+            res.render('searchbytypeloggedIn', { books_data, array_revised, loggedIn: req.session.logged_in });
         } else {
-            res.render('searchbytypeloggedOut', { books_data, array_revised });
+            res.render('searchbytypeloggedOut', { books_data, array_revised, loggedIn: req.session.logged_in });
         }
 
     } catch (error) {
@@ -82,7 +86,7 @@ router.get('/toppicks', async (req, res) => {
 
 
 //1. type search for dropdown
-router.get('/searchtype', async (req, res) => {
+router.get('/searchtype', auth, async (req, res) => {
     try {
         const apiKey = process.env.GOOGLE_BOOKS_API_KEY;
         const searchType = req.query.type; // Get the search type from the query parameters
@@ -98,6 +102,9 @@ router.get('/searchtype', async (req, res) => {
             include: [User, Book],
         });
         const reviews = reviews_data.map((review) => review.get({ plain: true }));
+
+        console.log("**** INSIDE SEARCHTYPE ****");
+        console.log(req.session);
 
         if (req.session.logged_in) {
             res.render('searchbytypeloggedIn', { books_data, reviews, loggedIn: req.session.logged_in });
@@ -115,7 +122,7 @@ router.get('/searchtype', async (req, res) => {
 });
 
 //1. route for searchbar
-router.get('/searchbyname', async (req, res) => {
+router.get('/searchbyname', auth, async (req, res) => {
     try {
         const apiKey = process.env.GOOGLE_BOOKS_API_KEY;
         const searchQuery = req.query.inputtext;
@@ -276,37 +283,38 @@ router.put('/edit/:id', async (req, res) => {
 
 //4.view a review after clicking view review in searchbytype hb
 router.get('/viewreview/:book_id', auth, async (req, res) => {
-    try{
+    try {
         const bookId = req.params.book_id;
         // Check if a record with the same google_books_id exists
-        
-          const book_data = await Book.findOne({
+
+        const book_data = await Book.findOne({
             where: { google_books_id: bookId },
         });
- 
-    let reviews_data = []; // Declare and assign an empty array initially
 
-    if (book_data) {
-      reviews_data = await Review.findAll({
-        where: {
-          book_id: book_data.dataValues.id,
-        },
-      });
-     
-    }
+        let reviews_data = []; // Declare and assign an empty array initially
+
+        if (book_data) {
+            reviews_data = await Review.findAll({
+                where: {
+                    book_id: book_data.dataValues.id,
+                },
+            });
+
+        }
         const reviews = reviews_data.map((review) => review.get({ plain: true }));
         console.log(book_data);
-        res.render('viewonereview', { book:book_data,reviews, loggedIn: req.session.logged_in });
+        res.render('viewonereview', { book: book_data, reviews, loggedIn: req.session.logged_in });
     }
     catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });
-    
-}});
-    
+
+    }
+});
+
 
 /// Route for searching a book by book ID from API
-router.get('/findbook/:id', async (req, res) => {
+router.get('/findbook/:id', auth, async (req, res) => {
     try {
 
         const book_id = req.params.id;
@@ -405,7 +413,7 @@ router.post('/savereview', async (req, res) => {
         });
         //render viewonereview
         res.render('/viewreview/:${book_id}', { loggedIn: req.session.logged_in });
-       
+
 
     } catch (error) {
         console.error(error);
