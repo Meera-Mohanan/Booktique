@@ -7,13 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <title>Landing Page - Booktique </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-
-    <script src="js/main.js"></script>
-
-
-
-
+   {{!--  <script src="js/main.js"></script> --}}
 </head>
 
 <body>
@@ -23,46 +19,62 @@
     </div>
 
     <nav class="navbar" role="navigation" aria-label="main navigation">
-
         <div id="navbarMain" class="navbar-menu">
 
             <div class="navbar-start">
-                <a class="navbar-item" href="/">
-                    Home
-                </a>
-
-                <a class="navbar-item" href="/bookreview">
-                    Book Review
-                </a>
-
-                <a class="navbar-item">
-                    Search: <input placeholder="Enter Book details:" type="text" id="searchbook">
-                </a>
-
-                 <a class="navbar-item"><button class="button" type="submit" class="btn" onclick="searchabook()">Search</button></a>
-
-{{!-- <a class="link" href="/googlebooks/search/harry">Search</a> --}}
-                {{!-- <div class="navbar-item has-dropdown is-hoverable">
-                    <a class="navbar-link">
-                        More
-                    </a>
-
-                    <div class="navbar-dropdown">
-                        <a class="navbar-item">
-                            About
+                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item" href="/toppicks">Top Picks</a>
+                <nav class="navbar" role="navigation" aria-label="dropdown navigation">
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                            Browse
                         </a>
-                        <a class="navbar-item">
-                            Jobs
-                        </a>
-                        <a class="navbar-item">
-                            Contact
-                        </a>
-                        <hr class="navbar-divider">
-                        <a class="navbar-item">
-                            Report an issue
-                        </a>
+
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item" href="/searchtype?type=fiction">
+                                Fiction
+                            </a>
+                            <a class="navbar-item" href="/searchtype?type=thriller">
+                                Thriller
+                            </a>
+                            <a class="navbar-item" href="/searchtype?type=romance">
+                                Romance
+                            </a>
+                            <a class="navbar-item" href="/searchtype?type=fantasy">
+                                Fantasy
+                            </a>
+                            <a class="navbar-item" href="/searchtype?type=Biography">
+                                Biography
+                            </a>
+                            <a class="navbar-item" href="/searchtype?type=horror">
+                                Horror
+                            </a>
+                            <a class="navbar-item" href="/searchtype?type=drama">
+                                Drama
+                            </a>
+                            <a class="navbar-item" href="/searchtype?type=comedy">
+                                Comedy
+                            </a>
+                            <a class="navbar-item" href="/searchtype?type=philosophy">
+                                Philosophy
+                            </a>
+                            <a class="navbar-item" href="/searchtype?type=travel">
+                                Travel
+                            </a>
+                        </div>
                     </div>
-                </div> --}}
+                </nav>
+
+                <a class="navbar-item search-item">
+                    <div class="field has-addons">
+                        <div class="control has-icons-left is-expanded">
+                            <input class="input" type="text" placeholder="Search Book/Author" id="searchbook">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-search"></i>
+                            </span>
+                        </div>
+                    </div>
+                </a>
             </div>
 
             <div class="navbar-end">
@@ -72,10 +84,13 @@
                         <a class="link" href="/profilesettings">
                             <strong>Profile Settings</strong>
                         </a>
-                        <a class="link" href="/review">
+
+                        {{#unless dontShowReviewNavItem}}
+                        <a class="link" href="/reviews">
                             Your Reviews
                         </a>
-                        <a class="link" href="/" id="logout">Logout</a>
+                        {{/unless}}
+                        <a class="link" href="/logout" id="logout">Logout</a>
                         {{else}}
                         <a href="/signup" class="button is-primary">
                             <strong>Sign up</strong>
@@ -91,28 +106,27 @@
     </nav>
 
 
-<article class="message" id="loginmsg" style="display: none;">
-  <div class="message-header">
-    <p>Logged in Succesfully!</p>
-  </div>
-</article>
+    <article class="message" id="loginmsg" style="display: none;">
+        <div class="message-header">
+            <p>Logged in Succesfully!</p>
+        </div>
+    </article>
 
 
-<article class="message" id="logoutmsg" style="display: none;">
-  <div class="message-header">
-    <p>Logged Out Succesfully!</p>
-  </div>
-</article>
+    <article class="message" id="logoutmsg" style="display: none;">
+        <div class="message-header">
+            <p>Logged Out Succesfully!</p>
+        </div>
+    </article>
 
     <main>
         {{{ body }}}
     </main>
 
-     {{#if loggedIn}}
-     <script src="js/logout.js"></script>  
-     {{/if}}
-
-
+    {{#if loggedIn}}
+    <script src="js/logout.js"></script>
+    {{/if}}
+    
+     <script src="js/search.js"></script>
 </body>
-
 </html>
