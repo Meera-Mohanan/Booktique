@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 // if user is logged in , dont ask for login and logout button on the navbar and proceed with the code inside the callback function
 
 //top 12 picks display
-router.get('/toppicks', auth, async (req, res) => {
+router.get('/toppicks', async (req, res) => {
     try {
         const apiKey = process.env.GOOGLE_BOOKS_API_KEY;
         const url = 'https://www.googleapis.com/books/v1/volumes';
@@ -86,7 +86,7 @@ router.get('/toppicks', auth, async (req, res) => {
 
 
 //1. type search for dropdown
-router.get('/searchtype', auth, async (req, res) => {
+router.get('/searchtype', async (req, res) => {
     try {
         const apiKey = process.env.GOOGLE_BOOKS_API_KEY;
         const searchType = req.query.type; // Get the search type from the query parameters
@@ -122,7 +122,7 @@ router.get('/searchtype', auth, async (req, res) => {
 });
 
 //1. route for searchbar
-router.get('/searchbyname', auth, async (req, res) => {
+router.get('/searchbyname', async (req, res) => {
     try {
         const apiKey = process.env.GOOGLE_BOOKS_API_KEY;
         const searchQuery = req.query.inputtext;
@@ -189,7 +189,7 @@ router.get('/useredit', auth, async (req, res) => {
 });
 
 //3.updating user details and directing to profilesetting page.
-router.put('/edit', async (req, res) => {
+router.put('/edit',auth, async (req, res) => {
     try {
         let user_id = req.session.user_id;
         if (user_id === undefined) {
@@ -258,7 +258,7 @@ router.get('/reviewsedit/:id', auth, async (req, res) => {
 });
 
 //3.updating review and directing to yourreviews page.
-router.put('/edit/:id', async (req, res) => {
+router.put('/edit/:id', auth, async (req, res) => {
     try {
         const reviewId = req.params.id;
         const { title, body, score } = req.body;
@@ -314,7 +314,7 @@ router.get('/viewreview/:book_id', auth, async (req, res) => {
 
 
 /// Route for searching a book by book ID from API
-router.get('/findbook/:id', auth, async (req, res) => {
+router.get('/findbook/:id', async (req, res) => {
     try {
 
         const book_id = req.params.id;
@@ -352,7 +352,7 @@ router.get('/findbook/:id', auth, async (req, res) => {
 
 
 // Save a review
-router.post('/savereview', async (req, res) => {
+router.post('/savereview',auth, async (req, res) => {
     try {
         const user_id = req.session.user_id;
         const { google_book_id, title, body, score } = req.body;

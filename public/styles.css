@@ -8,7 +8,7 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 /* body::before {
@@ -25,18 +25,24 @@ body {
   z-index: -1;
 } */
 
+.title is-1 {
+  color: #d889489c;
+  text-shadow: -1px -1px 0 #b4a9a9, 1px -1pxrgba(223, 207, 207, 0.342)000, -1px 1px 0 #8f7d7d, 1px 1px 0 #00000025;
+}
+
 header {
   background-image: url("C:\Users\meera\Desktop\Assignments\Booktique\Booktique\public\Images\booktique.png");
-  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   justify-content: space-between;
   align-items: center;
   padding: 2%;
-  
+
 }
+
 .header-container {
   background-color: rgba(167, 160, 156, 0.671);
-      text-align: center;
-      padding: 10px;
+  text-align: center;
+  padding: 10px;
 }
 
 .header-content {
@@ -48,30 +54,32 @@ header {
 }
 
 h1 {
-  font-family:Georgia, 'Times New Roman', Times, serif;
-   font-size: 200%;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 200%;
 }
 
 h2 {
-  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   margin: 2% 0;
   font-size: 250%;
 }
 
 .navbar {
-  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   background-color: rgba(209, 161, 122, 0.836);
- }
+}
 
- .navbar a {
+.navbar a {
   color: #d889489c;
   text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;
-  font-size: 16px; /* Adjust the value as needed */
+  font-size: 16px;
+  /* Adjust the value as needed */
 }
+
 .navbar-item:hover,
-    .navbar-dropdown a.navbar-item:hover {
-        color: black;
-    }
+.navbar-dropdown a.navbar-item:hover {
+  color: black;
+}
 
 
 .navbar .navbar-item {
@@ -86,6 +94,7 @@ h2 {
   left: 0;
   display: none;
 }
+
 .navbar .navbar-dropdown a {
   padding: 5px 10px;
 }
@@ -95,20 +104,22 @@ h2 {
 }
 
 main {
-  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   display: flex;
   padding-right: 5%;
   flex: none;
   max-width: 1200px;
   margin: 2% auto;
 }
-.card{
-  font-family:Georgia, 'Times New Roman', Times, serif;
-  display:flex;
+
+.card {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  display: flex;
   background-color: rgba(167, 160, 156, 0.671);
-  color:#1b0303;
+  color: #1b0303;
   height: 100%;
 }
+
 .columns is-multiline {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -118,9 +129,10 @@ main {
 
 section {
   padding: 5px;
-  font-family:Georgia, 'Times New Roman', Times, serif;
-  gap: 40px; /* Adjust the value as needed */
-} 
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  gap: 40px;
+  /* Adjust the value as needed */
+}
 
 article {
   border-bottom: 1px solid #111111;
@@ -156,7 +168,7 @@ button {
 }
 
 footer {
-  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   display: flex;
   justify-content: center;
   padding: 2%;
@@ -164,7 +176,7 @@ footer {
 }
 
 .fullscreen-container {
-  
+
   position: relative;
   height: 100vh;
 }
@@ -187,22 +199,25 @@ footer {
   justify-content: center;
   height: 100vh;
 }
+
 .centered-text {
   text-align: center;
   font-style: italic;
   font-weight: bold;
 }
+
 .py-5 {
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
 
 .container {
-  font-family:Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   max-width: 960px;
   margin: 0 auto;
   padding: 0 15px;
 }
+
 .media {
   cursor: pointer;
   transition: transform 0.3s;
@@ -213,6 +228,7 @@ footer {
 }
 
 @media screen and (max-width: 768px) {
+
   header,
   main {
     flex-direction: column;
@@ -227,12 +243,14 @@ footer {
     text-align: center;
   }
 }
+
 #login-form {
   background-color: #f0decd;
   padding: 20px;
   margin: 10px;
   border: 1px solid #ccc;
 }
+
 #signup-form {
   background-color: #f0decd;
   padding: 20px;
