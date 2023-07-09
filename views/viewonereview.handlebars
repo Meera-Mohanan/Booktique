@@ -1,8 +1,16 @@
+
+  <p class="title is-4">{{book.dataValues.title}}</p>
+          <p>Author: {{book.dataValues.author}}</p>
+          <p>Published Date: {{book.dataValues.publishedDate}}</p>
+          <p>Description: {{book.dataValues.description}}</p>
+  
 {{#if reviews.length}}
+    <p class="title is-4">Reviews</p>
 {{#each reviews as |review|}}
 <section>
-  <h2>View Review</h2>
-  
+ 
+
+
   <div class="card">
     <div class="card-content">
       <div class="media">
@@ -14,27 +22,28 @@
         </div> --}}
         <div class="media-content">
           <!-- Review Title -->
-          <p class="title is-4">{{review.title}}</p>
+          <p class="title is-4">Title:{{review.title}}</p>
           <!-- Review Body -->
-          <p class="subtitle is-6">{{review.body}}</p>
+          <p class="subtitle is-6">Review: {{review.body}}</p>
           <!-- Review Score -->
-          <p class="subtitle is-6">{{review.score}}</p>
+          <p class="subtitle is-6">Score:{{review.score}}</p>
         </div>
       </div>
       <!-- Edit and Delete buttons -->
       <div class="card">
-        <footer class="card-footer">
+        {{!-- <footer class="card-footer">
           <a href="/reviewsedit/{{review.id}}" class="card-footer-item" id="edit-review">Edit</a>
           <a href="#" class="card-footer-item" id="delete-review" data-id="{{review.id}}">Delete</a>
-        </footer>
+        </footer> --}}
       </div>
     </div>
   </div>
 
 </section>
 {{/each}}
+<a href="/findbook/{{book.dataValues.google_books_id}}" class="card-footer-item">Add Review</a>
 {{else}}
 <p>No reviews found.</p>
-<a href="/toppicks" class="card-footer-item">Add Review</a>
+<a href="/findbook/{{book.dataValues.google_books_id}}"  class="card-footer-item">Add Review</a>
 {{/if}}
 <script src="/js/reviews.js"></script>
