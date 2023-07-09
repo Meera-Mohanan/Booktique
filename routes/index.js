@@ -2,7 +2,6 @@ require('dotenv').config();
 const router = require('express').Router();
 const apiRoutes = require('./api');
 const landingRoutes = require('./landingRoutes.js');
-
 const reviewRoutes = require('./api/reviews-routes');
 /* 
 const bookRoutes = require('./api/books-routes');
@@ -18,7 +17,7 @@ router.use('/googlebooks', apiRoutes);
 router.use('/user', usersRoutes); */
 
 router.use((req, res) => {
-    res.send("<h1>Wrong Route!</h1>")
+    res.status(404).send("<h1>Wrong Route!</h1>")
      });
 
 module.exports = router;
