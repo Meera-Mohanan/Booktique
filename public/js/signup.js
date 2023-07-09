@@ -17,8 +17,10 @@ async function signupFormHandler(event) {
         if (response.ok) {        
             document.location.replace('/');
         } else {
-            console.log()
-            alert(response.statusText);
+            console.log(response);
+            const data=await response.json();
+            document.getElementById("message").textContent =data.error;
+            //alert(data.error);
         }
     }
 }
