@@ -1,0 +1,4 @@
+DB_NAME='booktique'
+DB_USER='root'
+DB_PASSWORD='abcd'
+GOOGLE_BOOKS_API_KEY='AIzaSyDAyeDqH5UigJe1-nVRvV-GLRm0MurjIgs'
