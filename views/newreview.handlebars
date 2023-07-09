@@ -1,21 +1,13 @@
-<div class="card">
-    <h3 class="card-header">Create New Review</h3>
-    <form class="card-body new-review-form" id="new-review-form">
-        <label for="post-title" class="form-label">Book ID</label>
-        <input type="text" id="post-title" name="bookid" class="form-input" />
+<div id="addreviewmain">
+     <form class="card-body new-review-form" id="new-review-form">
 
+ 
+<h2 class="subtitle">Create Review:</h2>
 
-        <label class="form-label" for="content">Title</label>
-        <input id="content" name="title" class="form-input" />
+        <textarea id="reviewscore" class="textarea" placeholder="Provide Review.."></textarea>
+        <button type="submit" class="button is-link" id="submitaddreview">Create Review</button>
 
-        <label class="form-label" for="content">Body</label>
-        <input id="content" name="body" class="form-input" />
-
-        <label class="form-label" for="content">Score</label>
-        <input id="content" name="score" class="form-input" />
-
-        <button type="submit" class="btn">Add Review</button>
-    </form>
+     </form>
 </div>
 
 <script src="/js/addreview.js"></script>
