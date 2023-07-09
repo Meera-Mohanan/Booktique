@@ -5,7 +5,15 @@ const routes = require('./routes');
 
 const helpers = require('./utils/helper');
 const exphbs = require('express-handlebars');
-const hbs = exphbs.create({ helpers });
+//const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create({
+  // ... other configurations ...
+  helpers: {
+    encodeURI: (value) => {
+      return encodeURIComponent(value);
+    },
+  },
+}); 
 const session = require('express-session');
 
 const PORT = process.env.PORT || 3001;

@@ -1,7 +1,8 @@
 {{#if reviews.length}}
+{{#each reviews as |review|}}
 <section>
-  <h2>Your Reviews</h2>
-  {{#each reviews as |review|}}
+  <h2>View Review</h2>
+  
     <div class="card">
       <div class="card-content">
         <div class="media">
@@ -12,16 +13,16 @@
           </div> --}}
           <div class="media-content">
             {{!-- <p class="title is-4">{{this.title}}</p> --}}
-             <p class="title is-4">{{review.book.title}}</p>
-            <p class="subtitle is-6">{{review.book.author}}</p>
+             <p class="title is-4">{{review.title}}</p>
+            <p class="subtitle is-6">{{review.body}}</p>
           </div>
         </div>
-        <div class="content">
+        {{!-- <div class="content">
           {{review.title}}
           {{review.body}}
           <br>
           <time datetime>Created on {{review.created_at}}</time>
-        </div>
+        </div> --}}
         <div class="card">
           <footer class="card-footer">
             <a href="/reviewsedit/{{review.id}}" class="card-footer-item" id="edit-review">Edit</a>
@@ -30,7 +31,7 @@
         </div>
       </div>
     </div>
-  {{/each}}
+
 </section>
 {{else}}
 <p>No reviews found.</p>

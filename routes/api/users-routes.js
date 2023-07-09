@@ -26,7 +26,6 @@ router.post('/register', async (req, res) => {
   }
 });
 
-
 router.post('/login', async (req, res) => {
   try {
     let userData = await User.findOne({ where: { email: req.body.email } });
@@ -50,15 +49,19 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
+
+     /*  // TODO: fix
       document.getElementById('loginmsg').style.display = 'block';
       setTimeout(()=>{
         document.getElementById('loginmsg').style.display = 'none';
       },2000)
-      
+       */
+      console.log('doneeee')
       res.json({ user: userData, message: 'You are now logged in!' });
     });
 
   } catch (err) {
+    console.log(err)
     res.status(400).json(err);
   }
 });
@@ -66,11 +69,12 @@ router.post('/login', async (req, res) => {
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
-      document.getElementById('logoutmsg').style.display = 'block';
+     /*  document.getElementById('logoutmsg').style.display = 'block';
       setTimeout(()=>{
         document.getElementById('logoutmsg').style.display = 'none';
-      },2000)
+      },2000) */
       res.json({ message: 'You are logged out successfully!' });
+      //res.redirect('/');
     });
   } else {
     res.status(404).end();
