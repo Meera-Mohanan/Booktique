@@ -294,12 +294,8 @@ router.get('/viewreview/:book_id', auth, async (req, res) => {
       });
      
     }
-       
         const reviews = reviews_data.map((review) => review.get({ plain: true }));
-        //const book = book_data.dataValues; 
-        //console.log(book.title)
-        //const book = book_data ? book_data.get({ plain: true }) : null;
-        //console.log(book_da);
+        console.log(book_data);
         res.render('viewonereview', { book:book_data,reviews, loggedIn: req.session.logged_in });
     }
     catch (error) {
