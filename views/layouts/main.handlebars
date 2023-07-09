@@ -18,19 +18,32 @@
 
 <body>
     
-<div class="header-container">
+{{!-- <div class="header-container">
   <div class="header-content">
     <p class="title is-1">Booktique</p>
     <p class="subtitle is-3">Explore the world of books and dive into the magic of reading.</p>
   </div>
-</div>
+</div> --}}
    {{!-- <header>
     <h1>Booktique</h1>
     <p>Explore the world of books and dive into the magic of reading.</p>
   </header> --}}
 <!-- Navbar -->
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    {{!-- <div class="navbar-brand"> </div> --}}
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/">
+      <p class="title is-1">Booktique</p>
+    </a>
+<a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarMain">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  {{!-- <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand"> </div> --}}
     <div id="navbarMain" class="navbar-menu">
         <div class="navbar-start">
             <a class="navbar-item" href="/"> Home </a>
@@ -73,8 +86,8 @@
                         </div>
                     </div>
 
-                      <div class="navbar-end">
-                <div class="navbar-item search-item">
+         <div class="navbar-end">
+        <div class="navbar-item search-item">
                     <div class="field has-addons">
                         <div class="control has-icons-left is-expanded">
                             <input class="input" type="text" placeholder="Search Book/Author" id="searchbook">
@@ -85,6 +98,7 @@
                     </div>
                 </a>
             </div>
+            <div class="navbar-item">
                     <div class="buttons">
                         {{#if loggedIn}}
                         <a class="link" href="/profilesettings">
@@ -108,7 +122,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+              
         {{!-- <div class="buttons">
   <button onclick="goBackToHome()">
     <i class="fas fa-arrow-left"></i>
