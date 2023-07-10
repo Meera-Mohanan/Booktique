@@ -20,9 +20,8 @@ async function loginFormHandler(event) {
         document.location.replace('/'); 
       } else {
       
-        /* const data=await response.json();
-        //console.log(data);
-        document.getElementById("loginmessage").textContent =data.message; */
+        const data=await response.json();
+        document.getElementById("loginmessage").textContent =data.message; 
         console.log("login failed");
       }
     }
