@@ -10,7 +10,10 @@ body {
   position: relative;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
+.add-review-form {
 
+
+}
 /* body::before {
   content: "";
   position: absolute;
@@ -115,8 +118,9 @@ main {
 .card {
   font-family: Georgia, 'Times New Roman', Times, serif;
   display: flex;
-  background-color: rgba(167, 160, 156, 0.671);
-  color: #1b0303;
+  background-color: rgba(223, 184, 162, 0.818);
+  color: #1b1a189c;
+  text-shadow: -0.5px -0.5px 0 #cbbfbf, 0.5px -0.5px 0 #c5c1c1, -0.5px 0.5pxrgba(0, 0, 0, 0.271)000, 0.5px 0.5px 0 #000;
   height: 100%;
 }
 
@@ -244,18 +248,76 @@ footer {
   }
 }
 
-#login-form {
-  background-color: #f0decd;
-  padding: 20px;
-  margin: 10px;
-  border: 1px solid #ccc;
+.fullscreen-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 #signup-form {
-  background-color: #f0decd;
+  width: 300px;
+  background-color: #fff;
   padding: 20px;
-  margin: 10px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.field {
+  margin-bottom: 1rem;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.input {
+  width: 100%;
+  padding: 0.5rem;
   border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.button {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.button.is-primary {
+  background-color: #3388cc;
+  color: #fff;
+  border: none;
+}
+
+.button.is-primary:hover {
+  background-color: #2777aa;
+}
+
+#login-form {
+  width: 300px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+@media (max-width: 768px) {
+  /* Adjust the styling for smaller screens */
+  #signup-form {
+    padding: 10px;
+    margin: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Further adjust the styling for even smaller screens */
+  #signup-form {
+    padding: 5px;
+    margin: 2px;
+  }
 }
 
 @media screen and (max-width: 768px) {
