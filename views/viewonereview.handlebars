@@ -3,10 +3,11 @@
   
 {{#if reviews.length}}
 <p class="title is-4">{{book.dataValues.title}}</p>
-          <p>Written by: {{book.dataValues.author}}</p>
-          <p>Published Date: {{book.dataValues.publishedDate}}</p>
-          <p>About: {{book.dataValues.description}}</p>
+          <p class="subtitle is-6">Written by: {{book.dataValues.author}}</p>
+          <p class="subtitle is-6">Published Date: {{book.dataValues.publishedDate}}</p>
+          <p class="subtitle is-6">About: {{book.dataValues.description}}</p>
     <p class="title is-4">Reviews</p>
+    <a href="/findbook/{{book.dataValues.google_books_id}}" class="button is-light"class="card-footer-item">Add Review</a>
 {{#each reviews as |review|}}
 <section>
   {{!-- <h2>View Review</h2> --}}
@@ -34,9 +35,9 @@
 
 </section>
 {{/each}}
-<a href="/findbook/{{book.dataValues.google_books_id}}" class="card-footer-item">Add Review</a>
+
 {{else}}
 <p>No reviews found.</p>
-<a href="/findbook/{{book.dataValues.google_books_id}}"  class="card-footer-item">Add a Review</a>
+<a href="/findbook/{{book.dataValues.google_books_id}}"  class="button is-light" class="card-footer-item">Add a Review</a>
 {{/if}}
 <script src="/js/reviews.js"></script>
