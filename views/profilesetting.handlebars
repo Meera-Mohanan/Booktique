@@ -1,32 +1,100 @@
-
-
 <div class="fullscreen-container">
-{{#if user}}
-<section>
-  <h2>Profile Settings</h2>
+  {{#if user}}
+  <section>
+    <div class="card">
+      <h2 class="card-header-title">Profile Settings</h2>
+      <div class="card-content">
+        <form id="profile-settings-form">
+          <div class="field">
+            <label class="label">Pen Name</label>
+            <div class="control">
+              <input id="pen-name" class="input" type="text" value="{{user.name}}">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+              <input id="email" class="input" type="email" value="{{user.email}}">
+            </div>
+          </div>
+          <div class="field is-grouped">
+            <div class="control">
+              <button type="submit" class="button is-link">Update</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <footer class="card-footer">
+        <a href="/reviews" class="card-footer-item" id="view-reviews">View my reviews</a>
+      </footer>
+    </div>
+  </section>
+  {{else}}
+  <p>User Details Not Found.</p>
+  {{/if}}
+</div>
+
+{{!-- your reviews section --}}
+<div class="fullscreen-container">
+  {{#if reviews.length}}
+  <section>
+    <h2>Your Reviews</h2>
+    {{#each reviews as |review|}}
     <div class="card">
       <div class="card-content">
         <div class="media">
+          {{!-- <div class="media-left">
+            <figure class="image is-48x48">
+              <img src="{{this.image}}" alt="Book Image">
+            </figure>
+          </div> --}}
           <div class="media-content">
-            <p class="title is-4">Pen Name: {{user.name}}</p>
-            <p class="subtitle is-6">Email: {{user.email}}</p>
-            {{!-- <p class="subtitle is-6">Password: {{user.password}}</p>  --}}
+            {{!-- <p class="title is-4">{{this.title}}</p> --}}
+            <p class="title is-4">{{review.book.title}}</p>
+            <p class="subtitle is-6">{{review.book.author}}</p>
           </div>
+        </div>
+        <div class="content">
+          {{review.title}}
+          {{review.body}}
+          <br>
+          <time datetime>Created on {{review.created_at}}</time>
         </div>
         <div class="card">
           <footer class="card-footer">
-            <a href="/useredit" class="card-footer-item" id="edit-user">Update my details</a>
-            <a href="/reviews" class="card-footer-item" id="edit-user">View my reviews</a>
+            <a href="/reviewsedit/{{review.id}}" class="card-footer-item" id="edit-review">Edit</a>
+            <a href="#" class="card-footer-item" id="delete-review" data-id="{{review.id}}">Delete</a>
           </footer>
         </div>
       </div>
     </div>
-  
-</section>
-{{else}}
-<p>User Details Not Found.</p>
-{{/if}}
- </div>
-
-
-
+    {{/each}}
+  </section>
+  {{else}}
+  <p>No reviews found.</p>
+  <div class="card">
+    <div class="card-content">
+      <h2>Add Review</h2>
+      <form id="add-review-form">
+        <div class="field">
+          <label class="label">Title</label>
+          <div class="control">
+            <input id="review-title" class="input" type="text">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Body</label>
+          <div class="control">
+            <textarea id="review-body" class="textarea"></textarea>
+          </div>
+        </div>
+        <div class="field is-grouped">
+          <div class="control">
+            <button type="submit" class="button is-link">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  {{/if}}
+</div>
