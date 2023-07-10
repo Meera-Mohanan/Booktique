@@ -13,14 +13,16 @@ async function loginFormHandler(event) {
         }),
         headers: { 'Content-Type': 'application/json' }
       });
-  
+  //console.log(response);
       if (response.ok) {
-        document.location.replace('/');
+        const data=await response.json();
+        console.log(data);
+        document.location.replace('/'); 
       } else {
       
         const data=await response.json();
-        //console.log(data);
-        document.getElementById("loginmessage").textContent =data.message;
+        document.getElementById("loginmessage").textContent =data.message; 
+        console.log("login failed");
       }
     }
 }

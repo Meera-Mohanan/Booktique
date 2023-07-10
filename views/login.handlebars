@@ -1,22 +1,22 @@
 <div class="fullscreen-container">
-  <form id="login-form" class="card-body">
+<form id="login-form" class="card-body">
 
-    <div class="field">
-      <label class="label">Email</label>
-      <div class="control has-icons-left has-icons-right">
-        <input id="email-login" class="input" type="email" placeholder="Email">
-        <span class="icon is-small is-left">
-          <i class="fas fa-envelope"></i>
-        </span>
-      </div>
-    </div>
+<div class="field">
+  <label class="label">Email</label>
+  <div class="control has-icons-left has-icons-right">
+    <input id="email-login" class="input " type="email" placeholder="Email" >
+    <span class="icon is-small is-left">
+      <i class="fas fa-envelope"></i>
+    </span>
+  </div>
+</div>
 
-    <div class="field">
-      <label class="label">Password</label>
-      <div class="control has-icons-left has-icons-right">
-        <input id="password-login" class="input" type="password">
-        <span class="icon is-small is-left">
-          <i class="fas fa-user"></i>
+<div class="field">
+  <label class="label">Password</label>
+  <div class="control has-icons-left has-icons-right">
+    <input id="password-login" class="input " type="password" >
+    <span class="icon is-small is-left">
+      <i class="fas fa-user"></i>
     </span>
     <span class="icon is-small is-right">
       <i class="fas fa-check"></i>
@@ -24,17 +24,27 @@
   </div>
 </div>
 
-    <div class="field is-grouped">
-      <div class="control">
-        <button type="submit" class="button is-primary is-fullwidth">Login</button>
-      </div>
-    </div>
+<div class="field is-grouped">
+  <div class="control">
+    <button type="submit" class="button is-link">Login!</button>
+  </div>
+</div>
+ <div class="field is-grouped">
+      <p>Don't have an account? <a href="/signup">Sign Up</a></p>
+     
+  </div>
 
-    <div class="field is-grouped">
-      <p>Don't have an account? <a href="#">Sign Up</a></p>
-    </div>
+ <div class="field is-grouped">
+      
+      <p id="loginmessage"></p>
+  </div>
 
-  </form>
-  <h2 id="loginmessage"></h2>
+
+  </div>
+</div>
+
+</form>
+
+
 </div>
 <script src="/js/login.js"></script>

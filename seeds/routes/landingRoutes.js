@@ -397,23 +397,26 @@ router.post('/savereview',auth, async (req, res) => {
             include: [User, Book],
         });
         // If the review already exists, send a response indicating it exists
-        if (existingReview) {
+        /* if (existingReview) {
 
             //render viewonereview
             //document.location.replace('/reviews');
-            res.render('/reviews', { loggedIn: req.session.logged_in });
-        }
+            //res.render('reviews', { loggedIn: req.session.logged_in });
+            res.redirect(`/viewreview/${google_book_id}`)//
+
+        } */
         // Create the review
+        if(!existingBook){
         const review = await Review.create({
             book_id,
             user_id,
             title,
             body,
             score,
-        });
+        });}
         //render viewonereview
-        res.render('/viewreview/:${book_id}', { loggedIn: req.session.logged_in });
-
+        //res.render('/viewreview/:${book_id}', { loggedIn: req.session.logged_in });
+        res.redirect(`/viewreview/${google_book_id}`)//
 
     } catch (error) {
         console.error(error);
