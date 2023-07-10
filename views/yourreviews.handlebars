@@ -1,39 +1,37 @@
-<div class="fullscreen-container">
+
 {{#if reviews.length}}
-<section>
-  <h2>Your Reviews</h2>
+
+  <p class="title is-4">Your Reviews</p>
+            
   {{#each reviews as |review|}}
+  <section>
     <div class="card">
       <div class="card-content">
         <div class="media">
          
           <div class="media-content">
-            {{!-- <p class="title is-4">{{this.title}}</p> --}}
-             <p class="title is-4">{{review.book.title}}</p>
-            <p class="subtitle is-6">{{review.book.author}}</p>
-          </div>
-        </div>
+          
         <div class="content">
-          {{review.title}}
-          {{review.body}}
-          <br>
-          <time datetime>Created on {{review.created_at}}</time>
+         
+          <p class="title is-4">{{review.book.title}}</p>
+          <p class="subtitle is-4">{{review.title}}</p>
+          <p class="subtitle is-6">{{review.body}}</p>
+          <p class="subtitle is-6">Score:{{review.score}}</p>
         </div>
-        <div class="card">
           <footer class="card-footer">
             <a href="/reviewsedit/{{review.id}}" class="card-footer-item" id="edit-review">Edit</a>
             <a href="#" class="card-footer-item" id="delete-review" data-id="{{review.id}}">Delete</a>
           </footer>
-        </div>
       </div>
     </div>
+    </section>
   {{/each}}
-</section>
+
 {{else}}
 <p>No reviews found.</p>
 <a href="/toppicks" class="card-footer-item" >Add Review</a>
 {{/if}}
-</div>
+
 <script src="/js/reviews.js"></script>
 
 
