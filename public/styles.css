@@ -9,6 +9,7 @@ body {
   background-repeat: no-repeat;
   position: relative;
   font-family: Georgia, 'Times New Roman', Times, serif;
+  min-height: 100vh;
 }
 
 /* body::before {
