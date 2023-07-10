@@ -1,49 +1,32 @@
 {{#if books_data.length}}
-{{!-- <div class="columns is-multiline">  --}}
+<section>
 {{#each books_data as |book|}}
-  {{!-- <div class="column is-one-third"> --}}
-  <section class="card">
-  <i class="fas fa-book"></i>
-  <div class="card-content">
-    <!-- Book information -->
-        <div class="media">
+  <div class="card">
+    <i class="fas fa-book"></i>
+    <div class="card-content">
+      <div class="media">
         <div class="media-content">
           <p class="title is-4">{{book.volumeInfo.title}}</p>
           <p>Publisher: {{book.volumeInfo.publisher}}</p>
           <p>Published Date: {{book.volumeInfo.publishedDate}}</p>
           <p>Description: {{book.volumeInfo.description}}</p>
-          
-
-          {{!-- {{!-- Display reviews --}}
-          {{#if array_revised.length}}
-              {{#each array_revised as |a|}}
-                  {{#if (eq a.google_book_id book.id)}}
-                  
-                    <p>{{a.title}}</p>
-                    <p>{{a.body}}</p>
-                    <p>{{a.score}}</p>
-                  {{else}}
-                    <p>Nnope.</p>
-                  {{/if}}
-              {{/each}}
-          {{else}}
-          <p>No books found.</p>
-          {{/if}}
-          {{!-- {{else}}
-                  <p>No reviews available for this book.</p>
-                {{/if}} --}}
- 
-          {{!-- Add Review button --}}
+          {{!-- <a href="/createreview/{{book.id}}" class="button is-primary">Add Review</a> add url from vijay --}}
+          {{!-- <a href="/viewreview/{{book.id}}" class="button is-primary">View Reviews</a> --}}
+          {{!-- display reviews end here--}}
           <a href="/findbook/{{book.id}}" class="button is-light">Add Review</a>
           <a href="/viewreview/{{book.id}}" class="button is-light">View Reviews</a>
-          {{!-- <a href="/createreview/{{book.id}}" class="button is-primary">Add Review</a>
-          --}}
         </div>
       </div>
     </div>
   </div>
-</section>
-{{/each}}
-{{else}}
-{{!-- <p>No books found.</p> --}}
+  {{/each}}
+
+  {{else}}
+  <p>No book found.</p>
+ </section>
 {{/if}}
+
+
+
+
+                 
