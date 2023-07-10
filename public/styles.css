@@ -119,6 +119,9 @@ main {
   color: #1b0303;
   height: 100%;
 }
+.card-content {
+  width: 100%;
+}
 
 .columns is-multiline {
   display: grid;

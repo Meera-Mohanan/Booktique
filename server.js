@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 3001;
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const ses = {
   secret: 'secret',
-  cookie: { maxAge: 36000 },
+  cookie: { maxAge: 60*1000*10 },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
