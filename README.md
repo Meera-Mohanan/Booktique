@@ -9,7 +9,6 @@ Booktique is a book review app that allows users to discover and review their fa
 - Handlebars.js
 - MySQL
 - Sequelize ORM
-- [New Library]
 
 ## Features
 
@@ -22,7 +21,8 @@ Booktique is a book review app that allows users to discover and review their fa
 - Interactive user experience, accepting and responding to user input.
 - Follows good-quality coding standards, including file structure, naming conventions, indentation, and quality comments.
 
-## Installation
+## Screenshots
+[Screenshot](https://github.com/Meera-Mohanan/Booktique/issues/43#issue-1796846338)
 
 
 ## Usage
