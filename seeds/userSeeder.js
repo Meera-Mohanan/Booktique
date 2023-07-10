@@ -1,3 +1,4 @@
+
 const { User } = require('../models');
 
 const userData = [
@@ -6,11 +7,10 @@ const userData = [
 ];
 
 const seedUsers = async () => {
-  // TODO: for loop -- call create() individually --- to trigger the create hook
-  await User.bulkCreate(userData,{individualHooks: true,
-    returning: true,
-});
+  for (let i = 0; i < userData.length; i++) {
+    const user = userData[i];
+    await User.create(user);
+  }
 };
-
 
 module.exports = seedUsers;
