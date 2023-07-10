@@ -90,6 +90,9 @@ main {
   text-shadow: -0.5px -0.5px 0 #cbbfbf, 0.5px -0.5px 0 #c5c1c1, -0.5px 0.5px 0 rgba(0, 0, 0, 0.271), 0.5px 0.5px 0 #000;
   height: 100%;
 }
+.card-content {
+  width: 100%;
+}
 
 .columns.is-multiline {
   display: grid;
