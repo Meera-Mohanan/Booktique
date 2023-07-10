@@ -265,7 +265,12 @@ footer {
 }
 
 .card-footer {
-  padding: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0decd;
+  padding: 10px;
 }
 
 .card-footer-item {
