@@ -1,32 +1,35 @@
-
-
 <div class="fullscreen-container">
-{{#if user}}
-<section>
-  <h2>Profile Settings</h2>
+  {{#if user}}
+  <section>
     <div class="card">
+      <h2 class="card-header-title">Profile Settings</h2>
       <div class="card-content">
-        <div class="media">
-          <div class="media-content">
-            <p class="title is-4">Pen Name: {{user.name}}</p>
-            <p class="subtitle is-6">Email: {{user.email}}</p>
-            {{!-- <p class="subtitle is-6">Password: {{user.password}}</p>  --}}
+        <form id="profile-settings-form">
+          <div class="field">
+            <label class="label">Pen Name</label>
+            <div class="control">
+              <input id="pen-name" class="input" type="text" value="{{user.name}}">
+            </div>
           </div>
-        </div>
-        <div class="card">
-          <footer class="card-footer">
-            <a href="/useredit" class="card-footer-item" id="edit-user">Update my details</a>
-            <a href="/reviews" class="card-footer-item" id="edit-user">View my reviews</a>
-          </footer>
-        </div>
+          <div class="field">
+            <label class="label">Email</label>
+            <div class="control">
+              <input id="email" class="input" type="email" value="{{user.email}}">
+            </div>
+          </div>
+          <div class="field is-grouped">
+            <div class="control">
+              <button type="submit" class="button is-link">Update</button>
+            </div>
+          </div>
+        </form>
       </div>
+      <footer class="card-footer">
+        <a href="/reviews" class="card-footer-item" id="view-reviews">View my reviews</a>
+      </footer>
     </div>
-  
-</section>
-{{else}}
-<p>User Details Not Found.</p>
-{{/if}}
- </div>
-
-
-
+  </section>
+  {{else}}
+  <p>User Details Not Found.</p>
+  {{/if}}
+</div>

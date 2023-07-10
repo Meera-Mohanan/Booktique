@@ -11,34 +11,6 @@ body {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-/* body::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.5;
-  z-index: -1;
-} */
-
-.title is-1 {
-  color: #d889489c;
-  text-shadow: -1px -1px 0 #b4a9a9, 1px -1pxrgba(223, 207, 207, 0.342)000, -1px 1px 0 #8f7d7d, 1px 1px 0 #00000025;
-}
-
-header {
-  background-image: url("C:\Users\meera\Desktop\Assignments\Booktique\Booktique\public\Images\booktique.png");
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2%;
-
-}
-
 .header-container {
   background-color: rgba(167, 160, 156, 0.671);
   text-align: center;
@@ -46,8 +18,8 @@ header {
 }
 
 .header-content {
-  color: #d889489c;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  color: #d88948;
+  text-shadow: -1px -1px 0 #b4a9a9, 1px -1px rgba(223, 207, 207, 0.342), -1px 1px 0 #8f7d7d, 1px 1px 0 #00000025;
   text-align: center;
   font-style: italic;
   font-weight: bold;
@@ -70,17 +42,15 @@ h2 {
 }
 
 .navbar a {
-  color: #d889489c;
+  color: #d88948;
   text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;
   font-size: 16px;
-  /* Adjust the value as needed */
 }
 
 .navbar-item:hover,
 .navbar-dropdown a.navbar-item:hover {
   color: black;
 }
-
 
 .navbar .navbar-item {
   margin-right: 10px;
@@ -115,12 +85,13 @@ main {
 .card {
   font-family: Georgia, 'Times New Roman', Times, serif;
   display: flex;
-  background-color: rgba(167, 160, 156, 0.671);
-  color: #1b0303;
+  background-color: rgba(223, 184, 162, 0.818);
+  color: #1b1a18;
+  text-shadow: -0.5px -0.5px 0 #cbbfbf, 0.5px -0.5px 0 #c5c1c1, -0.5px 0.5px 0 rgba(0, 0, 0, 0.271), 0.5px 0.5px 0 #000;
   height: 100%;
 }
 
-.columns is-multiline {
+.columns.is-multiline {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 20px;
@@ -131,7 +102,6 @@ section {
   padding: 5px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   gap: 40px;
-  /* Adjust the value as needed */
 }
 
 article {
@@ -176,65 +146,67 @@ footer {
 }
 
 .fullscreen-container {
-
-  position: relative;
-  height: 100vh;
-}
-
-.fullscreen-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.bg-secondary {
-  color: #d889489c;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-  font-family: Georgia, 'Times New Roman', Times, serif;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   height: 100vh;
 }
 
-.centered-text {
-  text-align: center;
-  font-style: italic;
+#signup-form {
+  width: 300px;
+  background-color: #f0decd;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.field {
+  margin-bottom: 1rem;
+}
+
+.label {
   font-weight: bold;
 }
 
-.py-5 {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+.input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
-.container {
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 15px;
+.button {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-weight: bold;
+  border-radius: 4px;
 }
 
-.media {
-  cursor: pointer;
-  transition: transform 0.3s;
+.button.is-primary {
+  background-color: #3388cc;
+  color: #fff;
+  border: none;
 }
 
-.media:hover {
-  transform: scale(1.05);
+.button.is-primary:hover {
+  background-color: #2777aa;
+}
+
+#login-form {
+  width: 300px;
+  background-color: #f0decd;
+  padding: 20px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 @media screen and (max-width: 768px) {
-
-  header,
+  body {
+    font-size: 14px;
+  }
+  
   main {
     flex-direction: column;
-  }
-
-  section {
     padding-right: 0;
   }
 
@@ -243,23 +215,111 @@ footer {
     text-align: center;
   }
 }
+/* profile setting*/
 
-#login-form {
-  background-color: #f0decd;
-  padding: 20px;
-  margin: 10px;
-  border: 1px solid #ccc;
+.fullscreen-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
-#signup-form {
+.container{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color:#111111;
+  font-style: italic;
+  background-color: rgba(221, 211, 204, 0.562);
+  text-shadow: -0.5px -0.5px 0 #23010117, 0.5px -0.5px rgba(127, 81, 81, 0.123)51, -0.5px 0.5px 0 rgba(212, 127, 23, 0.271), 0.5px 0.5px 0 #000;
+  display: flex;
+  justify-content:flex-start;
+  margin-bottom:1rem;
+
+}
+.card {
   background-color: #f0decd;
-  padding: 20px;
-  margin: 10px;
-  border: 1px solid #ccc;
+  margin-bottom: 1rem;
 }
 
-@media screen and (max-width: 768px) {
-  .form-container {
-    max-width: 100%;
-  }
+.card-content {
+  padding: 1.5rem;
+}
+
+.media {
+  align-items: center;
+}
+
+.media-content {
+  flex: 1;
+}
+
+.title.is-4 {
+  margin-bottom: 0.5rem;
+}
+
+.subtitle.is-6 {
+  margin-bottom: 0.5rem;
+}
+
+.content {
+  margin-top: 1rem;
+}
+
+.card-footer {
+  padding: 0.5rem;
+}
+
+.card-footer-item {
+  color: #000;
+  text-decoration: none;
+  margin-right: 0.5rem;
+}
+
+.card-footer-item:hover {
+  text-decoration: underline;
+}
+
+
+/*add review*/
+
+.card {
+  margin-bottom: 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.card h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card .field:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.card .label {
+  font-weight: bold;
+}
+
+.card .button {
+  width: 100%;
+}
+
+.card-footer {
+  background-color: #f0decd;
+  padding: 10px;
+}
+
+.card-footer .card-footer-item {
+  color: #111;
+  font-weight: bold;
+}
+
+.card-footer .card-footer-item:hover {
+  background-color: #f0decd;
+  color: #fff;
 }

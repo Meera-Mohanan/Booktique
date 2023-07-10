@@ -3,6 +3,9 @@
 <form id="add-review-form">
    
     <section>
+        <div class="card">
+      <h2 class="card-header-title">Your Reviews</h2>
+      <div class="card-content">
         {{#if book}}
         <h2>Add Review</h2>
         <p class="title is-4">{{book.volumeInfo.title}}</p>
@@ -14,11 +17,11 @@
         <div class="card">
             <div class="card-content">
 
-                <label for="name" class="form-label">Enter Book Name or Author Name</label>
-                <textarea class="textarea" placeholder="Start typing here..."></textarea><br>
+                <label for="name" class="form-label">Enter Review title</label>
+                <textarea class="textarea" id="titlet" placeholder="Start typing here..."></textarea><br>
 
-                <label for="name" class="form-label">Add Review</label>
-                <textarea class="textarea" placeholder="Start typing here..."></textarea><br>
+                <label for="name" class="form-label">Enter your Review</label>
+                <textarea class="textarea" id="reviewt" placeholder="Start typing here..."></textarea><br>
 
                 <label for="name" class="form-label">Select a score:</label>
                 <select id="score" name="score" class="form-select">
