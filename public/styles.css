@@ -137,7 +137,7 @@ button {
   margin: 2% 0;
   padding: 1%;
   background-color: #f0decd;
-  color: white;
+  color: rgb(37, 36, 36);
 }
 
 footer {
@@ -273,6 +273,7 @@ footer {
   align-items: center;
   height: 100vh;
   background-color: #f0decd;
+  color:#111111;
   padding: 10px;
 }
 
