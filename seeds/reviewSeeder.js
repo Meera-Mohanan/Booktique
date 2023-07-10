@@ -6,7 +6,9 @@ const reviewData = [
 ];
 
 const seedReviews = async () => {
-  await Review.bulkCreate(reviewData);
+  for (const review of reviewData) {
+    await Review.create(review);
+  }
 };
 
 module.exports = seedReviews;
