@@ -1,20 +1,28 @@
 {{!-- Check if review exists --}}
 <div class="fullscreen-container">
 <form id="add-review-form">
+   
     <section>
+        <div class="card">
+      <h2 class="card-header-title">Your Reviews</h2>
+      <div class="card-content">
         {{#if book}}
         <h2>Add Review</h2>
         <p class="title is-4">{{book.volumeInfo.title}}</p>
         <p>Publisher: {{book.volumeInfo.publisher}}</p>
         <p>Published Date: {{book.volumeInfo.publishedDate}}</p>
         <p>Description: {{book.volumeInfo.description}}</p>
+
         <input type="hidden" name="bookid" value="{{book.id}}">
         <div class="card">
             <div class="card-content">
+
                 <label for="name" class="form-label">Enter Review title</label>
                 <textarea class="textarea" id="titlet" placeholder="Start typing here..."></textarea><br>
+
                 <label for="name" class="form-label">Enter your Review</label>
                 <textarea class="textarea" id="reviewt" placeholder="Start typing here..."></textarea><br>
+
                 <label for="name" class="form-label">Select a score:</label>
                 <select id="score" name="score" class="form-select">
                     <option value="0">0</option>
@@ -24,18 +32,24 @@
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </select>
+               
                 <div class="card">
                     <footer class="card-footer">
                         <button type="submit" class="card-footer-item">Save</button>
                     </footer>
                 </div>
+
+
             </div>
+
         </div>
         {{else}}
         <p>Book details not found.</p>
         <p><a href="/" class="card-footer-item">Please Try Again</a></p>
         {{/if}}
+
     </section>
+    
 </form>
 </div>
 <script src="/js/createreview.js"></script>
