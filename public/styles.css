@@ -9,6 +9,7 @@ body {
   background-repeat: no-repeat;
   position: relative;
   font-family: Georgia, 'Times New Roman', Times, serif;
+  min-height: 100vh;
 }
 
 /* body::before {
@@ -115,12 +116,25 @@ main {
 .card {
   font-family: Georgia, 'Times New Roman', Times, serif;
   display: flex;
-  background-color: rgba(167, 160, 156, 0.671);
+  background-color: rgba(122, 114, 86, 0.671);
   color: #1b0303;
   height: 100%;
 }
 .card-content {
   width: 100%;
+}
+.card-footer-item{
+background-color: #F0DECD;
+color:black;
+padding:5px 10 px;
+border:#000;
+border-radius:4px;
+font-size:16px;
+cursor:pointer;
+height: min-content;
+}
+.card-footer-item:hover{
+  background-color:#E4CFBB;
 }
 
 .columns is-multiline {
@@ -265,4 +279,8 @@ footer {
   .form-container {
     max-width: 100%;
   }
+}
+.inptpadding {
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
